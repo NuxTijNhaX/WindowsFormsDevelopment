@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsDevelopment.CustomControls
 {
-    partial class RegistrationResult
+    partial class TuitionPaymentPanel
     {
         /// <summary>
         /// Required designer variable.

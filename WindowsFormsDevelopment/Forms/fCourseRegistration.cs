@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,10 +14,10 @@ namespace WindowsFormsDevelopment
 {
     public partial class fCourseRegistration : Form
     {
-        Color darkGreen = Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-        Color orange = Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
+        public static Color green = Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+        public static Color orange = Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
 
-        StudentInformation pnlStudentInformation;
+        StudentInformationPanel pnlStudentInformation;
 
         public fCourseRegistration()
         {
@@ -24,8 +25,6 @@ namespace WindowsFormsDevelopment
 
             ConfigUI();
         }
-
-        // In-Contructor, PerformClick can't be consumed.
 
         private void ConfigUI()
         {
@@ -57,17 +56,17 @@ namespace WindowsFormsDevelopment
         {
             foreach (Button btn in panel.Controls)
             {
-                btn.BackColor = darkGreen;
+                btn.BackColor = green;
             }
 
             button.BackColor = orange;
         }
 
-        
-        
+        #region Event Handler
         private void fCourseRegistration_SizeChanged(object sender, EventArgs e)
         {
             ConfigUI();
+            btnStudentInfor.PerformClick();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -86,7 +85,7 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
-            pnlStudentInformation = new StudentInformation(pnlBody);
+            pnlStudentInformation = new StudentInformationPanel(pnlBody);
             pnlBody.Controls.Add(pnlStudentInformation);
         }
 
@@ -120,5 +119,11 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
         }
+
+        private void fCourseRegistration_Load(object sender, EventArgs e)
+        {
+            btnStudentInfor.PerformClick();
+        }
+        #endregion
     }
 }

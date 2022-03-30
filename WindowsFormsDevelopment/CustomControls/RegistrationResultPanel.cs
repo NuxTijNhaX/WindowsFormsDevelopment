@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsDevelopment.CustomControls
 {
-    public partial class RegistrationResult : Control
+    public partial class RegistrationResultPanel : Control
     {
-        public RegistrationResult()
+        public RegistrationResultPanel()
         {
             InitializeComponent();
         }

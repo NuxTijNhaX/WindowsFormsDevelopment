@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsDevelopment.CustomControls
 {
-    public partial class CourseRegistration : Control
+    public partial class TuitionPaymentPanel : Control
     {
-        public CourseRegistration()
+        public TuitionPaymentPanel()
         {
             InitializeComponent();
         }

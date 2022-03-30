@@ -47,29 +47,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomControls\CourseRegistration.cs">
+    <Compile Include="CustomControls\CourseRegistrationPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomControls\CourseRegistration.Designer.cs">
-      <DependentUpon>CourseRegistration.cs</DependentUpon>
+    <Compile Include="CustomControls\CourseRegistrationPanel.Designer.cs">
+      <DependentUpon>CourseRegistrationPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\RegistrationResult.cs">
+    <Compile Include="CustomControls\RegistrationResultPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomControls\RegistrationResult.Designer.cs">
-      <DependentUpon>RegistrationResult.cs</DependentUpon>
+    <Compile Include="CustomControls\RegistrationResultPanel.Designer.cs">
+      <DependentUpon>RegistrationResultPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\StudentInformation.cs">
+    <Compile Include="CustomControls\StudentInformationPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomControls\StudentInformation.Designer.cs">
-      <DependentUpon>StudentInformation.cs</DependentUpon>
+    <Compile Include="CustomControls\StudentInformationPanel.Designer.cs">
+      <DependentUpon>StudentInformationPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\TuitionPayment.cs">
+    <Compile Include="CustomControls\TuitionPaymentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomControls\TuitionPayment.Designer.cs">
-      <DependentUpon>TuitionPayment.cs</DependentUpon>
+    <Compile Include="CustomControls\TuitionPaymentPanel.Designer.cs">
+      <DependentUpon>TuitionPaymentPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\fCourseRegistration.cs">
       <SubType>Form</SubType>
@@ -123,6 +123,11 @@
   <ItemGroup>
     <None Include="Resources\payment.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\course.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\address.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
