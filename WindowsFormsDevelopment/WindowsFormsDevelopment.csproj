@@ -47,39 +47,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomControls\CourseRegistrationPanel.cs">
+    <Compile Include="Form Course Registration\Router\CourseRegistrationPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomControls\CourseRegistrationPanel.Designer.cs">
+    <Compile Include="Form Course Registration\Router\CourseRegistrationPanel.Designer.cs">
       <DependentUpon>CourseRegistrationPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\RegistrationResultPanel.cs">
+    <Compile Include="CustomControls\DisableRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomControls\RegistrationResultPanel.Designer.cs">
+    <Compile Include="Form Course Registration\Router\RegistrationResultPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form Course Registration\Router\RegistrationResultPanel.Designer.cs">
       <DependentUpon>RegistrationResultPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\StudentInformationPanel.cs">
+    <Compile Include="Form Course Registration\Router\StudentInformationPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomControls\StudentInformationPanel.Designer.cs">
+    <Compile Include="Form Course Registration\Router\StudentInformationPanel.Designer.cs">
       <DependentUpon>StudentInformationPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\TuitionPaymentPanel.cs">
+    <Compile Include="Form Course Registration\Router\TuitionPaymentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomControls\TuitionPaymentPanel.Designer.cs">
+    <Compile Include="Form Course Registration\Router\TuitionPaymentPanel.Designer.cs">
       <DependentUpon>TuitionPaymentPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\fCourseRegistration.cs">
+    <Compile Include="Form Course Registration\fCourseRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\fCourseRegistration.Designer.cs">
+    <Compile Include="Form Course Registration\fCourseRegistration.Designer.cs">
       <DependentUpon>fCourseRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IRouterPanel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\fCourseRegistration.resx">
+    <EmbeddedResource Include="Form Course Registration\Router\CourseRegistrationPanel.resx">
+      <DependentUpon>CourseRegistrationPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form Course Registration\fCourseRegistration.resx">
       <DependentUpon>fCourseRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

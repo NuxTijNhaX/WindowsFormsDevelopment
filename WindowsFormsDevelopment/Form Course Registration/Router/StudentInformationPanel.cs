@@ -35,7 +35,6 @@ namespace WindowsFormsDevelopment.CustomControls
             Panel pnlHeader = new Panel()
             {
                 Size = new Size(this.Width, this.Height / 2),
-                // BorderStyle = BorderStyle.FixedSingle,
             };
 
             #region Header Avatar
@@ -91,63 +90,80 @@ namespace WindowsFormsDevelopment.CustomControls
 
             int labelDiaphragm = btnTitleStudentInfor.Location.X + btnTitleStudentInfor.Width * 50 / 100;
             int labelMarginTop = pnlHeader_StudentInfor.Height * 5 / 100;
-            Label studentNumber = new Label()
+
+            DisabledRichTextBox lblStudentNumber = new DisabledRichTextBox()
             {
-                Text = "MSSV:",
-                ForeColor = fCourseRegistration.orange,
-                AutoSize = true,
                 Font = new Font("Microsoft Sans Serif", fontSize, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+                BorderStyle = BorderStyle.None,
+                BackColor = this.BackColor,
                 Location = new Point(labelDiaphragm, btnTitleStudentInfor.Height + btnTitleStudentInfor.Location.Y + labelMarginTop + 10),
             };
+            lblStudentNumber.Size = new Size(pnlHeader_StudentInfor.Width - lblStudentNumber.Location.X, btnTitleStudentInfor.Height);
+            lblStudentNumber.SelectionColor = fCourseRegistration.orange;
+            lblStudentNumber.SelectedText = "MSSV:  ";
+            lblStudentNumber.SelectionColor = Color.Black;
+            lblStudentNumber.SelectedText = "None"; // studentNumber
 
-            Label studentName = new Label()
+            DisabledRichTextBox lblStudentName = new DisabledRichTextBox()
             {
-                Text = "Họ và tên:",
-                ForeColor = fCourseRegistration.orange,
-                AutoSize = true,
                 Font = new Font("Microsoft Sans Serif", fontSize, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
-                Location = new Point(labelDiaphragm, studentNumber.Height + studentNumber.Location.Y + labelMarginTop),
+                BorderStyle = BorderStyle.None,
+                BackColor = this.BackColor,
+                Location = new Point(labelDiaphragm, lblStudentNumber.Height + lblStudentNumber.Location.Y + labelMarginTop),
             };
+            lblStudentName.Size = new Size(pnlHeader_StudentInfor.Width - lblStudentName.Location.X, btnTitleStudentInfor.Height);
+            lblStudentName.SelectionColor = fCourseRegistration.orange;
+            lblStudentName.SelectedText = "Họ và tên:  ";
+            lblStudentName.SelectionColor = Color.Black;
+            lblStudentName.SelectedText = "None"; // studentName
 
-            Label studentStatus = new Label()
+            DisabledRichTextBox lblStudentStatus = new DisabledRichTextBox()
             {
-                Text = "Tình trạng học:",
-                ForeColor = fCourseRegistration.orange,
-                AutoSize = true,
                 Font = new Font("Microsoft Sans Serif", fontSize, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
-                Location = new Point(labelDiaphragm, studentName.Height + studentName.Location.Y + labelMarginTop),
+                BorderStyle = BorderStyle.None,
+                BackColor = this.BackColor,
+                Location = new Point(labelDiaphragm, lblStudentName.Height + lblStudentName.Location.Y + labelMarginTop),
             };
+            lblStudentStatus.Size = new Size(pnlHeader_StudentInfor.Width - lblStudentStatus.Location.X, btnTitleStudentInfor.Height);
+            lblStudentStatus.SelectionColor = fCourseRegistration.orange;
+            lblStudentStatus.SelectedText = "Tình trạng học:  ";
+            lblStudentStatus.SelectionColor = Color.Black;
+            lblStudentStatus.SelectedText = "None"; // studentStatus
 
-            Label studentSchoolYear = new Label()
+            DisabledRichTextBox lblStudentSchoolYear = new DisabledRichTextBox()
             {
-                Text = "Niên khóa:",
-                ForeColor = fCourseRegistration.orange,
-                AutoSize = true,
                 Font = new Font("Microsoft Sans Serif", fontSize, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
-                Location = new Point(labelDiaphragm, studentStatus.Height + studentStatus.Location.Y + labelMarginTop),
-
+                BorderStyle = BorderStyle.None, // TODO: Change
+                BackColor = this.BackColor,
+                Location = new Point(labelDiaphragm, lblStudentStatus.Height + lblStudentStatus.Location.Y + labelMarginTop),
             };
+            lblStudentSchoolYear.Size = new Size(pnlHeader_StudentInfor.Width - lblStudentSchoolYear.Location.X, btnTitleStudentInfor.Height);
+            lblStudentSchoolYear.SelectionColor = fCourseRegistration.orange;
+            lblStudentSchoolYear.SelectedText = "Niên khóa:  ";
+            lblStudentSchoolYear.SelectionColor = Color.Black;
+            lblStudentSchoolYear.SelectedText = "None"; // studentSchoolYear
 
-            Label studentEmail = new Label()
+            DisabledRichTextBox lblStudentEmail = new DisabledRichTextBox()
             {
-                Text = "Email UEH:",
-                ForeColor = fCourseRegistration.orange,
-                AutoSize = true,
                 Font = new Font("Microsoft Sans Serif", fontSize, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
-                Location = new Point(labelDiaphragm, studentSchoolYear.Height + studentSchoolYear.Location.Y + labelMarginTop),
-
+                BorderStyle = BorderStyle.None, 
+                BackColor = this.BackColor,
+                Location = new Point(labelDiaphragm, lblStudentSchoolYear.Height + lblStudentSchoolYear.Location.Y + labelMarginTop),
             };
-
-
+            lblStudentEmail.Size = new Size(pnlHeader_StudentInfor.Width - lblStudentEmail.Location.X, btnTitleStudentInfor.Height);
+            lblStudentEmail.SelectionColor = fCourseRegistration.orange;
+            lblStudentEmail.SelectedText = "Email UEH:  ";
+            lblStudentEmail.SelectionColor = Color.Black;
+            lblStudentEmail.SelectedText = "None"; // studentEmail
 
             pnlHeader_StudentInfor.Controls.AddRange(new Control[]
             {
                 btnTitleStudentInfor,
-                studentNumber,
-                studentName,
-                studentStatus,
-                studentSchoolYear,
-                studentEmail,
+                lblStudentNumber,
+                lblStudentName,
+                lblStudentStatus,
+                lblStudentSchoolYear,
+                lblStudentEmail,
             });
             #endregion
 
@@ -188,39 +204,52 @@ namespace WindowsFormsDevelopment.CustomControls
 
             labelDiaphragm = btnTitleCourseInfor.Location.X + btnTitleCourseInfor.Width * 50 / 100;
             labelMarginTop = pnlLeftSide.Height * 5 / 100;
-            Label courseName = new Label()
+
+            DisabledRichTextBox lblCourseName = new DisabledRichTextBox()
             {
-                Text = "Khóa học:",
-                ForeColor = fCourseRegistration.orange,
-                AutoSize = true,
                 Font = new Font("Microsoft Sans Serif", fontSize, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+                BorderStyle = BorderStyle.None,
+                BackColor = this.BackColor,
                 Location = new Point(labelDiaphragm, btnTitleCourseInfor.Height + btnTitleCourseInfor.Location.Y + labelMarginTop + 10),
             };
+            lblCourseName.Size = new Size(pnlLeftSide.Width - lblCourseName.Location.X, btnTitleCourseInfor.Height);
+            lblCourseName.SelectionColor = fCourseRegistration.orange;
+            lblCourseName.SelectedText = "Khóa học:  ";
+            lblCourseName.SelectionColor = Color.Black;
+            lblCourseName.SelectedText = "None"; // courseName
 
-            Label modeOfStudy = new Label()
+            DisabledRichTextBox lblModeOfStudy = new DisabledRichTextBox()
             {
-                Text = "Loại hình đào tạo:",
-                ForeColor = fCourseRegistration.orange,
-                AutoSize = true,
                 Font = new Font("Microsoft Sans Serif", fontSize, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
-                Location = new Point(labelDiaphragm, courseName.Height + courseName.Location.Y + labelMarginTop),
+                BorderStyle = BorderStyle.None,
+                BackColor = this.BackColor,
+                Location = new Point(labelDiaphragm, lblCourseName.Height + lblCourseName.Location.Y + labelMarginTop),
             };
+            lblModeOfStudy.Size = new Size(pnlLeftSide.Width - lblModeOfStudy.Location.X, btnTitleCourseInfor.Height);
+            lblModeOfStudy.SelectionColor = fCourseRegistration.orange;
+            lblModeOfStudy.SelectedText = "Loại hình đào tạo:  ";
+            lblModeOfStudy.SelectionColor = Color.Black;
+            lblModeOfStudy.SelectedText = "None"; // modeOfStudy
 
-            Label studentMajor = new Label()
+            DisabledRichTextBox lblStudentMajor = new DisabledRichTextBox()
             {
-                Text = "Lớp sinh viên:",
-                ForeColor = fCourseRegistration.orange,
-                AutoSize = true,
                 Font = new Font("Microsoft Sans Serif", fontSize, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
-                Location = new Point(labelDiaphragm, modeOfStudy.Height + modeOfStudy.Location.Y + labelMarginTop),
+                BorderStyle = BorderStyle.None,
+                BackColor = this.BackColor,
+                Location = new Point(labelDiaphragm, lblModeOfStudy.Height + lblModeOfStudy.Location.Y + labelMarginTop),
             };
+            lblStudentMajor.Size = new Size(pnlLeftSide.Width - lblStudentMajor.Location.X, btnTitleCourseInfor.Height);
+            lblStudentMajor.SelectionColor = fCourseRegistration.orange;
+            lblStudentMajor.SelectedText = "Lớp sinh viên:  ";
+            lblStudentMajor.SelectionColor = Color.Black;
+            lblStudentMajor.SelectedText = "None"; // studentMajor
 
             pnlLeftSide.Controls.AddRange(new Control[]
             {
                 btnTitleCourseInfor,
-                courseName,
-                modeOfStudy,
-                studentMajor,
+                lblCourseName,
+                lblModeOfStudy,
+                lblStudentMajor,
             });
             #endregion
 
@@ -254,20 +283,24 @@ namespace WindowsFormsDevelopment.CustomControls
 
             labelDiaphragm = btnTitleContact.Location.X + btnTitleContact.Width * 50 / 100;
             labelMarginTop = pnlRightSide.Height * 5 / 100;
-            Label studentContact = new Label()
+
+            DisabledRichTextBox lblStudentContact = new DisabledRichTextBox()
             {
-                Text = "Địa chỉ:",
-                ForeColor = fCourseRegistration.orange,
-                AutoSize = true,
                 Font = new Font("Microsoft Sans Serif", fontSize, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+                BorderStyle = BorderStyle.None,
+                BackColor = this.BackColor,
                 Location = new Point(labelDiaphragm, btnTitleContact.Height + btnTitleContact.Location.Y + labelMarginTop + 10),
             };
-
+            lblStudentContact.Size = new Size(pnlLeftSide.Width - lblStudentContact.Location.X, btnTitleContact.Height);
+            lblStudentContact.SelectionColor = fCourseRegistration.orange;
+            lblStudentContact.SelectedText = "Địa chỉ:  ";
+            lblStudentContact.SelectionColor = Color.Black;
+            lblStudentContact.SelectedText = "None"; // studentContact
 
             pnlRightSide.Controls.AddRange(new Control[]
             {
                 btnTitleContact,
-                studentContact,
+                lblStudentContact,
             });
 
             #endregion

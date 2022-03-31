@@ -18,6 +18,9 @@ namespace WindowsFormsDevelopment
         public static Color orange = Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
 
         StudentInformationPanel pnlStudentInformation;
+        CourseRegistrationPanel pnlCourseRegistration;
+        RegistrationResultPanel pnlRegistrationResult;
+        TuitionPaymentPanel pnlTuitionPayment;
 
         public fCourseRegistration()
         {
@@ -66,7 +69,6 @@ namespace WindowsFormsDevelopment
         private void fCourseRegistration_SizeChanged(object sender, EventArgs e)
         {
             ConfigUI();
-            btnStudentInfor.PerformClick();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -95,6 +97,8 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
+            //pnlCourseRegistration = new CourseRegistrationPanel(pnlBody);
+            //pnlBody.Controls.Add(pnlCourseRegistration);
         }
 
         private void btnOutProgram_Click(object sender, EventArgs e)
@@ -103,6 +107,8 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
+            //pnlStudentInformation = new StudentInformationPanel(pnlBody);
+            //pnlBody.Controls.Add(pnlStudentInformation);
         }
 
         private void btnRegistrationResult_Click(object sender, EventArgs e)
@@ -111,6 +117,8 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
+            //pnlStudentInformation = new StudentInformationPanel(pnlBody);
+            //pnlBody.Controls.Add(pnlStudentInformation);
         }
 
         private void btnPayTuition_Click(object sender, EventArgs e)
@@ -118,6 +126,9 @@ namespace WindowsFormsDevelopment
             pnlBody.Controls.Clear();
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
+
+            //pnlStudentInformation = new StudentInformationPanel(pnlBody);
+            //pnlBody.Controls.Add(pnlStudentInformation);
         }
 
         private void fCourseRegistration_Load(object sender, EventArgs e)

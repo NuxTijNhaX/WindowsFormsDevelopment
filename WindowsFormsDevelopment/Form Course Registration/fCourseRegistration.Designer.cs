@@ -32,16 +32,17 @@ namespace WindowsFormsDevelopment
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fCourseRegistration));
             this.pnlSideBar = new System.Windows.Forms.Panel();
             this.flpSideBarBody = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnInProgram = new System.Windows.Forms.Button();
-            this.btnOutProgram = new System.Windows.Forms.Button();
-            this.pnlSideBarBottom = new System.Windows.Forms.Panel();
-            this.pnlSideBarHeader = new System.Windows.Forms.Panel();
             this.btnStudentInfor = new System.Windows.Forms.Button();
             this.btnRegisterCourse = new System.Windows.Forms.Button();
+            this.btnInProgram = new System.Windows.Forms.Button();
+            this.btnOutProgram = new System.Windows.Forms.Button();
             this.btnRegistrationResult = new System.Windows.Forms.Button();
             this.btnPayTuition = new System.Windows.Forms.Button();
+            this.pnlSideBarBottom = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
+            this.pnlSideBarHeader = new System.Windows.Forms.Panel();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
+            this.pnlBody = new System.Windows.Forms.Panel();
             this.pnlSideBar.SuspendLayout();
             this.flpSideBarBody.SuspendLayout();
             this.pnlSideBarBottom.SuspendLayout();
@@ -74,73 +75,6 @@ namespace WindowsFormsDevelopment
             this.flpSideBarBody.Name = "flpSideBarBody";
             this.flpSideBarBody.Size = new System.Drawing.Size(240, 448);
             this.flpSideBarBody.TabIndex = 2;
-            // 
-            // btnInProgram
-            // 
-            this.btnInProgram.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-            this.btnInProgram.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInProgram.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-            this.btnInProgram.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
-            this.btnInProgram.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
-            this.btnInProgram.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
-            this.btnInProgram.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInProgram.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnInProgram.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInProgram.Location = new System.Drawing.Point(3, 111);
-            this.btnInProgram.Name = "btnInProgram";
-            this.btnInProgram.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.btnInProgram.Size = new System.Drawing.Size(237, 48);
-            this.btnInProgram.TabIndex = 4;
-            this.btnInProgram.Text = "    Thuộc Chương Trình";
-            this.btnInProgram.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInProgram.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnInProgram.UseVisualStyleBackColor = false;
-            this.btnInProgram.Click += new System.EventHandler(this.btnInProgram_Click);
-            // 
-            // btnOutProgram
-            // 
-            this.btnOutProgram.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOutProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-            this.btnOutProgram.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOutProgram.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-            this.btnOutProgram.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
-            this.btnOutProgram.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
-            this.btnOutProgram.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
-            this.btnOutProgram.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOutProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOutProgram.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnOutProgram.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOutProgram.Location = new System.Drawing.Point(3, 165);
-            this.btnOutProgram.Name = "btnOutProgram";
-            this.btnOutProgram.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.btnOutProgram.Size = new System.Drawing.Size(237, 48);
-            this.btnOutProgram.TabIndex = 5;
-            this.btnOutProgram.Text = "    Ngoài Chương Trình";
-            this.btnOutProgram.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOutProgram.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnOutProgram.UseVisualStyleBackColor = false;
-            this.btnOutProgram.Click += new System.EventHandler(this.btnOutProgram_Click);
-            // 
-            // pnlSideBarBottom
-            // 
-            this.pnlSideBarBottom.Controls.Add(this.btnExit);
-            this.pnlSideBarBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlSideBarBottom.Location = new System.Drawing.Point(0, 566);
-            this.pnlSideBarBottom.Name = "pnlSideBarBottom";
-            this.pnlSideBarBottom.Size = new System.Drawing.Size(240, 70);
-            this.pnlSideBarBottom.TabIndex = 1;
-            // 
-            // pnlSideBarHeader
-            // 
-            this.pnlSideBarHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlSideBarHeader.Controls.Add(this.pbxLogo);
-            this.pnlSideBarHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSideBarHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlSideBarHeader.Name = "pnlSideBarHeader";
-            this.pnlSideBarHeader.Size = new System.Drawing.Size(240, 118);
-            this.pnlSideBarHeader.TabIndex = 0;
             // 
             // btnStudentInfor
             // 
@@ -190,6 +124,54 @@ namespace WindowsFormsDevelopment
             this.btnRegisterCourse.UseVisualStyleBackColor = false;
             this.btnRegisterCourse.Click += new System.EventHandler(this.btnRegisterCourse_Click);
             // 
+            // btnInProgram
+            // 
+            this.btnInProgram.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.btnInProgram.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInProgram.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.btnInProgram.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
+            this.btnInProgram.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
+            this.btnInProgram.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
+            this.btnInProgram.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInProgram.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnInProgram.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInProgram.Location = new System.Drawing.Point(3, 111);
+            this.btnInProgram.Name = "btnInProgram";
+            this.btnInProgram.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnInProgram.Size = new System.Drawing.Size(237, 48);
+            this.btnInProgram.TabIndex = 4;
+            this.btnInProgram.Text = "    Thuộc Chương Trình";
+            this.btnInProgram.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInProgram.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInProgram.UseVisualStyleBackColor = false;
+            this.btnInProgram.Click += new System.EventHandler(this.btnInProgram_Click);
+            // 
+            // btnOutProgram
+            // 
+            this.btnOutProgram.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOutProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.btnOutProgram.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOutProgram.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.btnOutProgram.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
+            this.btnOutProgram.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
+            this.btnOutProgram.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
+            this.btnOutProgram.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOutProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOutProgram.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnOutProgram.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOutProgram.Location = new System.Drawing.Point(3, 165);
+            this.btnOutProgram.Name = "btnOutProgram";
+            this.btnOutProgram.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnOutProgram.Size = new System.Drawing.Size(237, 48);
+            this.btnOutProgram.TabIndex = 5;
+            this.btnOutProgram.Text = "    Ngoài Chương Trình";
+            this.btnOutProgram.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOutProgram.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnOutProgram.UseVisualStyleBackColor = false;
+            this.btnOutProgram.Click += new System.EventHandler(this.btnOutProgram_Click);
+            // 
             // btnRegistrationResult
             // 
             this.btnRegistrationResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
@@ -238,6 +220,15 @@ namespace WindowsFormsDevelopment
             this.btnPayTuition.UseVisualStyleBackColor = false;
             this.btnPayTuition.Click += new System.EventHandler(this.btnPayTuition_Click);
             // 
+            // pnlSideBarBottom
+            // 
+            this.pnlSideBarBottom.Controls.Add(this.btnExit);
+            this.pnlSideBarBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlSideBarBottom.Location = new System.Drawing.Point(0, 566);
+            this.pnlSideBarBottom.Name = "pnlSideBarBottom";
+            this.pnlSideBarBottom.Size = new System.Drawing.Size(240, 70);
+            this.pnlSideBarBottom.TabIndex = 1;
+            // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
@@ -260,6 +251,16 @@ namespace WindowsFormsDevelopment
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // pnlSideBarHeader
+            // 
+            this.pnlSideBarHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSideBarHeader.Controls.Add(this.pbxLogo);
+            this.pnlSideBarHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSideBarHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlSideBarHeader.Name = "pnlSideBarHeader";
+            this.pnlSideBarHeader.Size = new System.Drawing.Size(240, 118);
+            this.pnlSideBarHeader.TabIndex = 0;
+            // 
             // pbxLogo
             // 
             this.pbxLogo.Image = global::WindowsFormsDevelopment.Properties.Resources.logo_ueh_deparment;
@@ -270,12 +271,21 @@ namespace WindowsFormsDevelopment
             this.pbxLogo.TabIndex = 0;
             this.pbxLogo.TabStop = false;
             // 
+            // pnlBody
+            // 
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(240, 0);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(944, 636);
+            this.pnlBody.TabIndex = 1;
+            // 
             // fCourseRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1184, 636);
+            this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlSideBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fCourseRegistration";
@@ -306,6 +316,7 @@ namespace WindowsFormsDevelopment
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnInProgram;
         private System.Windows.Forms.Button btnOutProgram;
+        private System.Windows.Forms.Panel pnlBody;
     }
 }
 
