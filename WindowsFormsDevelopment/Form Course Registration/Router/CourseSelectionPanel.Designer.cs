@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace WindowsFormsDevelopment.CustomControls
+namespace WindowsFormsDevelopment.Form_Course_Registration.Router
 {
-    partial class CourseRegistrationPanel
+    partial class CourseSelectionPanel
     {
         /// <summary>
         /// Required designer variable.
@@ -32,16 +32,20 @@ namespace WindowsFormsDevelopment.CustomControls
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+
             this.SuspendLayout();
             pnlHeader = new Panel();
             pnlBody = new Panel();
             dgvCourseTable = new DataGridView();
-            colCourseNumber = new DataGridViewTextBoxColumn();
+            colClassNumber = new DataGridViewTextBoxColumn();
             colCourseName = new DataGridViewTextBoxColumn();
-            colOption = new DataGridViewTextBoxColumn();
-            colCredit = new DataGridViewTextBoxColumn();
-            colPrerequisiteCourse = new DataGridViewTextBoxColumn();
-            colBtnStatus = new DataGridViewButtonColumn();
+            colShoolShift = new DataGridViewTextBoxColumn();
+            colRoom = new DataGridViewTextBoxColumn();
+            colStartingDate = new DataGridViewTextBoxColumn();
+            colEndingDate = new DataGridViewTextBoxColumn();
+            colCampus = new DataGridViewTextBoxColumn();
+            colLecture = new DataGridViewTextBoxColumn();
 
             pnlHeader.Size = new Size(this.Width, this.Height / 12);
 
@@ -71,43 +75,55 @@ namespace WindowsFormsDevelopment.CustomControls
             dgvCourseTable.ColumnHeadersDefaultCellStyle = headerStyle;
 
             dgvCourseTable.Columns.AddRange(new DataGridViewColumn[] {
-                colCourseNumber,
+                colClassNumber,
                 colCourseName,
-                colOption,
-                colCredit,
-                colPrerequisiteCourse,
-                colBtnStatus,
+                colShoolShift,
+                colRoom,
+                colStartingDate,
+                colEndingDate,
+                colCampus,
+                colLecture
             });
 
-            colCourseNumber.HeaderText = "Mã học phần";
-            colCourseNumber.Name = "colCourseNumber";
-            colCourseNumber.ReadOnly = true;
-            colCourseNumber.Width = dgvCourseTable.Width * 15 / 100;
+            colClassNumber.HeaderText = "Mã lớp";
+            colClassNumber.Name = "colClassNumber";
+            colClassNumber.ReadOnly = true;
+            colClassNumber.Width = dgvCourseTable.Width * 12 / 100;
 
             colCourseName.HeaderText = "Tên học phần";
             colCourseName.Name = "colCourseName";
             colCourseName.ReadOnly = true;
-            colCourseName.Width = dgvCourseTable.Width * 30 / 100;
+            colCourseName.Width = dgvCourseTable.Width * 25 / 100;
 
-            colOption.HeaderText = "Nhóm tự chọn";
-            colOption.Name = "colOption";
-            colOption.ReadOnly = true;
-            colOption.Width = dgvCourseTable.Width * 15 / 100;
+            colShoolShift.HeaderText = "Thứ - Giờ";
+            colShoolShift.Name = "colShoolShift";
+            colShoolShift.ReadOnly = true;
+            colShoolShift.Width = dgvCourseTable.Width * 11 / 100;
 
-            colCredit.HeaderText = "Học phần trước";
-            colCredit.Name = "colCredit";
-            colCredit.ReadOnly = true;
-            colCredit.Width = dgvCourseTable.Width * 15 / 100;
+            colRoom.HeaderText = "Phòng";
+            colRoom.Name = "colRoom";
+            colRoom.ReadOnly = true;
+            colRoom.Width = dgvCourseTable.Width * 8 / 100;
 
-            colPrerequisiteCourse.HeaderText = "Số tín chỉ";
-            colPrerequisiteCourse.Name = "colPrerequisiteCourse";
-            colPrerequisiteCourse.ReadOnly = true;
-            colPrerequisiteCourse.Width = dgvCourseTable.Width * 13 / 100;
+            colStartingDate.HeaderText = "Ngày bắt đầu";
+            colStartingDate.Name = "colStartingDate";
+            colStartingDate.ReadOnly = true;
+            colStartingDate.Width = dgvCourseTable.Width * 12 / 100;
 
-            colBtnStatus.HeaderText = "Trạng thái";
-            colBtnStatus.Name = "colBtnStatus";
-            colBtnStatus.ReadOnly = true;
-            colBtnStatus.Width = dgvCourseTable.Width * 12 / 100;
+            colEndingDate.HeaderText = "Ngày kết thúc";
+            colEndingDate.Name = "colEndingDate";
+            colEndingDate.ReadOnly = true;
+            colEndingDate.Width = dgvCourseTable.Width * 12 / 100;
+
+            colCampus.HeaderText = "Cơ sở";
+            colCampus.Name = "colCampus";
+            colCampus.ReadOnly = true;
+            colCampus.Width = dgvCourseTable.Width * 5 / 100;
+
+            colLecture.HeaderText = "Giảng viên";
+            colLecture.Name = "colLecture";
+            colLecture.ReadOnly = true;
+            colLecture.Width = dgvCourseTable.Width * 15 / 100;
 
             this.Controls.AddRange(new Control[]
             {
@@ -115,7 +131,6 @@ namespace WindowsFormsDevelopment.CustomControls
                 pnlBody,
             });
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -123,11 +138,13 @@ namespace WindowsFormsDevelopment.CustomControls
         private Panel pnlHeader;
         private Panel pnlBody;
         private DataGridView dgvCourseTable;
-        private DataGridViewTextBoxColumn colCourseNumber;
+        private DataGridViewTextBoxColumn colClassNumber;
         private DataGridViewTextBoxColumn colCourseName;
-        private DataGridViewTextBoxColumn colOption;
-        private DataGridViewTextBoxColumn colCredit;
-        private DataGridViewTextBoxColumn colPrerequisiteCourse;
-        private DataGridViewButtonColumn colBtnStatus;
+        private DataGridViewTextBoxColumn colShoolShift;
+        private DataGridViewTextBoxColumn colRoom;
+        private DataGridViewTextBoxColumn colStartingDate;
+        private DataGridViewTextBoxColumn colEndingDate;
+        private DataGridViewTextBoxColumn colCampus;
+        private DataGridViewTextBoxColumn colLecture;
     }
 }

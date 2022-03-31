@@ -56,6 +56,12 @@
     <Compile Include="CustomControls\DisableRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Form Course Registration\Router\CourseSelectionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form Course Registration\Router\CourseSelectionPanel.Designer.cs">
+      <DependentUpon>CourseSelectionPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form Course Registration\Router\RegistrationResultPanel.cs">
       <SubType>Component</SubType>
     </Compile>

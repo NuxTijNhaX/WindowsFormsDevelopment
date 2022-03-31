@@ -9,18 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsDevelopment.CustomControls;
+using WindowsFormsDevelopment.Form_Course_Registration.Router;
 
 namespace WindowsFormsDevelopment
 {
     public partial class fCourseRegistration : Form
     {
-        public static Color green = Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-        public static Color orange = Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
-
+        
         StudentInformationPanel pnlStudentInformation;
         CourseRegistrationPanel pnlCourseRegistration;
         RegistrationResultPanel pnlRegistrationResult;
-        TuitionPaymentPanel pnlTuitionPayment;
+        CourseSelectionPanel pnlCourseSelection;
 
         public fCourseRegistration()
         {
@@ -35,7 +34,7 @@ namespace WindowsFormsDevelopment
             pnlSideBarHeader.Height = this.Height / 5;
             pbxLogo.Size = new Size((pnlSideBarHeader.Height * 70 / 100) * 800 / 484, pnlSideBarHeader.Height * 70 / 100);
             pbxLogo.Location = new Point((pnlSideBarHeader.Width - pbxLogo.Width) / 2, (pnlSideBarHeader.Height - pbxLogo.Height) / 2);
-            
+
             foreach (Button btn in flpSideBarBody.Controls)
             {
                 btn.Padding = new Padding(flpSideBarBody.Width * 15 / 100, 0, 0, 0);
@@ -45,6 +44,7 @@ namespace WindowsFormsDevelopment
             btnExit.Width = flpSideBarBody.Width - btnExit.Margin.Right - 2;
 
             btnInProgram.Visible = btnOutProgram.Visible = false;
+
         }
 
         private void ShowSubMenu()
@@ -97,8 +97,8 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
-            //pnlCourseRegistration = new CourseRegistrationPanel(pnlBody);
-            //pnlBody.Controls.Add(pnlCourseRegistration);
+            pnlCourseRegistration = new CourseRegistrationPanel(pnlBody);
+            pnlBody.Controls.Add(pnlCourseRegistration);
         }
 
         private void btnOutProgram_Click(object sender, EventArgs e)
@@ -107,8 +107,8 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
-            //pnlStudentInformation = new StudentInformationPanel(pnlBody);
-            //pnlBody.Controls.Add(pnlStudentInformation);
+            pnlCourseRegistration = new CourseRegistrationPanel(pnlBody);
+            pnlBody.Controls.Add(pnlCourseRegistration);
         }
 
         private void btnRegistrationResult_Click(object sender, EventArgs e)
@@ -117,8 +117,8 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
-            //pnlStudentInformation = new StudentInformationPanel(pnlBody);
-            //pnlBody.Controls.Add(pnlStudentInformation);
+            pnlRegistrationResult = new RegistrationResultPanel(pnlBody);
+            pnlBody.Controls.Add(pnlRegistrationResult);
         }
 
         private void btnPayTuition_Click(object sender, EventArgs e)
@@ -129,11 +129,15 @@ namespace WindowsFormsDevelopment
 
             //pnlStudentInformation = new StudentInformationPanel(pnlBody);
             //pnlBody.Controls.Add(pnlStudentInformation);
+
+
+            pnlCourseSelection = new CourseSelectionPanel(pnlBody);
+            pnlBody.Controls.Add(pnlCourseSelection);
         }
 
         private void fCourseRegistration_Load(object sender, EventArgs e)
         {
-            btnStudentInfor.PerformClick();
+            // btnStudentInfor.PerformClick();
         }
         #endregion
     }

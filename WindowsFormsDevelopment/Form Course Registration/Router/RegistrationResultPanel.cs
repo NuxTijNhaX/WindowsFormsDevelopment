@@ -12,8 +12,16 @@ namespace WindowsFormsDevelopment.CustomControls
 {
     public partial class RegistrationResultPanel : Control
     {
-        public RegistrationResultPanel()
+        public Panel pnlParent { get; set; }
+
+        public RegistrationResultPanel(Panel pnlBody)
         {
+            pnlParent = pnlBody;
+
+            this.Width = pnlBody.Width;
+            this.Height = pnlBody.Height;
+            this.BackColor = Color.White;
+
             InitializeComponent();
         }
 

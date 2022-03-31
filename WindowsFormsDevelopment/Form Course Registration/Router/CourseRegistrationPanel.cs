@@ -16,7 +16,6 @@ namespace WindowsFormsDevelopment.CustomControls
 
         public CourseRegistrationPanel(Panel pnlBody)
         {
-            InitializeComponent();
 
             pnlParent = pnlBody;
 
@@ -24,7 +23,14 @@ namespace WindowsFormsDevelopment.CustomControls
             this.Height = pnlBody.Height;
             this.BackColor = Color.White;
 
+            CreateLayout();
 
+            InitializeComponent();
+        }
+
+        public void CreateLayout()
+        {
+            
         }
 
         protected override void OnPaint(PaintEventArgs pe)
