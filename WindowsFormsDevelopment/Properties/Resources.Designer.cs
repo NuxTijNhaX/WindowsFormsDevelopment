@@ -63,9 +63,9 @@ namespace WindowsFormsDevelopment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap address {
+        internal static System.Drawing.Bitmap address_green {
             get {
-                object obj = ResourceManager.GetObject("address", resourceCulture);
+                object obj = ResourceManager.GetObject("address-green", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace WindowsFormsDevelopment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap course {
+        internal static System.Drawing.Bitmap course_green {
             get {
-                object obj = ResourceManager.GetObject("course", resourceCulture);
+                object obj = ResourceManager.GetObject("course-green", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,29 @@ namespace WindowsFormsDevelopment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap log_out {
+        internal static System.Drawing.Bitmap left_arrow {
             get {
-                object obj = ResourceManager.GetObject("log-out", resourceCulture);
+                object obj = ResourceManager.GetObject("left-arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap left_arrow_dark_hover {
+            get {
+                object obj = ResourceManager.GetObject("left-arrow_dark-hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap log_out_white {
+            get {
+                object obj = ResourceManager.GetObject("log-out-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +123,9 @@ namespace WindowsFormsDevelopment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap payment {
+        internal static System.Drawing.Bitmap payment_white {
             get {
-                object obj = ResourceManager.GetObject("payment", resourceCulture);
+                object obj = ResourceManager.GetObject("payment-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +133,9 @@ namespace WindowsFormsDevelopment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap registration {
+        internal static System.Drawing.Bitmap registration_white {
             get {
-                object obj = ResourceManager.GetObject("registration", resourceCulture);
+                object obj = ResourceManager.GetObject("registration-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +143,9 @@ namespace WindowsFormsDevelopment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap student_infor {
+        internal static System.Drawing.Bitmap timetable_white {
             get {
-                object obj = ResourceManager.GetObject("student-infor", resourceCulture);
+                object obj = ResourceManager.GetObject("timetable-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +153,19 @@ namespace WindowsFormsDevelopment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap timetable {
+        internal static System.Drawing.Bitmap user_green {
             get {
-                object obj = ResourceManager.GetObject("timetable", resourceCulture);
+                object obj = ResourceManager.GetObject("user-green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_white {
+            get {
+                object obj = ResourceManager.GetObject("user-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

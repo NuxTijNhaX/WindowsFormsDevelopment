@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -46,8 +47,21 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             colEndingDate = new DataGridViewTextBoxColumn();
             colCampus = new DataGridViewTextBoxColumn();
             colLecture = new DataGridViewTextBoxColumn();
+            pbxBack = new PictureBox();
 
             pnlHeader.Size = new Size(this.Width, this.Height / 12);
+            pnlHeader.Controls.Add(pbxBack);
+
+            pbxBack.Image = global::WindowsFormsDevelopment.Properties.Resources.left_arrow;
+            pbxBack.Location = new System.Drawing.Point(3, 3);
+            pbxBack.Name = "pbxBack";
+            pbxBack.Size = new System.Drawing.Size(35, 35);
+            pbxBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pbxBack.TabIndex = 0;
+            pbxBack.TabStop = false;
+            pbxBack.Location = new Point(15, (pnlHeader.Height - pbxBack.Height) / 2);
+            pbxBack.MouseHover += new System.EventHandler(this.pbxBack_MouseHover);
+            pbxBack.MouseLeave += new System.EventHandler(this.pbxBack_MouseLeave);
 
             pnlBody.Size = new Size(this.Width, this.Height * 11 / 12);
             pnlBody.Location = new Point(0, pnlHeader.Height);
@@ -135,6 +149,16 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
 
         #endregion
 
+        private void pbxBack_MouseHover(object sender, EventArgs e)
+        {
+            pbxBack.Image = global::WindowsFormsDevelopment.Properties.Resources.left_arrow_dark_hover;
+        }
+
+        private void pbxBack_MouseLeave(object sender, EventArgs e)
+        {
+            pbxBack.Image = global::WindowsFormsDevelopment.Properties.Resources.left_arrow;
+        }
+
         private Panel pnlHeader;
         private Panel pnlBody;
         private DataGridView dgvCourseTable;
@@ -146,5 +170,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
         private DataGridViewTextBoxColumn colEndingDate;
         private DataGridViewTextBoxColumn colCampus;
         private DataGridViewTextBoxColumn colLecture;
+
+        private PictureBox pbxBack;
     }
 }

@@ -37,6 +37,7 @@ namespace WindowsFormsDevelopment.CustomControls
             this.SuspendLayout();
             pnlHeader = new Panel();
             pnlBody = new Panel();
+            pnlFooter = new Panel();
             dgvCourseTable = new DataGridView();
             colClassNumber = new DataGridViewTextBoxColumn();
             colCourseName = new DataGridViewTextBoxColumn();
@@ -46,14 +47,22 @@ namespace WindowsFormsDevelopment.CustomControls
             colEndingDate = new DataGridViewTextBoxColumn();
             colCampus = new DataGridViewTextBoxColumn();
             colLecture = new DataGridViewTextBoxColumn();
+            btnPay = new Button();
 
             pnlHeader.Size = new Size(this.Width, this.Height / 12);
 
-            pnlBody.Size = new Size(this.Width, this.Height * 11 / 12);
+            pnlBody.Size = new Size(this.Width, this.Height * 10 / 12);
             pnlBody.Location = new Point(0, pnlHeader.Height);
             pnlBody.Controls.AddRange(new Control[]
             {
                 dgvCourseTable,
+            });
+
+            pnlFooter.Size = new Size(this.Width, this.Height / 12);
+            pnlFooter.Location = new Point(0, pnlHeader.Height + pnlBody.Height);
+            pnlFooter.Controls.AddRange(new Control[]
+            {
+                btnPay,
             });
 
             DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
@@ -125,10 +134,13 @@ namespace WindowsFormsDevelopment.CustomControls
             colLecture.ReadOnly = true;
             colLecture.Width = dgvCourseTable.Width * 15 / 100;
 
+            btnPay.Text = "Thanh Toán";
+
             this.Controls.AddRange(new Control[]
             {
                 pnlHeader,
                 pnlBody,
+                pnlFooter,
             });
             this.ResumeLayout(false);
         }
@@ -137,6 +149,7 @@ namespace WindowsFormsDevelopment.CustomControls
 
         private Panel pnlHeader;
         private Panel pnlBody;
+        private Panel pnlFooter;
         private DataGridView dgvCourseTable;
         private DataGridViewTextBoxColumn colClassNumber;
         private DataGridViewTextBoxColumn colCourseName;
@@ -146,5 +159,7 @@ namespace WindowsFormsDevelopment.CustomControls
         private DataGridViewTextBoxColumn colEndingDate;
         private DataGridViewTextBoxColumn colCampus;
         private DataGridViewTextBoxColumn colLecture;
+
+        private Button btnPay;
     }
 }

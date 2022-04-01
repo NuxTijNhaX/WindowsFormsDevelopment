@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\RoundedButton.Designer.cs">
+      <DependentUpon>RoundedButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form Course Registration\Router\CourseRegistrationPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -122,25 +128,34 @@
     <None Include="Resources\logo-ueh-deparment.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\log-out.png" />
+    <None Include="Resources\user-white.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\student-infor.png" />
+    <None Include="Resources\user-green.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\registration.png" />
+    <None Include="Resources\registration-white.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\timetable.png" />
+    <None Include="Resources\timetable-white.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\payment.png" />
+    <None Include="Resources\payment-white.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\course.png" />
+    <None Include="Resources\address-green.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\address.png" />
+    <None Include="Resources\course-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log-out-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left-arrow_dark-hover.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
