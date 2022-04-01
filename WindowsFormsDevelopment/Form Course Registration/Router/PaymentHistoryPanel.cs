@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsDevelopment.CustomControls
+namespace WindowsFormsDevelopment.Form_Course_Registration.Router
 {
-    public partial class TuitionPaymentPanel : Control
+    public partial class PaymentHistoryPanel : Control
     {
         public Panel pnlParent { get; set; }
 
-        public TuitionPaymentPanel(Panel pnlBody)
+        public PaymentHistoryPanel(Panel pnl)
         {
-            pnlParent = pnlBody;
+            pnlParent = pnl;
 
-            this.Width = pnlBody.Width;
-            this.Height = pnlBody.Height;
+            this.Width = pnl.Width;
+            this.Height = pnl.Height;
             this.BackColor = Color.White;
 
             InitializeComponent();

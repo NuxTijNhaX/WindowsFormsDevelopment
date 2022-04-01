@@ -20,6 +20,7 @@ namespace WindowsFormsDevelopment
         CourseRegistrationPanel pnlCourseRegistration;
         RegistrationResultPanel pnlRegistrationResult;
         CourseSelectionPanel pnlCourseSelection;
+        TuitionPaymentPanel pnlTuitionPayment;
 
         public fCourseRegistration()
         {
@@ -42,9 +43,6 @@ namespace WindowsFormsDevelopment
             }
             btnExit.Padding = new Padding(flpSideBarBody.Width * 15 / 100, 0, 0, 0);
             btnExit.Width = flpSideBarBody.Width - btnExit.Margin.Right - 2;
-
-            btnInProgram.Visible = btnOutProgram.Visible = false;
-
         }
 
         private void ShowSubMenu()
@@ -65,10 +63,22 @@ namespace WindowsFormsDevelopment
             button.BackColor = orange;
         }
 
+        private void RerenderBody(FlowLayoutPanel panel)
+        {
+            foreach (Button btn in panel.Controls)
+            {
+                if(btn.BackColor == orange)
+                {
+                    btn.PerformClick();
+                }
+            }
+        }
+
         #region Event Handler
         private void fCourseRegistration_SizeChanged(object sender, EventArgs e)
         {
             ConfigUI();
+            RerenderBody(flpSideBarBody);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -131,13 +141,13 @@ namespace WindowsFormsDevelopment
             //pnlBody.Controls.Add(pnlStudentInformation);
 
 
-            pnlCourseSelection = new CourseSelectionPanel(pnlBody);
-            pnlBody.Controls.Add(pnlCourseSelection);
+            pnlTuitionPayment = new TuitionPaymentPanel(pnlBody);
+            pnlBody.Controls.Add(pnlTuitionPayment);
         }
 
         private void fCourseRegistration_Load(object sender, EventArgs e)
         {
-            // btnStudentInfor.PerformClick();
+            btnStudentInfor.PerformClick();
         }
         #endregion
 

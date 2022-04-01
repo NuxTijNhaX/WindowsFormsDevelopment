@@ -220,7 +220,7 @@ namespace WindowsFormsDevelopment.CustomControls
             lblCourseName.SelectionColor = fCourseRegistration.orange;
             lblCourseName.SelectedText = "Khóa học:  ";
             lblCourseName.SelectionColor = Color.Black;
-            lblCourseName.SelectedText = "None"; // courseName
+            lblCourseName.SelectedText = "None"; // TODO: courseName
 
             lblModeOfStudy = new DisabledRichTextBox()
             {
@@ -233,7 +233,7 @@ namespace WindowsFormsDevelopment.CustomControls
             lblModeOfStudy.SelectionColor = fCourseRegistration.orange;
             lblModeOfStudy.SelectedText = "Loại hình đào tạo:  ";
             lblModeOfStudy.SelectionColor = Color.Black;
-            lblModeOfStudy.SelectedText = "None"; // modeOfStudy
+            lblModeOfStudy.SelectedText = "None"; // TODO: modeOfStudy
 
             lblStudentMajor = new DisabledRichTextBox()
             {
@@ -246,7 +246,7 @@ namespace WindowsFormsDevelopment.CustomControls
             lblStudentMajor.SelectionColor = fCourseRegistration.orange;
             lblStudentMajor.SelectedText = "Lớp sinh viên:  ";
             lblStudentMajor.SelectionColor = Color.Black;
-            lblStudentMajor.SelectedText = "None"; // studentMajor
+            lblStudentMajor.SelectedText = "None"; // TODO: studentMajor
 
             pnlLeftSide.Controls.AddRange(new Control[]
             {
@@ -299,7 +299,7 @@ namespace WindowsFormsDevelopment.CustomControls
             lblStudentContact.SelectionColor = fCourseRegistration.orange;
             lblStudentContact.SelectedText = "Địa chỉ:  ";
             lblStudentContact.SelectionColor = Color.Black;
-            lblStudentContact.SelectedText = "None"; // studentContact
+            lblStudentContact.SelectedText = "None"; // TODO: studentContact
 
             pnlRightSide.Controls.AddRange(new Control[]
             {

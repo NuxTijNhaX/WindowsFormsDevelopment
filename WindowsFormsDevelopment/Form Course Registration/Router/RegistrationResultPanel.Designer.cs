@@ -47,22 +47,25 @@ namespace WindowsFormsDevelopment.CustomControls
             colEndingDate = new DataGridViewTextBoxColumn();
             colCampus = new DataGridViewTextBoxColumn();
             colLecture = new DataGridViewTextBoxColumn();
-            btnPay = new Button();
+            btnPay = new RoundedButton();
+            lblTuiTionTotal = new DisabledRichTextBox();
 
             pnlHeader.Size = new Size(this.Width, this.Height / 12);
 
-            pnlBody.Size = new Size(this.Width, this.Height * 10 / 12);
+            pnlBody.Size = new Size(this.Width, this.Height * 9 / 12);
             pnlBody.Location = new Point(0, pnlHeader.Height);
             pnlBody.Controls.AddRange(new Control[]
             {
                 dgvCourseTable,
             });
 
-            pnlFooter.Size = new Size(this.Width, this.Height / 12);
+            pnlFooter.Size = new Size(this.Width, this.Height * 2/ 12);
             pnlFooter.Location = new Point(0, pnlHeader.Height + pnlBody.Height);
+            pnlFooter.BorderStyle = BorderStyle.FixedSingle;
             pnlFooter.Controls.AddRange(new Control[]
             {
                 btnPay,
+                lblTuiTionTotal,
             });
 
             DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
@@ -135,6 +138,17 @@ namespace WindowsFormsDevelopment.CustomControls
             colLecture.Width = dgvCourseTable.Width * 15 / 100;
 
             btnPay.Text = "Thanh Toán";
+            btnPay.Location = new Point(pnlFooter.Width - btnPay.Width - 55, (pnlFooter.Height - btnPay.Height) / 2);
+
+            lblTuiTionTotal.Font = fCourseRegistration.font11;
+            lblTuiTionTotal.BorderStyle = BorderStyle.None;
+            lblTuiTionTotal.BackColor = this.BackColor;
+            lblTuiTionTotal.Location = new Point(pnlFooter.Width * 5 / 100, (pnlFooter.Height - btnPay.Height) / 2);
+            lblTuiTionTotal.Size = new Size(pnlFooter.Width - btnPay.Width - lblTuiTionTotal.Location.X, btnPay.Height);
+            lblTuiTionTotal.SelectionColor = fCourseRegistration.orange;
+            lblTuiTionTotal.SelectedText = "Tổng học phí:  ";
+            lblTuiTionTotal.SelectionColor = Color.Black;
+            lblTuiTionTotal.SelectedText = "None"; // TODO: tuitionTotal
 
             this.Controls.AddRange(new Control[]
             {
@@ -160,6 +174,7 @@ namespace WindowsFormsDevelopment.CustomControls
         private DataGridViewTextBoxColumn colCampus;
         private DataGridViewTextBoxColumn colLecture;
 
-        private Button btnPay;
+        private RoundedButton btnPay;
+        private DisabledRichTextBox lblTuiTionTotal;
     }
 }

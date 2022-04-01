@@ -68,6 +68,12 @@
     <Compile Include="Form Course Registration\Router\CourseSelectionPanel.Designer.cs">
       <DependentUpon>CourseSelectionPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form Course Registration\Router\PaymentHistoryPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form Course Registration\Router\PaymentHistoryPanel.Designer.cs">
+      <DependentUpon>PaymentHistoryPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form Course Registration\Router\RegistrationResultPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -91,6 +97,12 @@
     </Compile>
     <Compile Include="Form Course Registration\fCourseRegistration.Designer.cs">
       <DependentUpon>fCourseRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form Course Registration\Router\UnpaidTuitionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form Course Registration\Router\UnpaidTuitionPanel.Designer.cs">
+      <DependentUpon>UnpaidTuitionPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\IRouterPanel.cs" />
     <Compile Include="Program.cs" />
@@ -156,6 +168,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\left-arrow_dark-hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Form1 - Copy\Router\" />
+    <Folder Include="Form1\Router\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment-information-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment-method-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\momo64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ocb-icon-64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paypal-64px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
