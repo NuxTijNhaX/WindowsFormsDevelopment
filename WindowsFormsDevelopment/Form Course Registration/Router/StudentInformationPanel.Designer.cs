@@ -288,23 +288,37 @@ namespace WindowsFormsDevelopment.CustomControls
             labelDiaphragm = btnTitleContact.Location.X + btnTitleContact.Width * 50 / 100;
             labelMarginTop = pnlRightSide.Height * 5 / 100;
 
-            lblStudentContact = new DisabledRichTextBox()
+            lblStudentPhoneNumber = new DisabledRichTextBox()
             {
                 Font = fCourseRegistration.font11,
                 BorderStyle = BorderStyle.None,
                 BackColor = this.BackColor,
                 Location = new Point(labelDiaphragm, btnTitleContact.Height + btnTitleContact.Location.Y + labelMarginTop + 10),
             };
-            lblStudentContact.Size = new Size(pnlLeftSide.Width - lblStudentContact.Location.X, btnTitleContact.Height);
-            lblStudentContact.SelectionColor = fCourseRegistration.orange;
-            lblStudentContact.SelectedText = "Địa chỉ:  ";
-            lblStudentContact.SelectionColor = Color.Black;
-            lblStudentContact.SelectedText = "None"; // TODO: studentContact
+            lblStudentPhoneNumber.Size = new Size(pnlLeftSide.Width - lblStudentPhoneNumber.Location.X, btnTitleContact.Height);
+            lblStudentPhoneNumber.SelectionColor = fCourseRegistration.orange;
+            lblStudentPhoneNumber.SelectedText = "Số điện thoại:  ";
+            lblStudentPhoneNumber.SelectionColor = Color.Black;
+            lblStudentPhoneNumber.SelectedText = "None"; // TODO: studentContact 
+
+            lblStudentAddress = new DisabledRichTextBox()
+            {
+                Font = fCourseRegistration.font11,
+                BorderStyle = BorderStyle.None,
+                BackColor = this.BackColor,
+                Location = new Point(labelDiaphragm, lblStudentPhoneNumber.Height + lblStudentPhoneNumber.Location.Y + labelMarginTop),
+            };
+            lblStudentAddress.Size = new Size(pnlLeftSide.Width - lblStudentAddress.Location.X, btnTitleContact.Height);
+            lblStudentAddress.SelectionColor = fCourseRegistration.orange;
+            lblStudentAddress.SelectedText = "Địa chỉ:  ";
+            lblStudentAddress.SelectionColor = Color.Black;
+            lblStudentAddress.SelectedText = "None"; // TODO: studentContact
 
             pnlRightSide.Controls.AddRange(new Control[]
             {
                 btnTitleContact,
-                lblStudentContact,
+                lblStudentPhoneNumber,
+                lblStudentAddress,
             });
 
             #endregion
@@ -340,6 +354,7 @@ namespace WindowsFormsDevelopment.CustomControls
 
         private Panel pnlLeftSide;
         private Button btnTitleContact;
-        private DisabledRichTextBox lblStudentContact;
+        private DisabledRichTextBox lblStudentPhoneNumber;
+        private DisabledRichTextBox lblStudentAddress;
     }
 }

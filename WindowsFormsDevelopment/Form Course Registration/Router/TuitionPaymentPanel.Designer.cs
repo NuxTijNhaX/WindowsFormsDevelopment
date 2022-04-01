@@ -66,6 +66,7 @@ namespace WindowsFormsDevelopment.CustomControls
             btnUnpaid.FlatAppearance.MouseDownBackColor = Color.DarkOrange;
             btnUnpaid.FlatAppearance.MouseOverBackColor = fCourseRegistration.orange;
             btnUnpaid.Click += btnTab_Click;
+            OpenPaymentPanel(btnUnpaid.Text);
 
             btnPaymentHistory.Text = "Lịch Sử Thanh Toán";
             btnPaymentHistory.BorderRadius = 7;
