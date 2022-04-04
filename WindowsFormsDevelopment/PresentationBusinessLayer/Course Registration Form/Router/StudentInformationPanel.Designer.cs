@@ -51,6 +51,8 @@ namespace WindowsFormsDevelopment.CustomControls
             string studentPhoneNumber = studentInfor.PhoneNumber;
             string studentAddress = studentInfor.Address;
 
+            fCourseRegistration.majorProgramId = studentInfor.MajorProgramId;
+
             #region Header
             pnlHeader = new Panel()
             {

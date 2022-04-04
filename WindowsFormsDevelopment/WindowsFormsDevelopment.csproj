@@ -65,6 +65,7 @@
     <Compile Include="CustomControls\RoundedButton.Designer.cs">
       <DependentUpon>RoundedButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataAccessLayer\SubjectDAL.cs" />
     <Compile Include="DataAccessLayer\StudentDAL.cs" />
     <Compile Include="DataAccessLayer\AccessDAL.cs" />
     <Compile Include="DataTransferObject\Account.cs" />

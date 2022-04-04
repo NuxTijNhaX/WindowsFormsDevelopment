@@ -92,7 +92,7 @@ namespace WindowsFormsDevelopment.CustomControls
             colOption.HeaderText = "Nhóm tự chọn";
             colOption.Name = "colOption";
             colOption.ReadOnly = true;
-            colOption.Width = dgvCourseTable.Width * 15 / 100;
+            colOption.Width = dgvCourseTable.Width * 18 / 100;
 
             colCredit.HeaderText = "Học phần trước";
             colCredit.Name = "colCredit";
@@ -102,7 +102,7 @@ namespace WindowsFormsDevelopment.CustomControls
             colPrerequisiteCourse.HeaderText = "Số tín chỉ";
             colPrerequisiteCourse.Name = "colPrerequisiteCourse";
             colPrerequisiteCourse.ReadOnly = true;
-            colPrerequisiteCourse.Width = dgvCourseTable.Width * 13 / 100;
+            colPrerequisiteCourse.Width = dgvCourseTable.Width * 10 / 100;
 
             colBtnStatus.HeaderText = "Trạng thái";
             colBtnStatus.Name = "colBtnStatus";

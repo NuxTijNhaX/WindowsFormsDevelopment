@@ -18,6 +18,7 @@ namespace WindowsFormsDevelopment
     public partial class fCourseRegistration : Form
     {
         private string studentId;
+        public static string majorProgramId;
         Form fLogin;
         Panel pnlContentBody;
         //StudentInformationPanel pnlStudentInformation;
@@ -116,7 +117,8 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
-            pnlContentBody = new CourseRegistrationPanel(pnlBody);
+            pnlContentBody = new CourseRegistrationPanel(pnlBody,
+                SubjectDAL.GetSubjectsInforByMajorProgram(majorProgramId));
             pnlBody.Controls.Add(pnlContentBody);
         }
 
@@ -126,7 +128,8 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
-            pnlContentBody = new CourseRegistrationPanel(pnlBody);
+            pnlContentBody = new CourseRegistrationPanel(pnlBody,
+                SubjectDAL.GetSubjectsInforByMajorProgram(majorProgramId));
             pnlBody.Controls.Add(pnlContentBody);
         }
 
@@ -158,7 +161,6 @@ namespace WindowsFormsDevelopment
 
             //pnlStudentInformation = new StudentInformationPanel(pnlBody);
             //pnlBody.Controls.Add(pnlStudentInformation);
-
 
             pnlContentBody = new TuitionPaymentPanel(pnlBody);
             pnlBody.Controls.Add(pnlContentBody);

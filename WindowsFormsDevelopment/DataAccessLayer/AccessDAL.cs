@@ -35,9 +35,9 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             List<string> result = new List<string>();
 
             var lecturerId = (from acc in db.Accounts
+                              where acc.Email == username && acc.Password == pass
                               join lec in db.Lecturers
                               on acc.Email equals lec.Email
-                              where lec.Email == username && acc.Password == pass
                               select lec.Id).FirstOrDefault();
             
             if(lecturerId is null)

@@ -37,10 +37,10 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                 using (var database = new UehDbContext())
                 {
                     result = (from student in database.Students
+                              where student.Id == studentId
                               join cla in database.Classes on student.Class_Id equals cla.Id
                               join majorPro in database.MajorPrograms on cla.MajorProgram_Id equals majorPro.Id
                               join major in database.Majors on majorPro.Major_Id equals major.Id
-                              where student.Id == studentId
                               select new
                               {
                                   Id = student.Id,
@@ -51,7 +51,8 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                                   ClassId = cla.Id,
                                   Year = cla.Year,
                                   Major = major.Name,
-                                  MajorProgramName = majorPro.Name
+                                  MajorProgramName = majorPro.Name,
+                                  MajorProgramId = majorPro.Id
                               }).FirstOrDefault();
                 }
             }

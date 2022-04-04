@@ -62,7 +62,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             lblTuitionTotal.TextImageRelation = TextImageRelation.ImageBeforeText;
             lblTuitionTotal.UseVisualStyleBackColor = false;
             lblTuitionTotal.Location = new Point(this.Width * 5 / 100, this.Height * 5 / 100);
-            lblTuitionTotal.FlatAppearance.BorderColor = this.BackColor; // TODO
+            lblTuitionTotal.FlatAppearance.BorderColor = this.BackColor;
             lblTuitionTotal.FlatAppearance.CheckedBackColor = fCourseRegistration.orange;
             lblTuitionTotal.FlatAppearance.MouseDownBackColor = Color.Transparent;
             lblTuitionTotal.FlatAppearance.MouseOverBackColor = Color.Transparent;
