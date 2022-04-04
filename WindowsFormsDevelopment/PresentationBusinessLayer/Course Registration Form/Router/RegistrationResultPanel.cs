@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsDevelopment.CustomControls
 {
-    public partial class TuitionPaymentPanel : Control
+    public partial class RegistrationResultPanel : Panel
     {
         public Panel pnlParent { get; set; }
 
-        public TuitionPaymentPanel(Panel pnlBody)
+        public RegistrationResultPanel(Panel pnlBody)
         {
             pnlParent = pnlBody;
 

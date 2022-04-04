@@ -52,6 +52,7 @@ namespace WindowsFormsDevelopment
             this.pnlSideBarHeader = new System.Windows.Forms.Panel();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.pnlBody = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlSideBar.SuspendLayout();
             this.flpSideBarBody.SuspendLayout();
             this.pnlSideBarBottom.SuspendLayout();
@@ -79,6 +80,7 @@ namespace WindowsFormsDevelopment
             this.flpSideBarBody.Controls.Add(this.btnOutProgram);
             this.flpSideBarBody.Controls.Add(this.btnRegistrationResult);
             this.flpSideBarBody.Controls.Add(this.btnPayTuition);
+            this.flpSideBarBody.Controls.Add(this.button1);
             this.flpSideBarBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpSideBarBody.Location = new System.Drawing.Point(0, 118);
             this.flpSideBarBody.Name = "flpSideBarBody";
@@ -290,6 +292,30 @@ namespace WindowsFormsDevelopment
             this.pnlBody.Size = new System.Drawing.Size(944, 636);
             this.pnlBody.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Image = global::WindowsFormsDevelopment.Properties.Resources.payment_white;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(3, 327);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(237, 48);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "    Test";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnCourseSelection_Click);
+            // 
             // fCourseRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,6 +354,7 @@ namespace WindowsFormsDevelopment
         private System.Windows.Forms.Button btnInProgram;
         private System.Windows.Forms.Button btnOutProgram;
         private System.Windows.Forms.Panel pnlBody;
+        private System.Windows.Forms.Button button1;
     }
 }
 

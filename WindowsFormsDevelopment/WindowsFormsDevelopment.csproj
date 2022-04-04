@@ -46,6 +46,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,71 +65,90 @@
     <Compile Include="CustomControls\RoundedButton.Designer.cs">
       <DependentUpon>RoundedButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\DesktopAppDevDbContext.cs" />
-    <Compile Include="Data\Faculty.cs" />
-    <Compile Include="Data\Major.cs" />
-    <Compile Include="Data\Subject.cs" />
-    <Compile Include="Data\Lecturer.cs" />
-    <Compile Include="Data\Student.cs" />
-    <Compile Include="Form Course Registration\Router\CourseRegistrationPanel.cs">
+    <Compile Include="DataAccessLayer\StudentDAL.cs" />
+    <Compile Include="DataAccessLayer\AccessDAL.cs" />
+    <Compile Include="DataTransferObject\Account.cs" />
+    <Compile Include="DataTransferObject\Campus.cs" />
+    <Compile Include="DataTransferObject\Class.cs" />
+    <Compile Include="DataTransferObject\Faculty.cs" />
+    <Compile Include="DataTransferObject\GradeSubjectClass.cs" />
+    <Compile Include="DataTransferObject\Lecturer.cs" />
+    <Compile Include="DataTransferObject\Major.cs" />
+    <Compile Include="DataTransferObject\MajorProgram.cs" />
+    <Compile Include="DataTransferObject\Room.cs" />
+    <Compile Include="DataTransferObject\SchoolLevel.cs" />
+    <Compile Include="DataTransferObject\Student.cs" />
+    <Compile Include="DataTransferObject\Subject.cs" />
+    <Compile Include="DataTransferObject\SubjectClass.cs" />
+    <Compile Include="DataTransferObject\SubjectProgram.cs" />
+    <Compile Include="DataTransferObject\UehDbContext.cs" />
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\CourseRegistrationPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form Course Registration\Router\CourseRegistrationPanel.Designer.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\CourseRegistrationPanel.Designer.cs">
       <DependentUpon>CourseRegistrationPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\DisableRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form Course Registration\Router\CourseSelectionPanel.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\CourseSelectionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form Course Registration\Router\CourseSelectionPanel.Designer.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\CourseSelectionPanel.Designer.cs">
       <DependentUpon>CourseSelectionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form Course Registration\Router\PaymentHistoryPanel.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\PaymentHistoryPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form Course Registration\Router\PaymentHistoryPanel.Designer.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\PaymentHistoryPanel.Designer.cs">
       <DependentUpon>PaymentHistoryPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form Course Registration\Router\RegistrationResultPanel.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\RegistrationResultPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form Course Registration\Router\RegistrationResultPanel.Designer.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\RegistrationResultPanel.Designer.cs">
       <DependentUpon>RegistrationResultPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form Course Registration\Router\StudentInformationPanel.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\StudentInformationPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form Course Registration\Router\StudentInformationPanel.Designer.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\StudentInformationPanel.Designer.cs">
       <DependentUpon>StudentInformationPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form Course Registration\Router\TuitionPaymentPanel.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\TuitionPaymentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form Course Registration\Router\TuitionPaymentPanel.Designer.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\TuitionPaymentPanel.Designer.cs">
       <DependentUpon>TuitionPaymentPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form Course Registration\fCourseRegistration.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\fCourseRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form Course Registration\fCourseRegistration.Designer.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\fCourseRegistration.Designer.cs">
       <DependentUpon>fCourseRegistration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form Course Registration\Router\UnpaidTuitionPanel.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\UnpaidTuitionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form Course Registration\Router\UnpaidTuitionPanel.Designer.cs">
+    <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\UnpaidTuitionPanel.Designer.cs">
       <DependentUpon>UnpaidTuitionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interface\IRouterPanel.cs" />
+    <Compile Include="PresentationBusinessLayer\Login Form\fLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationBusinessLayer\Login Form\fLogin.Designer.cs">
+      <DependentUpon>fLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form Course Registration\Router\CourseRegistrationPanel.resx">
+    <EmbeddedResource Include="PresentationBusinessLayer\Course Registration Form\Router\CourseRegistrationPanel.resx">
       <DependentUpon>CourseRegistrationPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form Course Registration\fCourseRegistration.resx">
+    <EmbeddedResource Include="PresentationBusinessLayer\Course Registration Form\fCourseRegistration.resx">
       <DependentUpon>fCourseRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationBusinessLayer\Login Form\fLogin.resx">
+      <DependentUpon>fLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -187,8 +208,8 @@
     <None Include="Resources\left-arrow_dark-hover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Form1 - Copy\Router\" />
-    <Folder Include="Form1\Router\" />
+    <Folder Include="PresentationBusinessLayer\Form1 - Copy\Router\" />
+    <Folder Include="PresentationBusinessLayer\Form1\Router\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\payment-information-green.png" />

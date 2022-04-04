@@ -13,10 +13,12 @@ namespace WindowsFormsDevelopment.CustomControls
     public partial class StudentInformationPanel : Panel
     {
         public Panel pnlParent { get; set; }
+        public dynamic studentInfor { get; set; }
 
-        public StudentInformationPanel(Panel pnlBody)
+        public StudentInformationPanel(Panel pnlBody, object studentInfor)
         {
             pnlParent = pnlBody;
+            this.studentInfor = studentInfor;
 
             this.Width = pnlBody.Width;
             this.Height = pnlBody.Height;

@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsDevelopment.Form_Course_Registration.Router
+namespace WindowsFormsDevelopment.CustomControls
 {
-    public partial class CourseSelectionPanel : Control
+    public partial class TuitionPaymentPanel : Panel
     {
         public Panel pnlParent { get; set; }
 
-        public CourseSelectionPanel(Panel pnlBody)
+        public TuitionPaymentPanel(Panel pnlBody)
         {
             pnlParent = pnlBody;
 
