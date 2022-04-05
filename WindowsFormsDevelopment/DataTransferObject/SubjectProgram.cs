@@ -23,6 +23,8 @@ namespace WindowsFormsDevelopment.DataTransferObject
         [StringLength(3)]
         public string OnScheduleSemester { get; set; }
 
+        public string OptionGroup { get; set; }
+
         public virtual MajorProgram MajorProgram { get; set; }
 
         public virtual Subject Subject { get; set; }

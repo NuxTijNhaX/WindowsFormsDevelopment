@@ -9,10 +9,8 @@ namespace WindowsFormsDevelopment.DataTransferObject
     public partial class Account
     {
         [Key]
-        [StringLength(50)]
         public string Email { get; set; }
 
-        [Required]
         public string Password { get; set; }
     }
 }

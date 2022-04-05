@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsDevelopment.CustomControls;
+using WindowsFormsDevelopment.DataAccessLayer;
 
 namespace WindowsFormsDevelopment.Form_Course_Registration.Router
 {
@@ -23,6 +25,15 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             this.BackColor = Color.White;
 
             InitializeComponent();
+        }
+
+        private void pbxBack_Click(object sender, EventArgs e)
+        {
+            fCourseRegistration.pnlBody.Controls.Clear();
+            //CourseRegistrationPanel courseRegistration = 
+            //    new CourseRegistrationPanel(this, 
+            //    SubjectDAL.GetSubjectsInforByMajorProgram(fCourseRegistration.majorProgramId));
+            fCourseRegistration.pnlBody.Controls.Add(fCourseRegistration.pnlContentBody); // TODO: change
         }
 
         protected override void OnPaint(PaintEventArgs pe)

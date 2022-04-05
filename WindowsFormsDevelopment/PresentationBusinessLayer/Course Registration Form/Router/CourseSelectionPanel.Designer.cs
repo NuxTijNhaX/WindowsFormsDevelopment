@@ -62,6 +62,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             pbxBack.Location = new Point(15, (pnlHeader.Height - pbxBack.Height) / 2);
             pbxBack.MouseHover += new System.EventHandler(this.pbxBack_MouseHover);
             pbxBack.MouseLeave += new System.EventHandler(this.pbxBack_MouseLeave);
+            pbxBack.Click += pbxBack_Click;
 
             pnlBody.Size = new Size(this.Width, this.Height * 11 / 12);
             pnlBody.Location = new Point(0, pnlHeader.Height);

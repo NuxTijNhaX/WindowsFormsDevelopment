@@ -20,7 +20,7 @@ namespace WindowsFormsDevelopment
         private string studentId;
         public static string majorProgramId;
         Form fLogin;
-        Panel pnlContentBody;
+        public static Panel pnlContentBody;
         //StudentInformationPanel pnlStudentInformation;
         //CourseRegistrationPanel pnlCourseRegistration;
         //RegistrationResultPanel pnlRegistrationResult;
@@ -171,6 +171,5 @@ namespace WindowsFormsDevelopment
             btnStudentInfor.PerformClick();
         }
         #endregion
-
     }
 }

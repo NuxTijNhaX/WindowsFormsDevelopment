@@ -28,9 +28,9 @@ namespace WindowsFormsDevelopment.DataAccessLayer
 
         private SubjectDAL() { }
 
-        public static List<Subject> GetSubjectsInforByMajorProgram(string majorProgramId)
+        public static List<object> GetSubjectsInforByMajorProgram(string majorProgramId)
         {
-            List<Subject> result; // = new List<Subject>();
+            List<object> result;
 
             try
             {
@@ -42,7 +42,15 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                               on majorPro.Id equals subjectPro.MajorProgramId
                               join subject in database.Subjects
                               on subjectPro.SubjectId equals subject.Id
-                              select subject).ToList();
+                              orderby subjectPro.OnScheduleSemester ascending // TODO: change
+                              select new 
+                              { 
+                                Id = subject.Id,
+                                Name = subject.Name,
+                                PrerequisiteSubject = subject.PrerequisiteSubject,
+                                OptionGroup = subjectPro.OptionGroup,
+                                Credit = subject.Credit
+                              }).ToList<object>();
                 }
             }
             catch (Exception)

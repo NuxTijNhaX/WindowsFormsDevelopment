@@ -20,7 +20,6 @@ namespace WindowsFormsDevelopment.DataTransferObject
 
         public int Year { get; set; }
 
-        [Required]
         [StringLength(3)]
         public string OffScheduleSemester { get; set; }
 

@@ -61,6 +61,15 @@ namespace WindowsFormsDevelopment.CustomControls
             headerStyle.SelectionForeColor = SystemColors.HighlightText;
             headerStyle.WrapMode = DataGridViewTriState.True;
 
+            DataGridViewCellStyle rowStyle = new DataGridViewCellStyle();
+            rowStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            rowStyle.BackColor = Color.White;
+            rowStyle.Font = fCourseRegistration.font10_Regular;
+            rowStyle.ForeColor = Color.Black;
+            rowStyle.SelectionBackColor = fCourseRegistration.green;
+            rowStyle.SelectionForeColor = SystemColors.HighlightText;
+            rowStyle.WrapMode = DataGridViewTriState.True;
+
             dgvCourseTable.Size = new Size(pnlBody.Width, pnlBody.Height);
             dgvCourseTable.RowHeadersVisible = false;
             dgvCourseTable.AllowUserToAddRows = false;
@@ -69,7 +78,11 @@ namespace WindowsFormsDevelopment.CustomControls
             dgvCourseTable.BorderStyle = BorderStyle.None;
             dgvCourseTable.ColumnHeadersHeight = 45;
             dgvCourseTable.ColumnHeadersDefaultCellStyle = headerStyle;
-
+            dgvCourseTable.RowsDefaultCellStyle = rowStyle;
+            dgvCourseTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCourseTable.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvCourseTable_RowsAdded);
+            dgvCourseTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCourseTable_CellClick);
+                
             dgvCourseTable.Columns.AddRange(new DataGridViewColumn[] {
                 colCourseNumber,
                 colCourseName,
@@ -107,7 +120,8 @@ namespace WindowsFormsDevelopment.CustomControls
             colBtnStatus.HeaderText = "Trạng thái";
             colBtnStatus.Name = "colBtnStatus";
             colBtnStatus.ReadOnly = true;
-            colBtnStatus.Width = dgvCourseTable.Width * 12 / 100;
+            colBtnStatus.Width = dgvCourseTable.Width * 10 / 100;
+            colBtnStatus.Text = "Đăng ký";
 
             this.Controls.AddRange(new Control[]
             {

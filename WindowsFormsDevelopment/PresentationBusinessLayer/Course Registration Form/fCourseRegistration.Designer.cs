@@ -12,6 +12,8 @@ namespace WindowsFormsDevelopment
         public static Font font11 = new Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         public static Font font12 = new Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
+        public static Font font10_Regular = new Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -47,17 +49,22 @@ namespace WindowsFormsDevelopment
             this.btnOutProgram = new System.Windows.Forms.Button();
             this.btnRegistrationResult = new System.Windows.Forms.Button();
             this.btnPayTuition = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlSideBarBottom = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlSideBarHeader = new System.Windows.Forms.Panel();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
-            this.pnlBody = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            pnlBody = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlSideBar.SuspendLayout();
             this.flpSideBarBody.SuspendLayout();
             this.pnlSideBarBottom.SuspendLayout();
             this.pnlSideBarHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
+            pnlBody.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSideBar
@@ -233,6 +240,30 @@ namespace WindowsFormsDevelopment
             this.btnPayTuition.UseVisualStyleBackColor = false;
             this.btnPayTuition.Click += new System.EventHandler(this.btnPayTuition_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Image = global::WindowsFormsDevelopment.Properties.Resources.payment_white;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(3, 327);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(237, 48);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "    Test";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnCourseSelection_Click);
+            // 
             // pnlSideBarBottom
             // 
             this.pnlSideBarBottom.Controls.Add(this.btnExit);
@@ -286,35 +317,33 @@ namespace WindowsFormsDevelopment
             // 
             // pnlBody
             // 
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(240, 0);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(944, 636);
-            this.pnlBody.TabIndex = 1;
+            pnlBody.Controls.Add(this.dataGridView1);
+            pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlBody.Location = new System.Drawing.Point(240, 0);
+            pnlBody.Name = "pnlBody";
+            pnlBody.Size = new System.Drawing.Size(944, 636);
+            pnlBody.TabIndex = 1;
             // 
-            // button1
+            // dataGridView1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-            this.button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Image = global::WindowsFormsDevelopment.Properties.Resources.payment_white;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(3, 327);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(237, 48);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "    Test";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnCourseSelection_Click);
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.dataGridView1.Location = new System.Drawing.Point(125, 88);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(244, 46);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Column2";
+            this.Column2.Name = "Column2";
             // 
             // fCourseRegistration
             // 
@@ -322,7 +351,7 @@ namespace WindowsFormsDevelopment
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1184, 636);
-            this.Controls.Add(this.pnlBody);
+            this.Controls.Add(pnlBody);
             this.Controls.Add(this.pnlSideBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fCourseRegistration";
@@ -335,6 +364,8 @@ namespace WindowsFormsDevelopment
             this.pnlSideBarBottom.ResumeLayout(false);
             this.pnlSideBarHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
+            pnlBody.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -353,8 +384,11 @@ namespace WindowsFormsDevelopment
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnInProgram;
         private System.Windows.Forms.Button btnOutProgram;
-        private System.Windows.Forms.Panel pnlBody;
+        public static System.Windows.Forms.Panel pnlBody;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }
 
