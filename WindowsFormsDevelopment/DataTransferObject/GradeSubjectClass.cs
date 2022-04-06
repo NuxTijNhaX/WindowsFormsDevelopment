@@ -19,7 +19,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
         [StringLength(11)]
         public string StudentId { get; set; }
 
-        public float Grade { get; set; }
+        public float? Grade { get; set; }
 
         public virtual SubjectClass SubjectClass { get; set; }
 

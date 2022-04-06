@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using WindowsFormsDevelopment.CustomControls;
 
 namespace WindowsFormsDevelopment.Form_Course_Registration.Router
 {
@@ -38,6 +39,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             this.SuspendLayout();
             pnlHeader = new Panel();
             pnlBody = new Panel();
+            pnlFooter = new Panel();
             dgvCourseTable = new DataGridView();
             colClassNumber = new DataGridViewTextBoxColumn();
             colCourseName = new DataGridViewTextBoxColumn();
@@ -47,6 +49,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             colEndingDate = new DataGridViewTextBoxColumn();
             colCampus = new DataGridViewTextBoxColumn();
             colLecture = new DataGridViewTextBoxColumn();
+            btnRegister = new RoundedButton();
             pbxBack = new PictureBox();
 
             pnlHeader.Size = new Size(this.Width, this.Height / 12);
@@ -64,7 +67,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             pbxBack.MouseLeave += new System.EventHandler(this.pbxBack_MouseLeave);
             pbxBack.Click += pbxBack_Click;
 
-            pnlBody.Size = new Size(this.Width, this.Height * 11 / 12);
+            pnlBody.Size = new Size(this.Width, this.Height * 9 / 12);
             pnlBody.Location = new Point(0, pnlHeader.Height);
             pnlBody.Controls.AddRange(new Control[]
             {
@@ -80,6 +83,15 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             headerStyle.SelectionForeColor = SystemColors.HighlightText;
             headerStyle.WrapMode = DataGridViewTriState.True;
 
+            DataGridViewCellStyle rowStyle = new DataGridViewCellStyle();
+            rowStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            rowStyle.BackColor = Color.White;
+            rowStyle.Font = fCourseRegistration.font10_Regular;
+            rowStyle.ForeColor = Color.Black;
+            rowStyle.SelectionBackColor = fCourseRegistration.green;
+            rowStyle.SelectionForeColor = SystemColors.HighlightText;
+            rowStyle.WrapMode = DataGridViewTriState.True;
+
             dgvCourseTable.Size = new Size(pnlBody.Width, pnlBody.Height);
             dgvCourseTable.RowHeadersVisible = false;
             dgvCourseTable.AllowUserToAddRows = false;
@@ -88,6 +100,11 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             dgvCourseTable.BorderStyle = BorderStyle.None;
             dgvCourseTable.ColumnHeadersHeight = 45;
             dgvCourseTable.ColumnHeadersDefaultCellStyle = headerStyle;
+            dgvCourseTable.RowsDefaultCellStyle = rowStyle;
+            dgvCourseTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCourseTable.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvCourseTable_RowsAdded);
+            //dgvCourseTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCourseTable_CellClick);
+
 
             dgvCourseTable.Columns.AddRange(new DataGridViewColumn[] {
                 colClassNumber,
@@ -103,7 +120,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             colClassNumber.HeaderText = "Mã lớp";
             colClassNumber.Name = "colClassNumber";
             colClassNumber.ReadOnly = true;
-            colClassNumber.Width = dgvCourseTable.Width * 12 / 100;
+            colClassNumber.Width = dgvCourseTable.Width * 16 / 100;
 
             colCourseName.HeaderText = "Tên học phần";
             colCourseName.Name = "colCourseName";
@@ -113,7 +130,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             colShoolShift.HeaderText = "Thứ - Giờ";
             colShoolShift.Name = "colShoolShift";
             colShoolShift.ReadOnly = true;
-            colShoolShift.Width = dgvCourseTable.Width * 11 / 100;
+            colShoolShift.Width = dgvCourseTable.Width * 10 / 100;
 
             colRoom.HeaderText = "Phòng";
             colRoom.Name = "colRoom";
@@ -123,12 +140,12 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             colStartingDate.HeaderText = "Ngày bắt đầu";
             colStartingDate.Name = "colStartingDate";
             colStartingDate.ReadOnly = true;
-            colStartingDate.Width = dgvCourseTable.Width * 12 / 100;
+            colStartingDate.Width = dgvCourseTable.Width * 10 / 100;
 
             colEndingDate.HeaderText = "Ngày kết thúc";
             colEndingDate.Name = "colEndingDate";
             colEndingDate.ReadOnly = true;
-            colEndingDate.Width = dgvCourseTable.Width * 12 / 100;
+            colEndingDate.Width = dgvCourseTable.Width * 10 / 100;
 
             colCampus.HeaderText = "Cơ sở";
             colCampus.Name = "colCampus";
@@ -138,12 +155,25 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             colLecture.HeaderText = "Giảng viên";
             colLecture.Name = "colLecture";
             colLecture.ReadOnly = true;
-            colLecture.Width = dgvCourseTable.Width * 15 / 100;
+            colLecture.Width = dgvCourseTable.Width * 16 / 100;
+            
+            pnlFooter.BorderStyle = BorderStyle.FixedSingle;
+            pnlFooter.Size = new Size(this.Width, this.Height * 2 / 12);
+            pnlFooter.Location = new Point(0, pnlBody.Location.Y + pnlBody.Height);
+            pnlFooter.Controls.AddRange(new Control[]
+            {
+                btnRegister,
+            });
+
+            btnRegister.Text = "Đăng Ký";
+            btnRegister.Location = new Point(pnlFooter.Width - btnRegister.Width - 55, (pnlFooter.Height - btnRegister.Height) / 2);
+            btnRegister.Click += btnRegister_Click;
 
             this.Controls.AddRange(new Control[]
             {
                 pnlHeader,
                 pnlBody,
+                pnlFooter,
             });
             this.ResumeLayout(false);
         }
@@ -162,6 +192,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
 
         private Panel pnlHeader;
         private Panel pnlBody;
+        private Panel pnlFooter;
         private DataGridView dgvCourseTable;
         private DataGridViewTextBoxColumn colClassNumber;
         private DataGridViewTextBoxColumn colCourseName;
@@ -171,7 +202,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
         private DataGridViewTextBoxColumn colEndingDate;
         private DataGridViewTextBoxColumn colCampus;
         private DataGridViewTextBoxColumn colLecture;
-
+        private RoundedButton btnRegister;
         private PictureBox pbxBack;
     }
 }

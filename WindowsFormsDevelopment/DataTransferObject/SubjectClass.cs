@@ -23,6 +23,10 @@ namespace WindowsFormsDevelopment.DataTransferObject
         [StringLength(3)]
         public string OffScheduleSemester { get; set; }
 
+        public DateTime BeginDate { get; set; }
+
+        public DateTime EndDate { get; set; }
+
         [StringLength(9)]
         public string Class_Id { get; set; }
 
@@ -31,6 +35,8 @@ namespace WindowsFormsDevelopment.DataTransferObject
 
         [StringLength(6)]
         public string Room_Id { get; set; }
+
+        public int? Shift_Id { get; set; }
 
         [StringLength(9)]
         public string Subject_Id { get; set; }
@@ -43,6 +49,8 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public virtual Room Room { get; set; }
 
         public virtual Lecturer Lecturer { get; set; }
+
+        public virtual Shift Shift { get; set; }
 
         public virtual Subject Subject { get; set; }
     }

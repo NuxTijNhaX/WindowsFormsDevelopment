@@ -17,19 +17,17 @@ namespace WindowsFormsDevelopment
 {
     public partial class fCourseRegistration : Form
     {
-        private string studentId;
         public static string majorProgramId;
-        Form fLogin;
         public static Panel pnlContentBody;
-        //StudentInformationPanel pnlStudentInformation;
-        //CourseRegistrationPanel pnlCourseRegistration;
-        //RegistrationResultPanel pnlRegistrationResult;
-        //CourseSelectionPanel pnlCourseSelection;
-        //TuitionPaymentPanel pnlTuitionPayment;
+        public static Panel pnlBody;
+        public static string studentId;
 
-        public fCourseRegistration(string studentId, Form fLogin)
+        private const string semester = "4";
+        Form fLogin;
+
+        public fCourseRegistration(string stuId, Form fLogin)
         {
-            this.studentId = studentId;
+            studentId = stuId;
             this.fLogin = fLogin;
 
             InitializeComponent();
@@ -118,7 +116,7 @@ namespace WindowsFormsDevelopment
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
             pnlContentBody = new CourseRegistrationPanel(pnlBody,
-                SubjectDAL.GetSubjectsInforByMajorProgram(majorProgramId));
+                SubjectDAL.GetSubjectsInforByMajorProgram(majorProgramId, semester));
             pnlBody.Controls.Add(pnlContentBody);
         }
 
@@ -129,7 +127,7 @@ namespace WindowsFormsDevelopment
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
             pnlContentBody = new CourseRegistrationPanel(pnlBody,
-                SubjectDAL.GetSubjectsInforByMajorProgram(majorProgramId));
+                SubjectDAL.GetSubjectsInforByMajorProgram(majorProgramId, semester));
             pnlBody.Controls.Add(pnlContentBody);
         }
 
@@ -143,24 +141,11 @@ namespace WindowsFormsDevelopment
             pnlBody.Controls.Add(pnlContentBody);
         }
 
-        private void btnCourseSelection_Click(object sender, EventArgs e) 
-        {
-            pnlBody.Controls.Clear();
-
-            ChangeFocusColorButton((Button)sender, flpSideBarBody);// TODO: change
-
-            pnlContentBody = new CourseSelectionPanel(pnlBody);
-            pnlBody.Controls.Add(pnlContentBody);
-        }
-
         private void btnPayTuition_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
-
-            //pnlStudentInformation = new StudentInformationPanel(pnlBody);
-            //pnlBody.Controls.Add(pnlStudentInformation);
 
             pnlContentBody = new TuitionPaymentPanel(pnlBody);
             pnlBody.Controls.Add(pnlContentBody);

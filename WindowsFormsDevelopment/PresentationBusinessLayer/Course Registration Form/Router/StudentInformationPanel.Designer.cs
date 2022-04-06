@@ -72,7 +72,7 @@ namespace WindowsFormsDevelopment.CustomControls
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
             pbxAvatar.Location = new Point((pnlHeader_Avatar.Width - pbxAvatar.Width) / 2, (pnlHeader_Avatar.Height - pbxAvatar.Height) / 2);
-            pbxAvatar.Load($"https://student.ueh.edu.vn/HinhSV/{studentInfor.Id}.jpg");
+            pbxAvatar.Load($"https://student.ueh.edu.vn/HinhSV/{studentInfor.Id}.jpg");     // TODO: handle 404
 
             pnlHeader_Avatar.Controls.AddRange(new Control[]
             {

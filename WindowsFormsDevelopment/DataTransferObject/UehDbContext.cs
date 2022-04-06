@@ -25,6 +25,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public virtual DbSet<MajorProgram> MajorPrograms { get; set; }
         public virtual DbSet<SchoolLevel> SchoolLevels { get; set; }
         public virtual DbSet<SubjectProgram> SubjectPrograms { get; set; }
+        public virtual DbSet<Shift> Shifts { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -88,6 +89,11 @@ namespace WindowsFormsDevelopment.DataTransferObject
                 .HasMany(e => e.MajorPrograms)
                 .WithOptional(e => e.SchoolLevel)
                 .HasForeignKey(e => e.SchoolLevel_Id);
+
+            modelBuilder.Entity<Shift>()
+                .HasMany(e => e.SubjectClasses)
+                .WithOptional(e => e.Shift)
+                .HasForeignKey(e => e.Shift_Id);
 
             modelBuilder.Entity<Subject>()
                 .HasMany(e => e.SubjectClasses)

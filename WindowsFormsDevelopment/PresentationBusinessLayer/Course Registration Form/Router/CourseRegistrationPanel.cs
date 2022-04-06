@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsDevelopment.DataAccessLayer;
 using WindowsFormsDevelopment.DataTransferObject;
 using WindowsFormsDevelopment.Form_Course_Registration.Router;
 
@@ -47,7 +48,7 @@ namespace WindowsFormsDevelopment.CustomControls
                 };
                 var cellOption = new DataGridViewTextBoxCell()
                 {
-                    Value = handleOptionGroup(subject.OptionGroup),
+                    Value = HandleOptionGroup(subject.OptionGroup),
                 };
                 var cellPre = new DataGridViewTextBoxCell()
                 {
@@ -76,13 +77,26 @@ namespace WindowsFormsDevelopment.CustomControls
             }
         }
 
-        private string handleOptionGroup(string opt)
+        private string HandleOptionGroup(string opt)
         {
             string result = "";
 
             if(opt != null)
             {
                 result = "Nhóm 0" + opt;
+            }
+
+            return result;
+        }
+
+        private bool CheckPrerequisiteSubjects(string[] prerequisiteSubjectIds)
+        {
+            bool result = true;
+
+            foreach (var preSubId in prerequisiteSubjectIds)
+            {
+                if(!GradeSubjectClassDAL.CheckPrerequisiteSubject(preSubId, fCourseRegistration.studentId))
+                    return false;
             }
 
             return result;
@@ -97,11 +111,22 @@ namespace WindowsFormsDevelopment.CustomControls
         {
             if (e.ColumnIndex == 5)
             {
-                var courseNum = dgvCourseTable.Rows[e.RowIndex].Cells["colCourseNumber"].Value;
+                var preCourse = dgvCourseTable.Rows[e.RowIndex].Cells["colPrerequisiteCourse"].Value.ToString().Split(',');
                 
-                fCourseRegistration.pnlBody.Controls.Clear();
-                CourseSelectionPanel courseSelection = new CourseSelectionPanel(this);
-                fCourseRegistration.pnlBody.Controls.Add(courseSelection);
+                if (CheckPrerequisiteSubjects(preCourse))
+                {
+                    var courseNum = dgvCourseTable.Rows[e.RowIndex].Cells["colCourseNumber"].Value;
+
+                    fCourseRegistration.pnlBody.Controls.Clear();
+                    CourseSelectionPanel courseSelection = new CourseSelectionPanel(this, 
+                        SubjectClassDAL.GetSubjectsInforByMajorProgram(courseNum.ToString()));
+                    fCourseRegistration.pnlBody.Controls.Add(courseSelection);
+                } else
+                {
+                    MessageBox.Show("Bạn Không Đủ Điều Kiện Để Đăng Ký Học Phần Này.\nDo Không Đủ Điểm Ở Học Phần Trước.", "Thông Báo", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                
             }
         }
 

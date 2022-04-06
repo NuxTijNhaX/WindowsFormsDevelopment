@@ -52,13 +52,13 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(584, 106);
+            this.pnlHeader.Size = new System.Drawing.Size(784, 106);
             this.pnlHeader.TabIndex = 0;
             // 
             // pbxLogo
             // 
             this.pbxLogo.Image = global::WindowsFormsDevelopment.Properties.Resources.logo_ueh_deparment;
-            this.pbxLogo.Location = new System.Drawing.Point(231, 27);
+            this.pbxLogo.Location = new System.Drawing.Point(0, 3);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(100, 50);
             this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -76,14 +76,14 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 106);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(584, 505);
+            this.pnlBody.Size = new System.Drawing.Size(784, 505);
             this.pnlBody.TabIndex = 1;
             // 
             // lblFormName
             // 
             this.lblFormName.AutoSize = true;
             this.lblFormName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFormName.Location = new System.Drawing.Point(170, 25);
+            this.lblFormName.Location = new System.Drawing.Point(3, 3);
             this.lblFormName.Name = "lblFormName";
             this.lblFormName.Size = new System.Drawing.Size(161, 37);
             this.lblFormName.TabIndex = 5;
@@ -93,7 +93,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             // 
             this.lblPass.AutoSize = true;
             this.lblPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPass.Location = new System.Drawing.Point(151, 203);
+            this.lblPass.Location = new System.Drawing.Point(12, 96);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(90, 21);
             this.lblPass.TabIndex = 3;
@@ -103,7 +103,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(151, 138);
+            this.lblUsername.Location = new System.Drawing.Point(12, 40);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(89, 21);
             this.lblUsername.TabIndex = 2;
@@ -112,7 +112,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             // tbxPass
             // 
             this.tbxPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPass.Location = new System.Drawing.Point(215, 196);
+            this.tbxPass.Location = new System.Drawing.Point(16, 120);
             this.tbxPass.Name = "tbxPass";
             this.tbxPass.Size = new System.Drawing.Size(254, 29);
             this.tbxPass.TabIndex = 1;
@@ -123,7 +123,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             // tbxUsername
             // 
             this.tbxUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxUsername.Location = new System.Drawing.Point(215, 138);
+            this.tbxUsername.Location = new System.Drawing.Point(16, 64);
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.Size = new System.Drawing.Size(254, 29);
             this.tbxUsername.TabIndex = 0;
@@ -135,7 +135,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlFooter.Location = new System.Drawing.Point(0, 527);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(584, 84);
+            this.pnlFooter.Size = new System.Drawing.Size(784, 84);
             this.pnlFooter.TabIndex = 2;
             // 
             // btnLogin
@@ -154,7 +154,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(198, 326);
+            this.btnLogin.Location = new System.Drawing.Point(16, 155);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(150, 40);
             this.btnLogin.TabIndex = 6;
@@ -168,7 +168,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(584, 611);
+            this.ClientSize = new System.Drawing.Size(784, 611);
             this.Controls.Add(this.pnlFooter);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlHeader);

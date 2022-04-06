@@ -28,7 +28,7 @@ namespace WindowsFormsDevelopment.DataAccessLayer
 
         private SubjectDAL() { }
 
-        public static List<object> GetSubjectsInforByMajorProgram(string majorProgramId)
+        public static List<object> GetSubjectsInforByMajorProgram(string majorProgramId, string semester)
         {
             List<object> result;
 
@@ -40,6 +40,7 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                               where majorPro.Id == majorProgramId
                               join subjectPro in database.SubjectPrograms
                               on majorPro.Id equals subjectPro.MajorProgramId
+                              where subjectPro.OnScheduleSemester == semester
                               join subject in database.Subjects
                               on subjectPro.SubjectId equals subject.Id
                               orderby subjectPro.OnScheduleSemester ascending // TODO: change

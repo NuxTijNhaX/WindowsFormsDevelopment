@@ -65,6 +65,8 @@
     <Compile Include="CustomControls\RoundedButton.Designer.cs">
       <DependentUpon>RoundedButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataAccessLayer\GradeSubjectClassDAL.cs" />
+    <Compile Include="DataAccessLayer\SubjectClassDAL.cs" />
     <Compile Include="DataAccessLayer\SubjectDAL.cs" />
     <Compile Include="DataAccessLayer\StudentDAL.cs" />
     <Compile Include="DataAccessLayer\AccessDAL.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="DataTransferObject\MajorProgram.cs" />
     <Compile Include="DataTransferObject\Room.cs" />
     <Compile Include="DataTransferObject\SchoolLevel.cs" />
+    <Compile Include="DataTransferObject\Shift.cs" />
     <Compile Include="DataTransferObject\Student.cs" />
     <Compile Include="DataTransferObject\Subject.cs" />
     <Compile Include="DataTransferObject\SubjectClass.cs" />

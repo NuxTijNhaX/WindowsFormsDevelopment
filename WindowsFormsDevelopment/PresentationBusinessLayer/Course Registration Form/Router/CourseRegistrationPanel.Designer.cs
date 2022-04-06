@@ -87,8 +87,8 @@ namespace WindowsFormsDevelopment.CustomControls
                 colCourseNumber,
                 colCourseName,
                 colOption,
-                colCredit,
                 colPrerequisiteCourse,
+                colCredit,
                 colBtnStatus,
             });
 
@@ -107,20 +107,20 @@ namespace WindowsFormsDevelopment.CustomControls
             colOption.ReadOnly = true;
             colOption.Width = dgvCourseTable.Width * 18 / 100;
 
-            colCredit.HeaderText = "Học phần trước";
+            colCredit.HeaderText = "Số tín chỉ";
             colCredit.Name = "colCredit";
             colCredit.ReadOnly = true;
-            colCredit.Width = dgvCourseTable.Width * 15 / 100;
+            colCredit.Width = dgvCourseTable.Width * 10 / 100;
 
-            colPrerequisiteCourse.HeaderText = "Số tín chỉ";
+            colPrerequisiteCourse.HeaderText = "Học phần trước";
             colPrerequisiteCourse.Name = "colPrerequisiteCourse";
             colPrerequisiteCourse.ReadOnly = true;
-            colPrerequisiteCourse.Width = dgvCourseTable.Width * 10 / 100;
+            colPrerequisiteCourse.Width = dgvCourseTable.Width * 15 / 100;
 
-            colBtnStatus.HeaderText = "Trạng thái";
+            colBtnStatus.HeaderText = "Hành động";
             colBtnStatus.Name = "colBtnStatus";
             colBtnStatus.ReadOnly = true;
-            colBtnStatus.Width = dgvCourseTable.Width * 10 / 100;
+            colBtnStatus.Width = dgvCourseTable.Width * 12 / 100;
             colBtnStatus.Text = "Đăng ký";
 
             this.Controls.AddRange(new Control[]
