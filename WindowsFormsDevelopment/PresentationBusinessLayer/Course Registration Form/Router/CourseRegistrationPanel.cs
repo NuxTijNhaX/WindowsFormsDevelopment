@@ -18,12 +18,14 @@ namespace WindowsFormsDevelopment.CustomControls
         public Panel pnlParent { get; set; }
         private List<dynamic> subjects { get; set; }
         private string subClassId { get; set; }
+        private bool IsInProgram { get; set; }
 
-        public CourseRegistrationPanel(Panel pnlBody, List<dynamic> subjects)
+        public CourseRegistrationPanel(Panel pnlBody, List<dynamic> subjects, bool isInprogram)
         {
 
             pnlParent = pnlBody;
             this.subjects = subjects;
+            this.IsInProgram = isInprogram;
 
             this.Width = pnlBody.Width;
             this.Height = pnlBody.Height;
@@ -125,7 +127,7 @@ namespace WindowsFormsDevelopment.CustomControls
                 {
                     fCourseRegistration.pnlBody.Controls.Clear();
                     CourseSelectionPanel courseSelection = new CourseSelectionPanel(this, 
-                        SubjectClassDAL.GetSubjectsInforByMajorProgram(courseNum), subClassId);
+                        SubjectClassDAL.GetSubjectClasses(courseNum, fCourseRegistration.year, fCourseRegistration.phase), subClassId, IsInProgram);
                     fCourseRegistration.pnlBody.Controls.Add(courseSelection);
 
                 } else

@@ -173,5 +173,29 @@ namespace WindowsFormsDevelopment.DataAccessLayer
 
             return result;
         }
+    
+        public static List<string> GetUnPassSubjects(string studentId)
+        {
+            List<string> results = new List<string>();
+
+            try
+            {
+                using (var database = new UehDbContext())
+                {
+                    results = (from gra in database.GradeSubjectClasses
+                               where gra.StudentId == studentId && gra.Grade < 5.0F
+                               join subClass in database.SubjectClasses
+                               on gra.SubjectClassId equals subClass.Id
+                               select subClass.Subject_Id).ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return results;
+        }
     }
 }

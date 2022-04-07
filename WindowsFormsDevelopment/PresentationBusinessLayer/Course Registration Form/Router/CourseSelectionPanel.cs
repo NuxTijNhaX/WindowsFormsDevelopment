@@ -17,13 +17,15 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
         public Panel pnlParent { get; set; }
         private List<dynamic> subClasses { get; set; }
         private string subClassId { get; set; }
+        private bool IsInProgram { get; set; }
 
         public CourseSelectionPanel(Panel pnlBody, List<dynamic> subClasses, 
-            string subClassId)
+            string subClassId, bool isInprogram)
         {
             pnlParent = pnlBody;
             this.subClasses = subClasses;
             this.subClassId = subClassId;
+            this.IsInProgram = isInprogram;
 
             this.Width = pnlBody.Width;
             this.Height = pnlBody.Height;
@@ -112,9 +114,19 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
         private void pbxBack_Click(object sender, EventArgs e)
         {
             fCourseRegistration.pnlBody.Controls.Clear();
-            CourseRegistrationPanel courseRegistration =
-                new CourseRegistrationPanel(this,
-                SubjectDAL.GetSubjectsInforByMajorProgram(fCourseRegistration.majorProgramId, fCourseRegistration.semester));
+
+            CourseRegistrationPanel courseRegistration;
+
+            if (IsInProgram)
+                courseRegistration = new CourseRegistrationPanel(this,
+                SubjectDAL.GetSubjectsInforByMajorProgram(fCourseRegistration.majorProgramId,
+                fCourseRegistration.semester), true);
+            else
+                courseRegistration = new CourseRegistrationPanel(this,
+                    SubjectDAL.GetSubjectsInforByUnPassList(
+                        GradeSubjectClassDAL.GetUnPassSubjects(fCourseRegistration.studentId),
+                        fCourseRegistration.majorProgramId), false);
+
             fCourseRegistration.pnlBody.Controls.Add(courseRegistration);
         }
 

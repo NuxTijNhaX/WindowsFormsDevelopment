@@ -17,10 +17,14 @@ namespace WindowsFormsDevelopment
 {
     public partial class fCourseRegistration : Form
     {
+        // State
+        public static string semester = "4";
+        public static int phase = 0; // 0: đầu, 1: giữa, 2: cuối
+        public static int year;
+
         public static string majorProgramId;
         public static Panel pnlBody;
         public static string studentId;
-        public static string semester = "4";
 
         private Panel pnlContentBody;
         Form fLogin;
@@ -33,6 +37,7 @@ namespace WindowsFormsDevelopment
             InitializeComponent();
 
             ConfigUI();
+
         }
 
         private void ConfigUI()
@@ -104,8 +109,10 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
-            pnlContentBody = new StudentInformationPanel(pnlBody, 
-                StudentDAL.GetStudentInfor(studentId));
+            dynamic studentInfor = StudentDAL.GetStudentInfor(studentId);
+            year = studentInfor.Year + int.Parse(semester) / 2;
+
+            pnlContentBody = new StudentInformationPanel(pnlBody, studentInfor);
             pnlBody.Controls.Add(pnlContentBody);
         }
 
@@ -116,7 +123,7 @@ namespace WindowsFormsDevelopment
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
             pnlContentBody = new CourseRegistrationPanel(pnlBody,
-                SubjectDAL.GetSubjectsInforByMajorProgram(majorProgramId, semester));
+                SubjectDAL.GetSubjectsInforByMajorProgram(majorProgramId, semester), true);
             pnlBody.Controls.Add(pnlContentBody);
         }
 
@@ -125,8 +132,10 @@ namespace WindowsFormsDevelopment
             pnlBody.Controls.Clear();
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
+            List<string> unpassSubs = GradeSubjectClassDAL.GetUnPassSubjects(studentId);
+
             pnlContentBody = new CourseRegistrationPanel(pnlBody,
-                SubjectDAL.GetSubjectsInforByMajorProgram(majorProgramId, semester));
+                SubjectDAL.GetSubjectsInforByUnPassList(unpassSubs, majorProgramId), false);
             pnlBody.Controls.Add(pnlContentBody);
         }
 
@@ -136,7 +145,8 @@ namespace WindowsFormsDevelopment
 
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
-            pnlContentBody = new RegistrationResultPanel(pnlBody);
+            pnlContentBody = new RegistrationResultPanel(pnlBody,
+                SubjectClassDAL.GetSubjectClasses("INF509005", fCourseRegistration.year, fCourseRegistration.phase));
             pnlBody.Controls.Add(pnlContentBody);
         }
 

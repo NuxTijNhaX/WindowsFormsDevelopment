@@ -77,6 +77,15 @@ namespace WindowsFormsDevelopment.CustomControls
             headerStyle.SelectionForeColor = SystemColors.HighlightText;
             headerStyle.WrapMode = DataGridViewTriState.True;
 
+            DataGridViewCellStyle rowStyle = new DataGridViewCellStyle();
+            rowStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            rowStyle.BackColor = Color.White;
+            rowStyle.Font = fCourseRegistration.font10_Regular;
+            rowStyle.ForeColor = Color.Black;
+            rowStyle.SelectionBackColor = fCourseRegistration.green;
+            rowStyle.SelectionForeColor = SystemColors.HighlightText;
+            rowStyle.WrapMode = DataGridViewTriState.True;
+
             dgvCourseTable.Size = new Size(pnlBody.Width, pnlBody.Height);
             dgvCourseTable.RowHeadersVisible = false;
             dgvCourseTable.AllowUserToAddRows = false;
@@ -85,6 +94,9 @@ namespace WindowsFormsDevelopment.CustomControls
             dgvCourseTable.BorderStyle = BorderStyle.None;
             dgvCourseTable.ColumnHeadersHeight = 45;
             dgvCourseTable.ColumnHeadersDefaultCellStyle = headerStyle;
+            dgvCourseTable.RowsDefaultCellStyle = rowStyle;
+            dgvCourseTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCourseTable.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvCourseTable_RowsAdded);
 
             dgvCourseTable.Columns.AddRange(new DataGridViewColumn[] {
                 colClassNumber,
@@ -100,7 +112,7 @@ namespace WindowsFormsDevelopment.CustomControls
             colClassNumber.HeaderText = "Mã lớp";
             colClassNumber.Name = "colClassNumber";
             colClassNumber.ReadOnly = true;
-            colClassNumber.Width = dgvCourseTable.Width * 12 / 100;
+            colClassNumber.Width = dgvCourseTable.Width * 16 / 100;
 
             colCourseName.HeaderText = "Tên học phần";
             colCourseName.Name = "colCourseName";
@@ -110,7 +122,7 @@ namespace WindowsFormsDevelopment.CustomControls
             colShoolShift.HeaderText = "Thứ - Giờ";
             colShoolShift.Name = "colShoolShift";
             colShoolShift.ReadOnly = true;
-            colShoolShift.Width = dgvCourseTable.Width * 11 / 100;
+            colShoolShift.Width = dgvCourseTable.Width * 10 / 100;
 
             colRoom.HeaderText = "Phòng";
             colRoom.Name = "colRoom";
@@ -120,12 +132,12 @@ namespace WindowsFormsDevelopment.CustomControls
             colStartingDate.HeaderText = "Ngày bắt đầu";
             colStartingDate.Name = "colStartingDate";
             colStartingDate.ReadOnly = true;
-            colStartingDate.Width = dgvCourseTable.Width * 12 / 100;
+            colStartingDate.Width = dgvCourseTable.Width * 10 / 100;
 
             colEndingDate.HeaderText = "Ngày kết thúc";
             colEndingDate.Name = "colEndingDate";
             colEndingDate.ReadOnly = true;
-            colEndingDate.Width = dgvCourseTable.Width * 12 / 100;
+            colEndingDate.Width = dgvCourseTable.Width * 10 / 100;
 
             colCampus.HeaderText = "Cơ sở";
             colCampus.Name = "colCampus";
@@ -135,10 +147,11 @@ namespace WindowsFormsDevelopment.CustomControls
             colLecture.HeaderText = "Giảng viên";
             colLecture.Name = "colLecture";
             colLecture.ReadOnly = true;
-            colLecture.Width = dgvCourseTable.Width * 15 / 100;
+            colLecture.Width = dgvCourseTable.Width * 16 / 100;
 
             btnPay.Text = "Thanh Toán";
             btnPay.Location = new Point(pnlFooter.Width - btnPay.Width - 55, (pnlFooter.Height - btnPay.Height) / 2);
+            btnPay.Click += btnPay_Click;
 
             lblTuiTionTotal.Font = fCourseRegistration.font11;
             lblTuiTionTotal.BorderStyle = BorderStyle.None;

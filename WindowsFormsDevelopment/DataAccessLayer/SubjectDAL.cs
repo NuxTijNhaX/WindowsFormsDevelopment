@@ -63,39 +63,43 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             return result;
         }
 
-        //public static List<object> GetSubjectsInforByUnPassList(List<string> unPassList, string semester)
-        //{
-        //    List<object> result;
+        public static List<object> GetSubjectsInforByUnPassList(List<string> unPassList, string majorProgramId)
+        {
+            List<object> result = new List<object>();
 
-        //    try
-        //    {
-        //        using (var database = new UehDbContext())
-        //        {
-        //            result = (from majorPro in database.MajorPrograms
-        //                      where majorPro.Id == majorProgramId
-        //                      join subjectPro in database.SubjectPrograms
-        //                      on majorPro.Id equals subjectPro.MajorProgramId
-        //                      where subjectPro.OnScheduleSemester == semester
-        //                      join subject in database.Subjects
-        //                      on subjectPro.SubjectId equals subject.Id
-        //                      orderby subjectPro.OnScheduleSemester ascending // TODO: change
-        //                      select new
-        //                      {
-        //                          Id = subject.Id,
-        //                          Name = subject.Name,
-        //                          PrerequisiteSubject = subject.PrerequisiteSubject,
-        //                          OptionGroup = subjectPro.OptionGroup,
-        //                          Credit = subject.Credit
-        //                      }).ToList<object>();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
+            try
+            {
+                using (var database = new UehDbContext())
+                {
+                    foreach (string subId in unPassList)
+                    {
+                        var subject = (from majorPro in database.MajorPrograms
+                                       where majorPro.Id == majorProgramId
+                                       join subPro in database.SubjectPrograms
+                                       on majorPro.Id equals subPro.MajorProgramId
+                                       join sub in database.Subjects
+                                       on subPro.SubjectId equals sub.Id
+                                       where sub.Id == subId
+                                       select new
+                                       {
+                                           Id = sub.Id,
+                                           Name = sub.Name,
+                                           PrerequisiteSubject = sub.PrerequisiteSubject,
+                                           OptionGroup = subPro.OptionGroup,
+                                           Credit = sub.Credit
+                                       }).FirstOrDefault();
 
-        //        throw;
-        //    }
+                        result.Add(subject);
+                    }
+                }
+            }
+            catch (Exception)
+            {
 
-        //    return result;
-        //}
+                throw;
+            }
+
+            return result;
+        }
     }
 }

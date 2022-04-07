@@ -28,7 +28,7 @@ namespace WindowsFormsDevelopment.DataAccessLayer
 
         private SubjectClassDAL() { }
 
-        public static List<object> GetSubjectsInforByMajorProgram(string subjectId)
+        public static List<object> GetSubjectClasses(string subjectId, int year, int phase)
         {
             List<object> result;
 
@@ -38,6 +38,8 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                 {
                     result = (from subClass in database.SubjectClasses
                               where subClass.Subject_Id == subjectId
+                              && subClass.Year == year
+                              && subClass.Semester == phase
                               join subject in database.Subjects
                               on subClass.Subject_Id equals subject.Id
                               join lecturer in database.Lecturers

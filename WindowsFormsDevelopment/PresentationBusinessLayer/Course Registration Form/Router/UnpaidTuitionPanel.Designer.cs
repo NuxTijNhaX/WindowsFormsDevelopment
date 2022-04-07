@@ -33,6 +33,12 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
         /// </summary>
         private void InitializeComponent()
         {
+            string tuitionAmount = "None";
+            string studentNumber = studentInfor.Id;
+            string studentName = studentInfor.Name;
+            string studentClass = studentInfor.ClassId;
+            string studentMajor = studentInfor.Major;//studentInfor.Major + " - " + studentInfor.ClassId;
+
             components = new System.ComponentModel.Container();
 
             lblTuitionTotal = new Button();
@@ -70,9 +76,8 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             int labelDiaphragm = lblTuitionTotal.Location.X + lblTuitionTotal.Width * 50 / 100;
             int labelMarginTop = 10;
 
-            lblTuitionAmount.Text = "None"; // tuitionAmount
+            lblTuitionAmount.Text = tuitionAmount;
             lblTuitionAmount.Font = fCourseRegistration.font11;
-            // lblTuitionAmount.ForeColor = fCourseRegistration.orange;
             lblTuitionAmount.AutoSize = true;
             lblTuitionAmount.Location = new Point(labelDiaphragm, lblTuitionTotal.Height + lblTuitionTotal.Location.Y + labelMarginTop + 5);
 
@@ -102,7 +107,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             lblStudentNumber.SelectionColor = fCourseRegistration.orange;
             lblStudentNumber.SelectedText = "MSSV:  ";
             lblStudentNumber.SelectionColor = Color.Black;
-            lblStudentNumber.SelectedText = "None"; // studentNumber
+            lblStudentNumber.SelectedText = studentNumber; 
             lblStudentNumber.Invalidate();
 
             lblStudentName.Font = fCourseRegistration.font11;
@@ -113,7 +118,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             lblStudentName.SelectionColor = fCourseRegistration.orange;
             lblStudentName.SelectedText = "Họ và tên:  ";
             lblStudentName.SelectionColor = Color.Black;
-            lblStudentName.SelectedText = "None"; // studentName
+            lblStudentName.SelectedText = studentName;
 
             lblSutentClass.Font = fCourseRegistration.font11;
             lblSutentClass.BorderStyle = BorderStyle.None;
@@ -123,7 +128,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             lblSutentClass.SelectionColor = fCourseRegistration.orange;
             lblSutentClass.SelectedText = "Lớp:  ";
             lblSutentClass.SelectionColor = Color.Black;
-            lblSutentClass.SelectedText = "None"; // studentStatus
+            lblSutentClass.SelectedText = studentClass;
 
             lblStudentMajor.Font = fCourseRegistration.font11;
             lblStudentMajor.BorderStyle = BorderStyle.None;
@@ -133,7 +138,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             lblStudentMajor.SelectionColor = fCourseRegistration.orange;
             lblStudentMajor.SelectedText = "Chuyên ngành:  ";
             lblStudentMajor.SelectionColor = Color.Black;
-            lblStudentMajor.SelectedText = "None"; // studentSchoolYear
+            lblStudentMajor.SelectedText = studentMajor;
 
             lblPaymentInfor.Font = fCourseRegistration.font11;
             lblPaymentInfor.BorderStyle = BorderStyle.None;
@@ -143,7 +148,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             lblPaymentInfor.SelectionColor = fCourseRegistration.orange;
             lblPaymentInfor.SelectedText = "Thanh toán học phí:  ";
             lblPaymentInfor.SelectionColor = Color.Black;
-            lblPaymentInfor.SelectedText = "None"; // studentEmail
+            lblPaymentInfor.SelectedText = "None";
 
             lblPaymentMethod.BackColor = Color.Transparent;
             lblPaymentMethod.Cursor = Cursors.Arrow;
@@ -201,6 +206,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             btnPay.Location = new Point(labelDiaphragm, this.Height - btnPay.Height - 30);
             btnPay.Font = fCourseRegistration.font12;
             btnPay.Width = 200;
+            btnPay.Click += btnPay_Click;
 
             this.Controls.AddRange(new Control[]
             {
