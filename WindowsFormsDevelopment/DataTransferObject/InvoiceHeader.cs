@@ -6,32 +6,32 @@ namespace WindowsFormsDevelopment.DataTransferObject
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Class.GradeSubjectClasses")]
-    public partial class GradeSubjectClass
+    [Table("Invoice.InvoiceHeaders")]
+    public partial class InvoiceHeader
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GradeSubjectClass()
+        public InvoiceHeader()
         {
             InvoiceDetails = new HashSet<InvoiceDetail>();
         }
 
         [Key]
-        [Column(Order = 0)]
-        [StringLength(15)]
-        public string SubjectClassId { get; set; }
+        public Guid GuidInvoice { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
+        [Required]
+        [StringLength(50)]
+        public string Description { get; set; }
+
+        public DateTime PaidDay { get; set; }
+
+        public int TotalCost { get; set; }
+
         [StringLength(11)]
-        public string StudentId { get; set; }
-
-        public float Grade { get; set; }
-
-        public virtual SubjectClass SubjectClass { get; set; }
-
-        public virtual Student Student { get; set; }
+        public string Student_Id { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
+
+        public virtual Student Student { get; set; }
     }
 }

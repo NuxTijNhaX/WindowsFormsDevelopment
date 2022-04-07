@@ -118,7 +118,7 @@ namespace WindowsFormsDevelopment.CustomControls
             colPrerequisiteCourse.Width = dgvCourseTable.Width * 15 / 100;
 
             colBtnStatus.HeaderText = "Hành động";
-            colBtnStatus.Name = "colBtnStatus";
+            colBtnStatus.Name = "colBtnAction";
             colBtnStatus.ReadOnly = true;
             colBtnStatus.Width = dgvCourseTable.Width * 12 / 100;
             colBtnStatus.Text = "Đăng ký";

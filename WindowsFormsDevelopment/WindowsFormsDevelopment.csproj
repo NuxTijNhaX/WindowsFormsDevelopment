@@ -75,9 +75,12 @@
     <Compile Include="DataTransferObject\Class.cs" />
     <Compile Include="DataTransferObject\Faculty.cs" />
     <Compile Include="DataTransferObject\GradeSubjectClass.cs" />
+    <Compile Include="DataTransferObject\InvoiceDetail.cs" />
+    <Compile Include="DataTransferObject\InvoiceHeader.cs" />
     <Compile Include="DataTransferObject\Lecturer.cs" />
     <Compile Include="DataTransferObject\Major.cs" />
     <Compile Include="DataTransferObject\MajorProgram.cs" />
+    <Compile Include="DataTransferObject\PaymentMehod.cs" />
     <Compile Include="DataTransferObject\Room.cs" />
     <Compile Include="DataTransferObject\SchoolLevel.cs" />
     <Compile Include="DataTransferObject\Shift.cs" />

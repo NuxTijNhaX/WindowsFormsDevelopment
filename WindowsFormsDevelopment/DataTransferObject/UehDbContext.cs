@@ -20,6 +20,9 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<Faculty> Faculties { get; set; }
         public virtual DbSet<Major> Majors { get; set; }
+        public virtual DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        public virtual DbSet<InvoiceHeader> InvoiceHeaders { get; set; }
+        public virtual DbSet<PaymentMehod> PaymentMehods { get; set; }
         public virtual DbSet<Lecturer> Lecturers { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<MajorProgram> MajorPrograms { get; set; }
@@ -39,6 +42,11 @@ namespace WindowsFormsDevelopment.DataTransferObject
                 .HasMany(e => e.Students)
                 .WithOptional(e => e.Class)
                 .HasForeignKey(e => e.Class_Id);
+
+            modelBuilder.Entity<GradeSubjectClass>()
+                .HasMany(e => e.InvoiceDetails)
+                .WithOptional(e => e.GradeSubjectClass)
+                .HasForeignKey(e => new { e.GradeSubjectClass_SubjectClassId, e.GradeSubjectClass_StudentId });
 
             modelBuilder.Entity<Campus>()
                 .HasMany(e => e.Rooms)
@@ -70,6 +78,11 @@ namespace WindowsFormsDevelopment.DataTransferObject
                 .WithOptional(e => e.Major)
                 .HasForeignKey(e => e.Major_Id);
 
+            modelBuilder.Entity<InvoiceHeader>()
+                .HasMany(e => e.InvoiceDetails)
+                .WithOptional(e => e.InvoiceHeader)
+                .HasForeignKey(e => e.InvoiceHeader_GuidInvoice);
+
             modelBuilder.Entity<Lecturer>()
                 .HasMany(e => e.SubjectClasses)
                 .WithOptional(e => e.Lecturer)
@@ -79,6 +92,11 @@ namespace WindowsFormsDevelopment.DataTransferObject
                 .HasMany(e => e.Subjects)
                 .WithOptional(e => e.Lecturer)
                 .HasForeignKey(e => e.Lecturer_Id);
+
+            modelBuilder.Entity<Student>()
+                .HasMany(e => e.InvoiceHeaders)
+                .WithOptional(e => e.Student)
+                .HasForeignKey(e => e.Student_Id);
 
             modelBuilder.Entity<MajorProgram>()
                 .HasMany(e => e.Classes)

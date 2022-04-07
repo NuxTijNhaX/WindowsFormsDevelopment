@@ -16,11 +16,14 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
     {
         public Panel pnlParent { get; set; }
         private List<dynamic> subClasses { get; set; }
+        private string subClassId { get; set; }
 
-        public CourseSelectionPanel(Panel pnlBody, List<dynamic> subClasses)
+        public CourseSelectionPanel(Panel pnlBody, List<dynamic> subClasses, 
+            string subClassId)
         {
             pnlParent = pnlBody;
             this.subClasses = subClasses;
+            this.subClassId = subClassId;
 
             this.Width = pnlBody.Width;
             this.Height = pnlBody.Height;
@@ -109,16 +112,79 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
         private void pbxBack_Click(object sender, EventArgs e)
         {
             fCourseRegistration.pnlBody.Controls.Clear();
-            //CourseRegistrationPanel courseRegistration = 
-            //    new CourseRegistrationPanel(this, 
-            //    SubjectDAL.GetSubjectsInforByMajorProgram(fCourseRegistration.majorProgramId));
-            fCourseRegistration.pnlBody.Controls.Add(fCourseRegistration.pnlContentBody); // TODO: change
+            CourseRegistrationPanel courseRegistration =
+                new CourseRegistrationPanel(this,
+                SubjectDAL.GetSubjectsInforByMajorProgram(fCourseRegistration.majorProgramId, fCourseRegistration.semester));
+            fCourseRegistration.pnlBody.Controls.Add(courseRegistration);
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
             string classNumber = dgvCourseTable.SelectedRows[0].Cells["colClassNumber"].Value.ToString();
-            MessageBox.Show(classNumber);
+            string messageResult = "";
+
+            if(this.subClassId == String.Empty)
+            {
+                try
+                {
+                    if (GradeSubjectClassDAL.RegisterSubjectClass(classNumber, fCourseRegistration.studentId))
+                    {
+                        messageResult = "Đăng ký thành công.";
+                    }
+                    else
+                    {
+                        messageResult = "Đã có lỗi xảy ra!\n";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    messageResult += ex.Message;
+                }
+                finally
+                {
+                    MessageBox.Show(messageResult, "Thông Báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                if (classNumber == this.subClassId)
+                {
+                    MessageBox.Show("Bạn đã đăng ký học phần này rồi!", "Thông Báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    return;
+                }
+
+                try
+                {
+                    DialogResult result = MessageBox.Show("Bạn có chắc đăng ký lại học phần này?", "Thông báo", 
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if(result == DialogResult.Yes)
+                    {
+                        if (GradeSubjectClassDAL.ReRegisterSubjectClass(this.subClassId, classNumber, fCourseRegistration.studentId))
+                        {
+                            messageResult = "Đăng ký thành công.";
+                            MessageBox.Show(messageResult, "Thông Báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            messageResult = "Đã có lỗi xảy ra!\nVui lòng thử lại.";
+                            MessageBox.Show(messageResult, "Thông Báo Lỗi",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    } 
+                }
+                catch (Exception ex)
+                {
+                    messageResult += ex.Message;
+
+                    MessageBox.Show(messageResult, "Thông Báo Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void dgvCourseTable_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

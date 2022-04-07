@@ -17,6 +17,7 @@ namespace WindowsFormsDevelopment.CustomControls
     {
         public Panel pnlParent { get; set; }
         private List<dynamic> subjects { get; set; }
+        private string subClassId { get; set; }
 
         public CourseRegistrationPanel(Panel pnlBody, List<dynamic> subjects)
         {
@@ -58,9 +59,13 @@ namespace WindowsFormsDevelopment.CustomControls
                 {
                     Value = subject.Credit.ToString(),
                 };
+
+                this.subClassId = GradeSubjectClassDAL.CheckExistenceSubjectClass(subject.Id,
+                    fCourseRegistration.studentId);
+
                 var cellButton = new DataGridViewButtonCell()
                 {
-                    Value = "Đăng ký",
+                    Value = subClassId != String.Empty ? "Đăng ký lại" : "Đăng ký"
                 };
 
                 row.Cells.AddRange(new DataGridViewCell[]
@@ -112,15 +117,17 @@ namespace WindowsFormsDevelopment.CustomControls
             if (e.ColumnIndex == 5)
             {
                 var preCourse = dgvCourseTable.Rows[e.RowIndex].Cells["colPrerequisiteCourse"].Value.ToString().Split(',');
-                
+                var courseNum = dgvCourseTable.Rows[e.RowIndex].Cells["colCourseNumber"].Value.ToString();
+                this.subClassId = GradeSubjectClassDAL.CheckExistenceSubjectClass(courseNum,
+                    fCourseRegistration.studentId);
+
                 if (CheckPrerequisiteSubjects(preCourse))
                 {
-                    var courseNum = dgvCourseTable.Rows[e.RowIndex].Cells["colCourseNumber"].Value;
-
                     fCourseRegistration.pnlBody.Controls.Clear();
                     CourseSelectionPanel courseSelection = new CourseSelectionPanel(this, 
-                        SubjectClassDAL.GetSubjectsInforByMajorProgram(courseNum.ToString()));
+                        SubjectClassDAL.GetSubjectsInforByMajorProgram(courseNum), subClassId);
                     fCourseRegistration.pnlBody.Controls.Add(courseSelection);
+
                 } else
                 {
                     MessageBox.Show("Bạn Không Đủ Điều Kiện Để Đăng Ký Học Phần Này.\nDo Không Đủ Điểm Ở Học Phần Trước.", "Thông Báo", 

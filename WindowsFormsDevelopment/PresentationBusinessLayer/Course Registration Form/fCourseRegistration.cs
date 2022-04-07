@@ -18,11 +18,11 @@ namespace WindowsFormsDevelopment
     public partial class fCourseRegistration : Form
     {
         public static string majorProgramId;
-        public static Panel pnlContentBody;
         public static Panel pnlBody;
         public static string studentId;
+        public static string semester = "4";
 
-        private const string semester = "4";
+        private Panel pnlContentBody;
         Form fLogin;
 
         public fCourseRegistration(string stuId, Form fLogin)
@@ -123,7 +123,6 @@ namespace WindowsFormsDevelopment
         private void btnOutProgram_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
-
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
             pnlContentBody = new CourseRegistrationPanel(pnlBody,

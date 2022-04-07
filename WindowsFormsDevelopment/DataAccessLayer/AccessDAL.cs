@@ -39,12 +39,13 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                               join lec in db.Lecturers
                               on acc.Email equals lec.Email
                               select lec.Id).FirstOrDefault();
-            
-            if(lecturerId is null)
+
+            if (lecturerId is null)
             {
                 result.Add("-1");
                 result.Add("-1");
-            } else
+            }
+            else
             {
                 result.Add("1");
                 result.Add(lecturerId);

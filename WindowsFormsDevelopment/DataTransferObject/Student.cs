@@ -13,6 +13,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public Student()
         {
             GradeSubjectClasses = new HashSet<GradeSubjectClass>();
+            InvoiceHeaders = new HashSet<InvoiceHeader>();
         }
 
         [StringLength(11)]
@@ -41,5 +42,8 @@ namespace WindowsFormsDevelopment.DataTransferObject
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GradeSubjectClass> GradeSubjectClasses { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InvoiceHeader> InvoiceHeaders { get; set; }
     }
 }
