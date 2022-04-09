@@ -21,6 +21,7 @@ namespace WindowsFormsDevelopment
         public static string semester = "4";
         public static int phase = 0; // 0: đầu, 1: giữa, 2: cuối
         public static int year;
+        public static int fee = 650000;
 
         public static string majorProgramId;
         public static Panel pnlBody;
@@ -146,7 +147,7 @@ namespace WindowsFormsDevelopment
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
             pnlContentBody = new RegistrationResultPanel(pnlBody,
-                SubjectClassDAL.GetSubjectClasses("INF509005", fCourseRegistration.year, fCourseRegistration.phase));
+                GradeSubjectClassDAL.GetRegisteredClasses(studentId, year, phase), btnRegistrationResult, btnPayTuition);
             pnlBody.Controls.Add(pnlContentBody);
         }
 

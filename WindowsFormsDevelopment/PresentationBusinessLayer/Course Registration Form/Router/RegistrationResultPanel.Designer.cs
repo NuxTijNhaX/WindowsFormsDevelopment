@@ -1,5 +1,6 @@
 ﻿
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace WindowsFormsDevelopment.CustomControls
@@ -36,6 +37,7 @@ namespace WindowsFormsDevelopment.CustomControls
 
             this.SuspendLayout();
             pnlHeader = new Panel();
+            pnlCancel = new Panel();
             pnlBody = new Panel();
             pnlFooter = new Panel();
             dgvCourseTable = new DataGridView();
@@ -48,19 +50,27 @@ namespace WindowsFormsDevelopment.CustomControls
             colCampus = new DataGridViewTextBoxColumn();
             colLecture = new DataGridViewTextBoxColumn();
             btnPay = new RoundedButton();
+            btnCancel = new RoundedButton();
             lblTuiTionTotal = new DisabledRichTextBox();
 
-            pnlHeader.Size = new Size(this.Width, this.Height / 12);
+            pnlHeader.Size = new Size(0, this.Height / 24);
 
-            pnlBody.Size = new Size(this.Width, this.Height * 9 / 12);
-            pnlBody.Location = new Point(0, pnlHeader.Height);
+            pnlBody.Size = new Size(this.Width, this.Height * 17 / 24);
+            pnlBody.Location = new Point(0, this.Height / 24);
             pnlBody.Controls.AddRange(new Control[]
             {
                 dgvCourseTable,
             });
+            
+            pnlCancel.Size = new Size(this.Width, this.Height * 2 / 24);
+            pnlCancel.Location = new Point(0, pnlHeader.Height + pnlBody.Height);
+            pnlCancel.Controls.AddRange(new Control[]
+            {
+                btnCancel,
+            });
 
-            pnlFooter.Size = new Size(this.Width, this.Height * 2/ 12);
-            pnlFooter.Location = new Point(0, pnlHeader.Height + pnlBody.Height);
+            pnlFooter.Size = new Size(this.Width, this.Height * 4 / 24);
+            pnlFooter.Location = new Point(0, pnlHeader.Height + pnlCancel.Height + pnlBody.Height);
             pnlFooter.BorderStyle = BorderStyle.FixedSingle;
             pnlFooter.Controls.AddRange(new Control[]
             {
@@ -149,6 +159,16 @@ namespace WindowsFormsDevelopment.CustomControls
             colLecture.ReadOnly = true;
             colLecture.Width = dgvCourseTable.Width * 16 / 100;
 
+            btnCancel.Text = "Hủy lớp học phần";
+            btnCancel.Width = this.Width / 5;
+            btnCancel.Location = new Point(pnlCancel.Width - btnCancel.Width - 55, (pnlCancel.Height - btnCancel.Height) / 2);
+            btnCancel.BackColor = fCourseRegistration.orange;
+            btnCancel.FlatAppearance.BorderColor = fCourseRegistration.green;
+            btnCancel.FlatAppearance.CheckedBackColor = fCourseRegistration.orange;
+            btnCancel.FlatAppearance.MouseDownBackColor = Color.DarkOrange;
+            btnCancel.FlatAppearance.MouseOverBackColor = fCourseRegistration.orange;
+            btnCancel.Click += btnCancel_Click;
+
             btnPay.Text = "Thanh Toán";
             btnPay.Location = new Point(pnlFooter.Width - btnPay.Width - 55, (pnlFooter.Height - btnPay.Height) / 2);
             btnPay.Click += btnPay_Click;
@@ -161,12 +181,12 @@ namespace WindowsFormsDevelopment.CustomControls
             lblTuiTionTotal.SelectionColor = fCourseRegistration.orange;
             lblTuiTionTotal.SelectedText = "Tổng học phí:  ";
             lblTuiTionTotal.SelectionColor = Color.Black;
-            lblTuiTionTotal.SelectedText = "None"; // TODO: tuitionTotal
 
             this.Controls.AddRange(new Control[]
             {
                 pnlHeader,
                 pnlBody,
+                pnlCancel,
                 pnlFooter,
             });
             this.ResumeLayout(false);
@@ -175,6 +195,7 @@ namespace WindowsFormsDevelopment.CustomControls
         #endregion
 
         private Panel pnlHeader;
+        private Panel pnlCancel;
         private Panel pnlBody;
         private Panel pnlFooter;
         private DataGridView dgvCourseTable;
@@ -188,6 +209,7 @@ namespace WindowsFormsDevelopment.CustomControls
         private DataGridViewTextBoxColumn colLecture;
 
         private RoundedButton btnPay;
+        private RoundedButton btnCancel;
         private DisabledRichTextBox lblTuiTionTotal;
     }
 }

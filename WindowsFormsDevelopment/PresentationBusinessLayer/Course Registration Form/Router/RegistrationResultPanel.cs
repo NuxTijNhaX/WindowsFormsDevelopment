@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsDevelopment.DataAccessLayer;
 
 namespace WindowsFormsDevelopment.CustomControls
 {
@@ -14,11 +16,16 @@ namespace WindowsFormsDevelopment.CustomControls
     {
         public Panel pnlParent { get; set; }
         private List<dynamic> subClasses { get; set; }
+        private Button btnReRender { get; set; }
+        private Button btnPaymentPage { get; set; }
 
-        public RegistrationResultPanel(Panel pnlBody, List<dynamic> subClasses)
+        private int tuitionTotal;
+
+        public RegistrationResultPanel(Panel pnlBody, List<dynamic> subClasses, Button btnRender, Button btnPaymentPage)
         {
             pnlParent = pnlBody;
             this.subClasses = subClasses;
+            this.btnPaymentPage = btnPaymentPage;
 
             this.Width = pnlBody.Width;
             this.Height = pnlBody.Height;
@@ -27,6 +34,8 @@ namespace WindowsFormsDevelopment.CustomControls
             InitializeComponent();
 
             LoadSubjectsData(this.subClasses);
+
+            LoadTuitionTotal();
         }
 
         private void LoadSubjectsData(List<dynamic> subClasses)
@@ -104,9 +113,53 @@ namespace WindowsFormsDevelopment.CustomControls
             return weekday;
         }
 
+        private void LoadTuitionTotal()
+        {
+            tuitionTotal = GradeSubjectClassDAL.GetTotalTuition(fCourseRegistration.studentId, fCourseRegistration.year,
+                fCourseRegistration.phase, fCourseRegistration.fee);
+
+            string money = "Không có khoản cần thanh toán";
+
+            if (tuitionTotal != 0)
+            {
+                money = tuitionTotal.ToString("c", CultureInfo.CreateSpecificCulture("vi-VN"));
+            }
+
+            lblTuiTionTotal.SelectedText = money;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            string classNumber;
+
+            if (dgvCourseTable.RowCount > 0)
+            {
+                classNumber = dgvCourseTable.SelectedRows[0].Cells["colClassNumber"].Value.ToString();
+
+                try
+                {
+                    if (GradeSubjectClassDAL.DeleteSubjectClass(classNumber, fCourseRegistration.studentId))
+                    {
+                        MessageBox.Show("Xóa học phần thành công", "Thông Báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        btnReRender.PerformClick();
+                    }
+                    else
+                        MessageBox.Show("Xóa học phần không thành công.\nVui lòng thử lại.", "Thông Báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void btnPay_Click(object sender, EventArgs e)
         {
-            
+            btnPaymentPage.PerformClick();
         }
 
         private void dgvCourseTable_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

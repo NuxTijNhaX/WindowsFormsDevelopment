@@ -42,8 +42,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Runtime.Serialization" />
@@ -89,6 +93,9 @@
     <Compile Include="DataTransferObject\SubjectClass.cs" />
     <Compile Include="DataTransferObject\SubjectProgram.cs" />
     <Compile Include="DataTransferObject\UehDbContext.cs" />
+    <Compile Include="PaymentGateway\MoMo\PaymentRequest.cs" />
+    <Compile Include="PaymentGateway\MoMo\Security.cs" />
+    <Compile Include="PaymentGateway\MoMo\MoMo.cs" />
     <Compile Include="PresentationBusinessLayer\Course Registration Form\Router\CourseRegistrationPanel.cs">
       <SubType>Component</SubType>
     </Compile>

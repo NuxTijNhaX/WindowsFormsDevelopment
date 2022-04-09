@@ -111,7 +111,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             return weekday;
         }
 
-        private void pbxBack_Click(object sender, EventArgs e)
+        private void Back()
         {
             fCourseRegistration.pnlBody.Controls.Clear();
 
@@ -129,6 +129,11 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
 
             fCourseRegistration.pnlBody.Controls.Add(courseRegistration);
         }
+        
+        private void pbxBack_Click(object sender, EventArgs e)
+        {
+            Back();
+        }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -142,6 +147,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
                     if (GradeSubjectClassDAL.RegisterSubjectClass(classNumber, fCourseRegistration.studentId))
                     {
                         messageResult = "Đăng ký thành công.";
+                        Back();
                     }
                     else
                     {
@@ -180,6 +186,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
                             messageResult = "Đăng ký thành công.";
                             MessageBox.Show(messageResult, "Thông Báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Back();
                         }
                         else
                         {

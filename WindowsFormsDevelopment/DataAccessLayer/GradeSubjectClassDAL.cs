@@ -147,11 +147,7 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             {
                 using (var database = new UehDbContext())
                 {
-                    GradeSubjectClass graSubCla = (from gradeSubClass in database.GradeSubjectClasses
-                                                   where gradeSubClass.SubjectClassId == preSubClass
-                                                   && gradeSubClass.StudentId == studentId
-                                                   select gradeSubClass).FirstOrDefault();
-                    database.GradeSubjectClasses.Remove(graSubCla);
+                    DeleteSubjectClass(preSubClass, studentId);
 
                     GradeSubjectClass newGraSubCla = new GradeSubjectClass()
                     {
@@ -174,6 +170,26 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             return result;
         }
     
+        public static bool DeleteSubjectClass(string subClassId, string studentId)
+        {
+            bool result = false;
+
+            using (var database = new UehDbContext())
+            {
+                GradeSubjectClass graSubCla = (from gra in database.GradeSubjectClasses
+                                               where gra.SubjectClassId == subClassId
+                                               && gra.StudentId == studentId
+                                               select gra).FirstOrDefault();
+                
+                database.GradeSubjectClasses.Remove(graSubCla);
+                database.SaveChanges();
+
+                result = true;
+            }
+
+            return result;
+        }
+
         public static List<string> GetUnPassSubjects(string studentId)
         {
             List<string> results = new List<string>();
@@ -196,6 +212,52 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             }
 
             return results;
+        }
+    
+        public static List<object> GetRegisteredClasses(string studentId, int year, int phase)
+        {
+            List<object> result = new List<object>();
+
+            try
+            {
+                using (var database = new UehDbContext()) 
+                {
+                    var datas = (from gra in database.GradeSubjectClasses
+                                where gra.StudentId == studentId
+                                && gra.Grade == null
+                                join subClass in database.SubjectClasses
+                                on gra.SubjectClassId equals subClass.Id
+                                where subClass.Year == year
+                                && subClass.Semester == phase
+                                select gra.SubjectClassId).ToList<string>();
+
+                    foreach (var item in datas)
+                    {
+                        result.Add(SubjectClassDAL.GetSubjectClass(item));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return result;
+        }
+
+        public static int GetTotalTuition(string studentId, int year, int phase, int totalCredits)
+        {
+            int result = 0;
+
+            dynamic registeredClasses = GetRegisteredClasses(studentId, year, phase);
+
+            foreach (var regClass in registeredClasses)
+            {
+                result += regClass.Credit;
+            }
+
+            return result * totalCredits;
         }
     }
 }

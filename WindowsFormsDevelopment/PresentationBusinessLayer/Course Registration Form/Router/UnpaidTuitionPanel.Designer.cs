@@ -33,11 +33,12 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
         /// </summary>
         private void InitializeComponent()
         {
-            string tuitionAmount = "None";
             string studentNumber = studentInfor.Id;
             string studentName = studentInfor.Name;
             string studentClass = studentInfor.ClassId;
-            string studentMajor = studentInfor.Major;//studentInfor.Major + " - " + studentInfor.ClassId;
+            string studentMajor = studentInfor.Major;
+            
+            description = "HK" + (fCourseRegistration.phase == 0 ? "Đ" : fCourseRegistration.phase == 1 ? "G" : "C") + " - " + fCourseRegistration.year.ToString();
 
             components = new System.ComponentModel.Container();
 
@@ -76,10 +77,11 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             int labelDiaphragm = lblTuitionTotal.Location.X + lblTuitionTotal.Width * 50 / 100;
             int labelMarginTop = 10;
 
-            lblTuitionAmount.Text = tuitionAmount;
+            lblTuitionAmount.Text = "None";
             lblTuitionAmount.Font = fCourseRegistration.font11;
             lblTuitionAmount.AutoSize = true;
             lblTuitionAmount.Location = new Point(labelDiaphragm, lblTuitionTotal.Height + lblTuitionTotal.Location.Y + labelMarginTop + 5);
+            lblTuitionAmount.ForeColor = fCourseRegistration.orange;
 
             lblPaymentInformation.BackColor = Color.Transparent;
             lblPaymentInformation.Cursor = Cursors.Arrow;
@@ -148,7 +150,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             lblPaymentInfor.SelectionColor = fCourseRegistration.orange;
             lblPaymentInfor.SelectedText = "Thanh toán học phí:  ";
             lblPaymentInfor.SelectionColor = Color.Black;
-            lblPaymentInfor.SelectedText = "None";
+            lblPaymentInfor.SelectedText = description;
 
             lblPaymentMethod.BackColor = Color.Transparent;
             lblPaymentMethod.Cursor = Cursors.Arrow;
@@ -241,5 +243,7 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
         private RadioButton rbnOcb;
         private RadioButton rbnPaypal;
         private RoundedButton btnPay;
+
+        private string description;
     }
 }
