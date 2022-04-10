@@ -137,23 +137,28 @@ namespace WindowsFormsDevelopment.CustomControls
             {
                 classNumber = dgvCourseTable.SelectedRows[0].Cells["colClassNumber"].Value.ToString();
 
-                try
+                if (MessageBox.Show("Bạn có chắc muốn xóa học phần này?", 
+                    "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) 
+                    == DialogResult.Yes)
                 {
-                    if (GradeSubjectClassDAL.DeleteSubjectClass(classNumber, fCourseRegistration.studentId))
+                    try
                     {
-                        MessageBox.Show("Xóa học phần thành công", "Thông Báo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (GradeSubjectClassDAL.DeleteSubjectClass(classNumber, fCourseRegistration.studentId))
+                        {
+                            MessageBox.Show("Xóa học phần thành công", "Thông Báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        btnReRender.PerformClick();
+                            btnReRender.PerformClick();
+                        }
+                        else
+                            MessageBox.Show("Xóa học phần không thành công.\nVui lòng thử lại.", "Thông Báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else
-                        MessageBox.Show("Xóa học phần không thành công.\nVui lòng thử lại.", "Thông Báo",
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Lỗi",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Lỗi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

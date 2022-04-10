@@ -120,14 +120,26 @@ namespace WindowsFormsDevelopment.CustomControls
             {
                 var preCourse = dgvCourseTable.Rows[e.RowIndex].Cells["colPrerequisiteCourse"].Value.ToString().Split(',');
                 var courseNum = dgvCourseTable.Rows[e.RowIndex].Cells["colCourseNumber"].Value.ToString();
+                
+                if(InvoiceDetailDAL.CheckExistencePaidSubject(courseNum, 
+                    fCourseRegistration.year, fCourseRegistration.phase, fCourseRegistration.studentId))
+                {
+                    MessageBox.Show("Môn học đã thanh toán.\nKhông thể đăng ký lại.", 
+                        "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    return;
+                }
+                
                 this.subClassId = GradeSubjectClassDAL.CheckExistenceSubjectClass(courseNum,
                     fCourseRegistration.studentId);
 
                 if (CheckPrerequisiteSubjects(preCourse))
                 {
                     fCourseRegistration.pnlBody.Controls.Clear();
+
                     CourseSelectionPanel courseSelection = new CourseSelectionPanel(this, 
                         SubjectClassDAL.GetSubjectClasses(courseNum, fCourseRegistration.year, fCourseRegistration.phase), subClassId, IsInProgram);
+                    
                     fCourseRegistration.pnlBody.Controls.Add(courseSelection);
 
                 } else

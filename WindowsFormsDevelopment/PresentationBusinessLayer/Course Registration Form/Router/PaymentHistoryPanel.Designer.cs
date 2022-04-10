@@ -55,6 +55,15 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             headerStyle.SelectionForeColor = SystemColors.HighlightText;
             headerStyle.WrapMode = DataGridViewTriState.True;
 
+            DataGridViewCellStyle rowStyle = new DataGridViewCellStyle();
+            rowStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            rowStyle.BackColor = Color.White;
+            rowStyle.Font = fCourseRegistration.font10_Regular;
+            rowStyle.ForeColor = Color.Black;
+            rowStyle.SelectionBackColor = fCourseRegistration.green;
+            rowStyle.SelectionForeColor = SystemColors.HighlightText;
+            rowStyle.WrapMode = DataGridViewTriState.True;
+
             dgvPaymentHistory.Size = new Size(this.Width, this.Height);
             dgvPaymentHistory.RowHeadersVisible = false;
             dgvPaymentHistory.AllowUserToAddRows = false;
@@ -63,6 +72,9 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             dgvPaymentHistory.BorderStyle = BorderStyle.None;
             dgvPaymentHistory.ColumnHeadersHeight = 45;
             dgvPaymentHistory.ColumnHeadersDefaultCellStyle = headerStyle;
+            dgvPaymentHistory.RowsDefaultCellStyle = rowStyle;
+            dgvPaymentHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPaymentHistory.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvCourseTable_RowsAdded);
 
             dgvPaymentHistory.Columns.AddRange(new DataGridViewColumn[] {
                 colInvoiceNumber,

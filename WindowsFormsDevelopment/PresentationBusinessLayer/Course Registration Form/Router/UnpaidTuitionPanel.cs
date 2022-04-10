@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsDevelopment.CustomControls;
 using WindowsFormsDevelopment.DataAccessLayer;
+using WindowsFormsDevelopment.DataTransferObject;
 using WindowsFormsDevelopment.PaymentGateway.MoMo;
 
 namespace WindowsFormsDevelopment.Form_Course_Registration.Router
@@ -54,21 +55,45 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             btnRender.PerformClick();
         }
 
-        private void SaveInvoice(string invoiceHeaderId, List<string>invoiceDetails, string paymentMethod)
+        private void SaveInvoice(Guid invoiceHeaderId, string description, 
+            int payMedId, string studentId)
         {
+            List<dynamic> subClasses = GradeSubjectClassDAL.GetRegisteredClasses(studentId,
+                fCourseRegistration.year, fCourseRegistration.phase);
 
+            List<string> subClassIds = new List<string>();
+
+            foreach (dynamic subClass in subClasses)
+            {
+                subClassIds.Add(subClass.Id);
+            }
+
+            try
+            {
+                InvoiceHeaderDAL.AddInvoiceHeader(invoiceHeaderId, description, this.tuitionTotal, payMedId, studentId);
+                InvoiceDetailDAL.AddInvoiceDetail(invoiceHeaderId, subClassIds);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnPay_Click(object sender, EventArgs e)
         {
             if (tuitionTotal != 0)
             {
-                if(rbnMomo.Checked)
+                Guid invoiceId = Guid.NewGuid();
+                string orderDescription = studentInfor.Id + "-" + 
+                    studentInfor.Name + "-Thanh toán học phí: " + description;
+                int paymentMethodId;
+
+                if (rbnMomo.Checked)
                 {
-                    string invoiceId = Guid.NewGuid().ToString();
-                    string orderDescription = studentInfor.Id + "-" + studentInfor.Name + "-Thanh toán học phí: " + description;
+                    paymentMethodId = PaymentMethodDAL.GetPaymentMethodId(rbnMomo.Text);
+
                     string response = new MoMo(tuitionTotal.ToString(), 
-                        orderDescription, invoiceId).GetResponseFromMoMo();
+                        orderDescription, invoiceId.ToString()).GetResponseFromMoMo();
 
                     JObject jsonResponse = JObject.Parse(response);
 
@@ -80,7 +105,8 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
                         System.Diagnostics.Process.Start(jsonResponse.GetValue("payUrl").ToString());
 
                         ReRender();
-                        // SaveInvoice();
+                        SaveInvoice(invoiceId, orderDescription, 
+                            paymentMethodId, fCourseRegistration.studentId);
                     }
                 }
                 if (rbnOcb.Checked)

@@ -8,7 +8,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
     public partial class UehDbContext : DbContext
     {
         public UehDbContext()
-            : base("name=UehUniversityDbContext")
+            : base("name=UehDbContext")
         {
         }
 

@@ -19,7 +19,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public Guid GuidInvoice { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(150)]
         public string Description { get; set; }
 
         public DateTime? PaidDay { get; set; }

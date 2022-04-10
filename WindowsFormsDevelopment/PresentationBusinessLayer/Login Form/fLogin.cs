@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsDevelopment.DataAccessLayer;
+using WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Management_Form;
 
 namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
 {
@@ -68,11 +69,13 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (result[0] == "0")
             {
-
+                this.Hide();
+                fSubjectClassManagement f = new fSubjectClassManagement(result[1], this);
+                f.ShowDialog();
             }
             else if (result[0] == "1")
             {
-
+                
             }
             else if (result[0] == "2")
             {

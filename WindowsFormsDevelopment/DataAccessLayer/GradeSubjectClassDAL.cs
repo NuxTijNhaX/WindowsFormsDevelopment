@@ -214,6 +214,13 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             return results;
         }
     
+        /// <summary>
+        /// Lấy danh sách lớp học phần đã đăng ký và đã đóng học phí
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <param name="year"></param>
+        /// <param name="phase"></param>
+        /// <returns></returns>
         public static List<object> GetRegisteredClasses(string studentId, int year, int phase)
         {
             List<object> result = new List<object>();
@@ -222,14 +229,18 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             {
                 using (var database = new UehDbContext()) 
                 {
-                    var datas = (from gra in database.GradeSubjectClasses
-                                where gra.StudentId == studentId
-                                && gra.Grade == null
-                                join subClass in database.SubjectClasses
-                                on gra.SubjectClassId equals subClass.Id
-                                where subClass.Year == year
-                                && subClass.Semester == phase
-                                select gra.SubjectClassId).ToList<string>();
+                    var allSubClasses = (from gra in database.GradeSubjectClasses
+                                         where gra.StudentId == studentId
+                                         && gra.Grade == null
+                                         join subClass in database.SubjectClasses
+                                         on gra.SubjectClassId equals subClass.Id
+                                         where subClass.Year == year
+                                         && subClass.Semester == phase
+                                         select gra.SubjectClassId).ToList<string>();
+
+                    var paidSubClasses = InvoiceDetailDAL.GetPaidSubjectClasses(studentId);
+
+                    var datas = allSubClasses.Except(paidSubClasses);
 
                     foreach (var item in datas)
                     {

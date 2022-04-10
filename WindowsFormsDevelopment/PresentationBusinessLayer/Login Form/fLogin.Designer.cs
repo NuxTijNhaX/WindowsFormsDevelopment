@@ -95,9 +95,9 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             this.lblPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPass.Location = new System.Drawing.Point(12, 96);
             this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(90, 21);
+            this.lblPass.Size = new System.Drawing.Size(110, 21);
             this.lblPass.TabIndex = 3;
-            this.lblPass.Text = "Mật khẩu: ";
+            this.lblPass.Text = "Mật khẩu:      ";
             // 
             // lblUsername
             // 
@@ -105,9 +105,9 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.Location = new System.Drawing.Point(12, 40);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(89, 21);
+            this.lblUsername.Size = new System.Drawing.Size(110, 21);
             this.lblUsername.TabIndex = 2;
-            this.lblUsername.Text = "Email:        ";
+            this.lblUsername.Text = "Email/Mssv:  ";
             // 
             // tbxPass
             // 
@@ -127,7 +127,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.Size = new System.Drawing.Size(254, 29);
             this.tbxUsername.TabIndex = 0;
-            this.tbxUsername.Text = "lanhuynh.31191024709@st.ueh.edu.vn";
+            this.tbxUsername.Text = "thiennha7901@ad.ueh.edu.vn";
             // 
             // pnlFooter
             // 
