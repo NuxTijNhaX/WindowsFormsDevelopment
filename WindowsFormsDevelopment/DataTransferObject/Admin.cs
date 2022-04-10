@@ -6,12 +6,10 @@ namespace WindowsFormsDevelopment.DataTransferObject
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("User.Accounts")]
-    public partial class Account
+    [Table("Person.Admins")]
+    public partial class Admin
     {
-        public string Id { get; set; }
-
-        public string Password { get; set; }
+        public string AdminId { get; set; }
 
         public virtual User User { get; set; }
     }

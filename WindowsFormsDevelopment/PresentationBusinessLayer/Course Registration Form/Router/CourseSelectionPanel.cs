@@ -119,11 +119,11 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
 
             if (IsInProgram)
                 courseRegistration = new CourseRegistrationPanel(this,
-                SubjectDAL.GetSubjectsInforByMajorProgram(fCourseRegistration.majorProgramId,
+                SubjectDAL.GetSubjectsInfor(fCourseRegistration.majorProgramId,
                 fCourseRegistration.semester), true);
             else
                 courseRegistration = new CourseRegistrationPanel(this,
-                    SubjectDAL.GetSubjectsInforByUnPassList(
+                    SubjectDAL.GetSubjectsInfor(
                         GradeSubjectClassDAL.GetUnPassSubjects(fCourseRegistration.studentId),
                         fCourseRegistration.majorProgramId), false);
 

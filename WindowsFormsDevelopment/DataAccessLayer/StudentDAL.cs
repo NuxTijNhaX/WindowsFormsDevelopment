@@ -34,20 +34,22 @@ namespace WindowsFormsDevelopment.DataAccessLayer
 
             try
             {
-                using (var database = new UehDbContext())
+                using (var db = new UehDbContext())
                 {
-                    result = (from student in database.Students
-                              where student.Id == studentId
-                              join cla in database.Classes on student.Class_Id equals cla.Id
-                              join majorPro in database.MajorPrograms on cla.MajorProgram_Id equals majorPro.Id
-                              join major in database.Majors on majorPro.Major_Id equals major.Id
+                    result = (from stu in db.Students
+                              where stu.StudentId == studentId
+                              join user in db.Users
+                              on stu.StudentId equals user.Id
+                              join cla in db.Classes on stu.Class_Id equals cla.Id
+                              join majorPro in db.MajorPrograms on cla.MajorProgram_Id equals majorPro.Id
+                              join major in db.Majors on majorPro.Major_Id equals major.Id
                               select new
                               {
-                                  Id = student.Id,
-                                  Name = student.FullName,
-                                  Email = student.Email,
-                                  PhoneNumber = student.PhoneNumber,
-                                  Address = student.Address,
+                                  Id = user.Id,
+                                  Name = user.FullName,
+                                  Email = user.Email,
+                                  PhoneNumber = user.PhoneNumber,
+                                  Address = user.Address,
                                   ClassId = cla.Id,
                                   Year = cla.Year,
                                   Major = major.Name,
@@ -58,7 +60,6 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             }
             catch (Exception)
             {
-
                 throw;
             }
 

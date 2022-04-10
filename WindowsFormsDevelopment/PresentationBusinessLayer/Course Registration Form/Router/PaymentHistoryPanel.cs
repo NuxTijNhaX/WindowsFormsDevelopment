@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsDevelopment.Form_Course_Registration.Router
 {
-    public partial class PaymentHistoryPanel : Control
+    public partial class PaymentHistoryPanel : Panel
     {
         public Panel pnlParent { get; set; }
 

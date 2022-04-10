@@ -11,15 +11,12 @@ namespace WindowsFormsDevelopment.DataTransferObject
     {
         public int Id { get; set; }
 
-        [StringLength(15)]
-        public string GradeSubjectClass_SubjectClassId { get; set; }
-
-        [StringLength(11)]
-        public string GradeSubjectClass_StudentId { get; set; }
-
         public Guid? InvoiceHeader_GuidInvoice { get; set; }
 
-        public virtual GradeSubjectClass GradeSubjectClass { get; set; }
+        [StringLength(15)]
+        public string SubjectClass_Id { get; set; }
+
+        public virtual SubjectClass SubjectClass { get; set; }
 
         public virtual InvoiceHeader InvoiceHeader { get; set; }
     }

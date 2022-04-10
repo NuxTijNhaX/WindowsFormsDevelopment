@@ -41,7 +41,7 @@ namespace WindowsFormsDevelopment.CustomControls
             pnlBody = new Panel();
             btnUnpaid = new RoundedButton();
             btnPaymentHistory = new RoundedButton();
-            pnlUnpaid = new UnpaidTuitionPanel(pnlBody, studentInfor);
+            pnlUnpaid = new UnpaidTuitionPanel(pnlBody, studentInfor, btnUnpaid);
             pnlHistory = new PaymentHistoryPanel(pnlBody);
 
             flpTab.Size = new Size(this.Width, this.Height / 12);
@@ -108,7 +108,7 @@ namespace WindowsFormsDevelopment.CustomControls
             if(type == btnUnpaid.Text)
             {
                 pnlBody.Controls.Clear();
-                pnlUnpaid = new UnpaidTuitionPanel(pnlBody, studentInfor);
+                pnlUnpaid = new UnpaidTuitionPanel(pnlBody, studentInfor, btnUnpaid);
                 pnlBody.Controls.Add(pnlUnpaid);
             } 
             else if(type == btnPaymentHistory.Text)

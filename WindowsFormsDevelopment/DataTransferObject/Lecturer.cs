@@ -16,15 +16,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
             Subjects = new HashSet<Subject>();
         }
 
-        public string Id { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string FullName { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Email { get; set; }
+        public string LecturerId { get; set; }
 
         public bool IsVisiting { get; set; }
 
@@ -35,6 +27,8 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public virtual ICollection<SubjectClass> SubjectClasses { get; set; }
 
         public virtual Faculty Faculty { get; set; }
+
+        public virtual User User { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subject> Subjects { get; set; }

@@ -37,7 +37,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public string Faculty_Id { get; set; }
 
         [StringLength(128)]
-        public string Lecturer_Id { get; set; }
+        public string LecturerId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubjectClass> SubjectClasses { get; set; }

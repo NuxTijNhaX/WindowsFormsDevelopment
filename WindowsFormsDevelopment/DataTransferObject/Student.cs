@@ -16,24 +16,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
             InvoiceHeaders = new HashSet<InvoiceHeader>();
         }
 
-        [StringLength(11)]
-        public string Id { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string FullName { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        public string PhoneNumber { get; set; }
-
-        [Required]
-        [StringLength(100)]
-        public string Address { get; set; }
+        public string StudentId { get; set; }
 
         [StringLength(9)]
         public string Class_Id { get; set; }
@@ -45,5 +28,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InvoiceHeader> InvoiceHeaders { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

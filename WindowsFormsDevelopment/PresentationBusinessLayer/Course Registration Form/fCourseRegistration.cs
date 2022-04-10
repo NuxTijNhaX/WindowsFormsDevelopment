@@ -124,7 +124,7 @@ namespace WindowsFormsDevelopment
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
             pnlContentBody = new CourseRegistrationPanel(pnlBody,
-                SubjectDAL.GetSubjectsInforByMajorProgram(majorProgramId, semester), true);
+                SubjectDAL.GetSubjectsInfor(majorProgramId, semester), true);
             pnlBody.Controls.Add(pnlContentBody);
         }
 
@@ -136,7 +136,7 @@ namespace WindowsFormsDevelopment
             List<string> unpassSubs = GradeSubjectClassDAL.GetUnPassSubjects(studentId);
 
             pnlContentBody = new CourseRegistrationPanel(pnlBody,
-                SubjectDAL.GetSubjectsInforByUnPassList(unpassSubs, majorProgramId), false);
+                SubjectDAL.GetSubjectsInfor(unpassSubs, majorProgramId), false);
             pnlBody.Controls.Add(pnlContentBody);
         }
 

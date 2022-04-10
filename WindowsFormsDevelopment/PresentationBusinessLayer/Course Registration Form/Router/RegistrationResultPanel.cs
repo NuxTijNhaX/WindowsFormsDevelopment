@@ -26,6 +26,7 @@ namespace WindowsFormsDevelopment.CustomControls
             pnlParent = pnlBody;
             this.subClasses = subClasses;
             this.btnPaymentPage = btnPaymentPage;
+            this.btnReRender = btnRender;
 
             this.Width = pnlBody.Width;
             this.Height = pnlBody.Height;

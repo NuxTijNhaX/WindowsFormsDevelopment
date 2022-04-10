@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsDevelopment.CustomControls;
 using WindowsFormsDevelopment.DataAccessLayer;
 using WindowsFormsDevelopment.PaymentGateway.MoMo;
 
@@ -18,19 +19,20 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
     {
         public Panel pnlParent { get; set; }
         public dynamic studentInfor { get; set; }
+        private RoundedButton btnRender { get; set; }
         private int tuitionTotal;
 
-        public UnpaidTuitionPanel(Panel pnl, object studentInfor)
+        public UnpaidTuitionPanel(Panel pnl, object studentInfor, RoundedButton btnRender)
         {
             pnlParent = pnl;
             this.studentInfor = studentInfor;
+            this.btnRender = btnRender;
 
             this.Width = pnl.Width;
             this.Height = pnl.Height;
             this.BackColor = Color.White;
 
             InitializeComponent();
-
             LoadTuitionTotal();
         }
 
@@ -47,16 +49,26 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
             }
         }
 
+        private void ReRender()
+        {
+            btnRender.PerformClick();
+        }
+
+        private void SaveInvoice(string invoiceHeaderId, List<string>invoiceDetails, string paymentMethod)
+        {
+
+        }
+
         private void btnPay_Click(object sender, EventArgs e)
         {
             if (tuitionTotal != 0)
             {
                 if(rbnMomo.Checked)
                 {
-                    string orderId = Guid.NewGuid().ToString();
+                    string invoiceId = Guid.NewGuid().ToString();
                     string orderDescription = studentInfor.Id + "-" + studentInfor.Name + "-Thanh toán học phí: " + description;
                     string response = new MoMo(tuitionTotal.ToString(), 
-                        orderDescription, orderId).GetResponseFromMoMo();
+                        orderDescription, invoiceId).GetResponseFromMoMo();
 
                     JObject jsonResponse = JObject.Parse(response);
 
@@ -66,6 +78,9 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
                     if (result == DialogResult.Yes)
                     {
                         System.Diagnostics.Process.Start(jsonResponse.GetValue("payUrl").ToString());
+
+                        ReRender();
+                        // SaveInvoice();
                     }
                 }
                 if (rbnOcb.Checked)

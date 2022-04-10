@@ -8,14 +8,13 @@ namespace WindowsFormsDevelopment.DataTransferObject
     public partial class UehDbContext : DbContext
     {
         public UehDbContext()
-            : base("name=UehDbContext")
+            : base("name=UehUniversityDbContext")
         {
         }
 
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<GradeSubjectClass> GradeSubjectClasses { get; set; }
         public virtual DbSet<SubjectClass> SubjectClasses { get; set; }
-        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Campus> Campuses { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<Faculty> Faculties { get; set; }
@@ -23,6 +22,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public virtual DbSet<InvoiceDetail> InvoiceDetails { get; set; }
         public virtual DbSet<InvoiceHeader> InvoiceHeaders { get; set; }
         public virtual DbSet<PaymentMehod> PaymentMehods { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Lecturer> Lecturers { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<MajorProgram> MajorPrograms { get; set; }
@@ -30,6 +30,8 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public virtual DbSet<SubjectProgram> SubjectPrograms { get; set; }
         public virtual DbSet<Shift> Shifts { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -43,10 +45,10 @@ namespace WindowsFormsDevelopment.DataTransferObject
                 .WithOptional(e => e.Class)
                 .HasForeignKey(e => e.Class_Id);
 
-            modelBuilder.Entity<GradeSubjectClass>()
+            modelBuilder.Entity<SubjectClass>()
                 .HasMany(e => e.InvoiceDetails)
-                .WithOptional(e => e.GradeSubjectClass)
-                .HasForeignKey(e => new { e.GradeSubjectClass_SubjectClassId, e.GradeSubjectClass_StudentId });
+                .WithOptional(e => e.SubjectClass)
+                .HasForeignKey(e => e.SubjectClass_Id);
 
             modelBuilder.Entity<Campus>()
                 .HasMany(e => e.Rooms)
@@ -83,20 +85,15 @@ namespace WindowsFormsDevelopment.DataTransferObject
                 .WithOptional(e => e.InvoiceHeader)
                 .HasForeignKey(e => e.InvoiceHeader_GuidInvoice);
 
-            modelBuilder.Entity<Lecturer>()
-                .HasMany(e => e.SubjectClasses)
-                .WithOptional(e => e.Lecturer)
-                .HasForeignKey(e => e.Lecturer_Id);
-
-            modelBuilder.Entity<Lecturer>()
-                .HasMany(e => e.Subjects)
-                .WithOptional(e => e.Lecturer)
-                .HasForeignKey(e => e.Lecturer_Id);
+            modelBuilder.Entity<PaymentMehod>()
+                .HasMany(e => e.InvoiceHeaders)
+                .WithOptional(e => e.PaymentMehod)
+                .HasForeignKey(e => e.PaymentMehod_Id);
 
             modelBuilder.Entity<Student>()
                 .HasMany(e => e.InvoiceHeaders)
                 .WithOptional(e => e.Student)
-                .HasForeignKey(e => e.Student_Id);
+                .HasForeignKey(e => e.Student_StudentId);
 
             modelBuilder.Entity<MajorProgram>()
                 .HasMany(e => e.Classes)
@@ -117,6 +114,22 @@ namespace WindowsFormsDevelopment.DataTransferObject
                 .HasMany(e => e.SubjectClasses)
                 .WithOptional(e => e.Subject)
                 .HasForeignKey(e => e.Subject_Id);
+
+            modelBuilder.Entity<User>()
+                .HasOptional(e => e.Admin)
+                .WithRequired(e => e.User);
+
+            modelBuilder.Entity<User>()
+                .HasOptional(e => e.Lecturer)
+                .WithRequired(e => e.User);
+
+            modelBuilder.Entity<User>()
+                .HasOptional(e => e.Student)
+                .WithRequired(e => e.User);
+
+            modelBuilder.Entity<User>()
+                .HasOptional(e => e.Account)
+                .WithRequired(e => e.User);
         }
     }
 }

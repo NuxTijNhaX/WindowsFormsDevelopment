@@ -43,7 +43,9 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                               join subject in database.Subjects
                               on subClass.Subject_Id equals subject.Id
                               join lecturer in database.Lecturers
-                              on subClass.Lecturer_Id equals lecturer.Id
+                              on subClass.LecturerId equals lecturer.LecturerId
+                              join user in database.Users
+                              on lecturer.LecturerId equals user.Id
                               join room in database.Rooms
                               on subClass.Room_Id equals room.Id
                               join shift in database.Shifts
@@ -55,14 +57,13 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                                 BeginDate = subClass.BeginDate,
                                 EndDate = subClass.EndDate,
                                 Room = room.Id,
-                                LecturerName = lecturer.FullName,
+                                LecturerName = user.FullName,
                                 Shift = shift.Description,
                               }).ToList<object>();
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
 
@@ -82,7 +83,9 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                               join subject in database.Subjects
                               on subClass.Subject_Id equals subject.Id
                               join lecturer in database.Lecturers
-                              on subClass.Lecturer_Id equals lecturer.Id
+                              on subClass.LecturerId equals lecturer.LecturerId
+                              join user in database.Users
+                              on lecturer.LecturerId equals user.Id
                               join room in database.Rooms
                               on subClass.Room_Id equals room.Id
                               join shift in database.Shifts
@@ -94,7 +97,7 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                                   BeginDate = subClass.BeginDate,
                                   EndDate = subClass.EndDate,
                                   Room = room.Id,
-                                  LecturerName = lecturer.FullName,
+                                  LecturerName = user.FullName,
                                   Shift = shift.Description,
                                   Credit = subject.Credit,
                               }).FirstOrDefault();
@@ -102,7 +105,6 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             }
             catch (Exception)
             {
-
                 throw;
             }
 

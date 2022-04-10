@@ -70,11 +70,13 @@
       <DependentUpon>RoundedButton.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccessLayer\GradeSubjectClassDAL.cs" />
+    <Compile Include="DataAccessLayer\InvoiceHeaderDAL.cs" />
     <Compile Include="DataAccessLayer\SubjectClassDAL.cs" />
     <Compile Include="DataAccessLayer\SubjectDAL.cs" />
     <Compile Include="DataAccessLayer\StudentDAL.cs" />
-    <Compile Include="DataAccessLayer\AccessDAL.cs" />
+    <Compile Include="DataAccessLayer\AccountDAL.cs" />
     <Compile Include="DataTransferObject\Account.cs" />
+    <Compile Include="DataTransferObject\Admin.cs" />
     <Compile Include="DataTransferObject\Campus.cs" />
     <Compile Include="DataTransferObject\Class.cs" />
     <Compile Include="DataTransferObject\Faculty.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="DataTransferObject\SubjectClass.cs" />
     <Compile Include="DataTransferObject\SubjectProgram.cs" />
     <Compile Include="DataTransferObject\UehDbContext.cs" />
+    <Compile Include="DataTransferObject\User.cs" />
     <Compile Include="PaymentGateway\MoMo\PaymentRequest.cs" />
     <Compile Include="PaymentGateway\MoMo\Security.cs" />
     <Compile Include="PaymentGateway\MoMo\MoMo.cs" />

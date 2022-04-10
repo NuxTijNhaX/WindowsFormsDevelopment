@@ -13,6 +13,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public SubjectClass()
         {
             GradeSubjectClasses = new HashSet<GradeSubjectClass>();
+            InvoiceDetails = new HashSet<InvoiceDetail>();
         }
 
         [StringLength(15)]
@@ -20,7 +21,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
 
         public int Year { get; set; }
 
-        public int? Semester { get; set; }
+        public int Semester { get; set; }
 
         [StringLength(3)]
         public string OffScheduleSemester { get; set; }
@@ -33,7 +34,7 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public string Class_Id { get; set; }
 
         [StringLength(128)]
-        public string Lecturer_Id { get; set; }
+        public string LecturerId { get; set; }
 
         [StringLength(6)]
         public string Room_Id { get; set; }
@@ -55,5 +56,8 @@ namespace WindowsFormsDevelopment.DataTransferObject
         public virtual Shift Shift { get; set; }
 
         public virtual Subject Subject { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }

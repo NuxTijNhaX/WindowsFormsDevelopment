@@ -61,7 +61,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Login_Form
                 return;
             }
 
-            List<string> result = AccessDAL.GetAccessInfor(tbxUsername.Text.Trim(), tbxPass.Text);
+            string[] result = AccountDAL.GetAccessInfor(tbxUsername.Text.Trim(), tbxPass.Text);
 
             if(result[0] == "-1")
                 MessageBox.Show("Sai Thông Tin Đăng Nhập\nVui Lòng Thử Lại", "Thông Báo",

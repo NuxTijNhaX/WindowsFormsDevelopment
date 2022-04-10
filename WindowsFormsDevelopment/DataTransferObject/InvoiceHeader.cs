@@ -22,15 +22,19 @@ namespace WindowsFormsDevelopment.DataTransferObject
         [StringLength(50)]
         public string Description { get; set; }
 
-        public DateTime PaidDay { get; set; }
+        public DateTime? PaidDay { get; set; }
 
         public int TotalCost { get; set; }
 
-        [StringLength(11)]
-        public string Student_Id { get; set; }
+        public int? PaymentMehod_Id { get; set; }
+
+        [StringLength(128)]
+        public string Student_StudentId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
+
+        public virtual PaymentMehod PaymentMehod { get; set; }
 
         public virtual Student Student { get; set; }
     }
