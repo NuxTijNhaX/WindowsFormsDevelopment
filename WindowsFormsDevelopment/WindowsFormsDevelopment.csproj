@@ -72,8 +72,12 @@
     <Compile Include="DataAccessLayer\GradeSubjectClassDAL.cs" />
     <Compile Include="DataAccessLayer\InvoiceDetailDAL.cs" />
     <Compile Include="DataAccessLayer\InvoiceHeaderDAL.cs" />
+    <Compile Include="DataAccessLayer\ClassDAL.cs" />
+    <Compile Include="DataAccessLayer\MajorDAL.cs" />
     <Compile Include="DataAccessLayer\SubjectClassDAL.cs" />
     <Compile Include="DataAccessLayer\PaymentMethodDAL.cs" />
+    <Compile Include="DataAccessLayer\FacultyDAL.cs" />
+    <Compile Include="DataAccessLayer\ShoolLevelDAL.cs" />
     <Compile Include="DataAccessLayer\SubjectDAL.cs" />
     <Compile Include="DataAccessLayer\StudentDAL.cs" />
     <Compile Include="DataAccessLayer\AccountDAL.cs" />
@@ -164,6 +168,12 @@
     <Compile Include="PresentationBusinessLayer\Subject Class Management Form\fSubjectClassManagement.Designer.cs">
       <DependentUpon>fSubjectClassManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="PresentationBusinessLayer\Subject Class Management Form\Router\CreateSubjectClass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PresentationBusinessLayer\Subject Class Management Form\Router\CreateSubjectClass.Designer.cs">
+      <DependentUpon>CreateSubjectClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="PresentationBusinessLayer\Course Registration Form\Router\CourseRegistrationPanel.resx">
@@ -177,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PresentationBusinessLayer\Subject Class Management Form\fSubjectClassManagement.resx">
       <DependentUpon>fSubjectClassManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationBusinessLayer\Subject Class Management Form\Router\CreateSubjectClass.resx">
+      <DependentUpon>CreateSubjectClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -237,7 +250,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PresentationBusinessLayer\Form1\Router\" />
-    <Folder Include="PresentationBusinessLayer\Subject Class Management Form\Router\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\payment-information-green.png" />

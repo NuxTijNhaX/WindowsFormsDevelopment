@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Management_Form.Router;
 
 namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Management_Form
 {
     public partial class fSubjectClassManagement : Form
     {
         public static string lecturerId;
+        private Control pnlContent;
         Form fLogin;
 
         public fSubjectClassManagement(string lecId, Form fLogin)
@@ -77,8 +79,11 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
         private void btnCreate_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
-
+            
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
+
+            pnlContent = new CreateSubjectClass(pnlBody);
+            pnlBody.Controls.Add(pnlContent);
         }
 
         private void btnSubjectClassManagement_Click(object sender, EventArgs e)
