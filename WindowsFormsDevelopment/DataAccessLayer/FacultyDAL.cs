@@ -28,6 +28,24 @@ namespace WindowsFormsDevelopment.DataAccessLayer
 
         private FacultyDAL() { }
 
+        public static List<Faculty> GetAllFaculty()
+        {
+            List<Faculty> faculties = new List<Faculty>();
 
+            try
+            {
+                using (var db = new UehDbContext())
+                {
+                    faculties = (from fac in db.Faculties
+                                 select fac).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return faculties;
+        }
     }
 }

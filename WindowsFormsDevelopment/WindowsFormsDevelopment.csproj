@@ -69,6 +69,10 @@
     <Compile Include="CustomControls\RoundedButton.Designer.cs">
       <DependentUpon>RoundedButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataAccessLayer\CampusDAL.cs" />
+    <Compile Include="DataAccessLayer\RoomDAL.cs" />
+    <Compile Include="DataAccessLayer\LecturerDAL.cs" />
+    <Compile Include="DataAccessLayer\ShiftDAL.cs" />
     <Compile Include="DataAccessLayer\GradeSubjectClassDAL.cs" />
     <Compile Include="DataAccessLayer\InvoiceDetailDAL.cs" />
     <Compile Include="DataAccessLayer\InvoiceHeaderDAL.cs" />
@@ -77,7 +81,7 @@
     <Compile Include="DataAccessLayer\SubjectClassDAL.cs" />
     <Compile Include="DataAccessLayer\PaymentMethodDAL.cs" />
     <Compile Include="DataAccessLayer\FacultyDAL.cs" />
-    <Compile Include="DataAccessLayer\ShoolLevelDAL.cs" />
+    <Compile Include="DataAccessLayer\SchoolLevelDAL.cs" />
     <Compile Include="DataAccessLayer\SubjectDAL.cs" />
     <Compile Include="DataAccessLayer\StudentDAL.cs" />
     <Compile Include="DataAccessLayer\AccountDAL.cs" />

@@ -7,17 +7,17 @@ using WindowsFormsDevelopment.DataTransferObject;
 
 namespace WindowsFormsDevelopment.DataAccessLayer
 {
-    public class ClassDAL
+    public class SchoolLevelDAL
     {
-        private static ClassDAL instance;
+        private static SchoolLevelDAL instance;
 
-        public static ClassDAL Instance
+        public static SchoolLevelDAL Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new ClassDAL();
+                    instance = new SchoolLevelDAL();
                 }
 
                 return instance;
@@ -26,29 +26,27 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             set => instance = value;
         }
 
-        private ClassDAL() { }
+        private SchoolLevelDAL() { }
 
-        public static List<Class> GetClasses(string majorId)
+        public static List<SchoolLevel> GetAllSchoolLevel()
         {
-            List<Class> classes = new List<Class>();
+            List<SchoolLevel> schoolLevels = new List<SchoolLevel>();
 
             try
             {
                 using (var db = new UehDbContext())
                 {
-                    classes = (from majPro in db.MajorPrograms
-                               where majPro.Major_Id == majorId
-                               join cla in db.Classes
-                               on majPro.Id equals cla.MajorProgram_Id
-                               select cla).ToList();
+                    schoolLevels = (from schlev in db.SchoolLevels
+                                    select schlev).ToList();
                 }
             }
             catch (Exception)
             {
+
                 throw;
             }
 
-            return classes;
+            return schoolLevels;
         }
     }
 }

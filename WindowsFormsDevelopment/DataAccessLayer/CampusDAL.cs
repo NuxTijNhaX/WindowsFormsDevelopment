@@ -7,17 +7,17 @@ using WindowsFormsDevelopment.DataTransferObject;
 
 namespace WindowsFormsDevelopment.DataAccessLayer
 {
-    public class ClassDAL
+    public class CampusDAL
     {
-        private static ClassDAL instance;
+        private static CampusDAL instance;
 
-        public static ClassDAL Instance
+        public static CampusDAL Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new ClassDAL();
+                    instance = new CampusDAL();
                 }
 
                 return instance;
@@ -26,21 +26,18 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             set => instance = value;
         }
 
-        private ClassDAL() { }
+        private CampusDAL() { }
 
-        public static List<Class> GetClasses(string majorId)
+        public static List<Campus> GetAllCampuses()
         {
-            List<Class> classes = new List<Class>();
+            List<Campus> campuses = new List<Campus>();
 
             try
             {
                 using (var db = new UehDbContext())
                 {
-                    classes = (from majPro in db.MajorPrograms
-                               where majPro.Major_Id == majorId
-                               join cla in db.Classes
-                               on majPro.Id equals cla.MajorProgram_Id
-                               select cla).ToList();
+                    campuses = (from camp in db.Campuses
+                               select camp).ToList();
                 }
             }
             catch (Exception)
@@ -48,7 +45,7 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                 throw;
             }
 
-            return classes;
+            return campuses;
         }
     }
 }

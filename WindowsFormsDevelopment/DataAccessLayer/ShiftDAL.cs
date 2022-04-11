@@ -7,17 +7,17 @@ using WindowsFormsDevelopment.DataTransferObject;
 
 namespace WindowsFormsDevelopment.DataAccessLayer
 {
-    public class ClassDAL
+    public class ShiftDAL
     {
-        private static ClassDAL instance;
+        private static ShiftDAL instance;
 
-        public static ClassDAL Instance
+        public static ShiftDAL Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new ClassDAL();
+                    instance = new ShiftDAL();
                 }
 
                 return instance;
@@ -26,21 +26,18 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             set => instance = value;
         }
 
-        private ClassDAL() { }
+        private ShiftDAL() { }
 
-        public static List<Class> GetClasses(string majorId)
+        public static List<Shift> GetShifts()
         {
-            List<Class> classes = new List<Class>();
+            List<Shift> shifts = new List<Shift>();
 
             try
             {
                 using (var db = new UehDbContext())
                 {
-                    classes = (from majPro in db.MajorPrograms
-                               where majPro.Major_Id == majorId
-                               join cla in db.Classes
-                               on majPro.Id equals cla.MajorProgram_Id
-                               select cla).ToList();
+                    shifts = (from shi in db.Shifts
+                              select shi).ToList();
                 }
             }
             catch (Exception)
@@ -48,7 +45,7 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                 throw;
             }
 
-            return classes;
+            return shifts;
         }
     }
 }

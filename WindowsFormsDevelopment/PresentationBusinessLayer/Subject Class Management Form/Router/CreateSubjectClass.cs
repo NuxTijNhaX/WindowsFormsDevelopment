@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsDevelopment.DataAccessLayer;
+using WindowsFormsDevelopment.DataTransferObject;
 
 namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Management_Form.Router
 {
@@ -24,6 +26,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             InitializeComponent();
 
             ConfigUI();
+            
         }
 
         private void ConfigUI()
@@ -127,6 +130,145 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             pnlFooter.Height = this.Height * 10 / 100;
             btnCreate.Location = new Point((pnlFooter.Width - btnCreate.Width) / 2,
                 (pnlFooter.Height - btnCreate.Height) / 2);
+
+            LoadShoolLevels();
+            LoadFaculty();
+            LoadYear();
+            LoadSemester();
+            LoadCampus();
+            LoadShift();
+        }
+
+        private void LoadShift()
+        {
+            var shifts = ShiftDAL.GetShifts();
+            cbxShift.DataSource = shifts;
+            cbxShift.ValueMember = "Id";
+            cbxShift.DisplayMember = "Description";
+        }
+
+        private void LoadRoom(string campusId)
+        {
+            var rooms = RoomDAL.GetRoom(campusId);
+            cbxRoom.DataSource = rooms;
+            cbxRoom.ValueMember = "Id";
+            cbxRoom.DisplayMember = "Id";
+        }
+
+        private void LoadCampus()
+        {
+            var campuses = CampusDAL.GetAllCampuses();
+            cbxCampus.DataSource = campuses;
+            cbxCampus.ValueMember = "Id";
+            cbxCampus.DisplayMember = "Id";
+        }
+        
+        private void LoadYear()
+        {
+            int curYear = DateTime.Now.Year;
+            for (int i = 0; i < 7; i++)
+            {
+                cbxYear.Items.Add(curYear + i);
+            }
+
+            cbxYear.SelectedIndex = 0;
+        }
+
+        private void LoadSemester()
+        {
+            cbxPhase.DisplayMember = "Text";
+            cbxPhase.ValueMember = "Value";
+
+            string[] semesterInfor = new string[3] { "HKĐ", "HKG", "HKC" };
+            for (int i = 0; i < semesterInfor.Length; i++)
+            {
+                cbxPhase.Items.Add(new { Text = i.ToString() + ": " + semesterInfor[0], Value = i });
+            }
+
+            cbxPhase.SelectedIndex = 0;
+        }
+
+        private void LoadShoolLevels()
+        {
+            var schoolLevels = SchoolLevelDAL.GetAllSchoolLevel();
+            cbxSchoolLevel.DataSource = schoolLevels;
+            cbxSchoolLevel.DisplayMember = "Name";
+        }
+
+        private void LoadFaculty()
+        {
+            var faculties = FacultyDAL.GetAllFaculty();
+            cbxFaculty.DataSource = faculties;
+            cbxFaculty.ValueMember = "Id";
+            cbxFaculty.DisplayMember = "Name";
+        }
+
+        private void LoadMajor(string facultyId)
+        {
+            var majors = MajorDAL.GetMajors(facultyId);
+            cbxMajor.DataSource = majors;
+            cbxMajor.ValueMember = "Id";
+            cbxMajor.DisplayMember = "Name";
+        }
+
+        private void LoadClass(string majorId)
+        {
+            var classes = ClassDAL.GetClasses(majorId);
+            cbxClass.DataSource = classes;
+            cbxClass.ValueMember = "Id";
+            cbxClass.DisplayMember = "Id";
+        }
+
+        private void LoadLecturer(string subjecId)
+        {
+            var lecturers = LecturerDAL.GetLecturers(subjecId);
+            cbxLecturer.DataSource = lecturers;
+            cbxLecturer.ValueMember = "Id";
+            cbxLecturer.DisplayMember = "Id";
+        }
+
+        private void LoadSubject()
+        {
+            var classId = (cbxClass.SelectedItem as Class).Id;
+        }
+
+        private void cbxFaculty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = (cbxFaculty.SelectedItem as Faculty).Id;
+            LoadMajor(id);
+        }
+
+        private void cbxMajor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = (cbxMajor.SelectedItem as Major).Id;
+            LoadClass(id);
+        }
+
+        private void cbxCampus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = (cbxCampus.SelectedItem as Campus).Id;
+            LoadRoom(id);
+        }
+
+        private void cbxSubject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = (cbxSubject.SelectedItem as Lecturer).LecturerId;
+            LoadLecturer(id);
+        }
+
+        private void cbxClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSubject();
+        }
+
+        private void cbxYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSubject();
+        }
+
+        private void cbxPhase_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSubject();
         }
     }
 }

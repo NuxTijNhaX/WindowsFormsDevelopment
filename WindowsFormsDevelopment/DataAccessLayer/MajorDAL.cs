@@ -7,17 +7,17 @@ using WindowsFormsDevelopment.DataTransferObject;
 
 namespace WindowsFormsDevelopment.DataAccessLayer
 {
-    public class ClassDAL
+    public class MajorDAL
     {
-        private static ClassDAL instance;
+        private static MajorDAL instance;
 
-        public static ClassDAL Instance
+        public static MajorDAL Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new ClassDAL();
+                    instance = new MajorDAL();
                 }
 
                 return instance;
@@ -26,8 +26,31 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             set => instance = value;
         }
 
-        private ClassDAL() { }
+        private MajorDAL() { }
 
-        
+        public static List<Major> GetMajors(string facultyId)
+        {
+            List<Major> majors = new List<Major>();
+
+            try
+            {
+                using (var db = new UehDbContext())
+                {
+                    majors = (from maj in db.Majors
+                              join majPro in db.MajorPrograms
+                              on maj.Id equals majPro.Major_Id
+                              join fac in db.Faculties
+                              on majPro.Faculty_Id equals fac.Id
+                              where fac.Id == facultyId
+                              select maj).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return majors;
+        }
     }
 }
