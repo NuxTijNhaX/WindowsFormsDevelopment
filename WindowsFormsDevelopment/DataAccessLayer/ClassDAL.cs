@@ -28,6 +28,26 @@ namespace WindowsFormsDevelopment.DataAccessLayer
 
         private ClassDAL() { }
 
+        public static List<Class> GetClasses()
+        {
+            List<Class> classes = new List<Class>();
+
+            try
+            {
+                using (var db = new UehDbContext())
+                {
+                    classes = (from cla in db.Classes
+                               select cla).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return classes;
+        }
+
         public static List<Class> GetClasses(string majorId)
         {
             List<Class> classes = new List<Class>();

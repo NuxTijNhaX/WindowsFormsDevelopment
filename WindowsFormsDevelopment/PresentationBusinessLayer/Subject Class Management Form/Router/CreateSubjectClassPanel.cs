@@ -12,21 +12,21 @@ using WindowsFormsDevelopment.DataTransferObject;
 
 namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Management_Form.Router
 {
-    public partial class CreateSubjectClass : UserControl
+    public partial class CreateSubjectClassPanel : Panel
     {
         public Panel pnlParent { get; set; }
 
-        public CreateSubjectClass(Panel pnlBody)
+        public CreateSubjectClassPanel(Panel pnlBody)
         {
             this.pnlParent = pnlBody;
 
             this.Width = pnlBody.Width;
             this.Height = pnlBody.Height;
+            this.BackColor = Color.White;
 
             InitializeComponent();
 
             ConfigUI();
-            
         }
 
         private void ConfigUI()
@@ -161,6 +161,8 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             cbxCampus.DataSource = campuses;
             cbxCampus.ValueMember = "Id";
             cbxCampus.DisplayMember = "Id";
+
+            // cbxCampus.SelectedIndex = 1;
         }
         
         private void LoadYear()
@@ -182,7 +184,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             string[] semesterInfor = new string[3] { "HKĐ", "HKG", "HKC" };
             for (int i = 0; i < semesterInfor.Length; i++)
             {
-                cbxPhase.Items.Add(new { Text = i.ToString() + ": " + semesterInfor[0], Value = i });
+                cbxPhase.Items.Add(new { Text = i.ToString() + ": " + semesterInfor[i], Value = i });
             }
 
             cbxPhase.SelectedIndex = 0;
@@ -221,15 +223,27 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
 
         private void LoadLecturer(string subjecId)
         {
-            var lecturers = LecturerDAL.GetLecturers(subjecId);
-            cbxLecturer.DataSource = lecturers;
-            cbxLecturer.ValueMember = "Id";
-            cbxLecturer.DisplayMember = "Id";
+            try
+            {
+                var lecturers = LecturerDAL.GetLecturers(subjecId);
+                cbxLecturer.DataSource = lecturers;
+                cbxLecturer.ValueMember = "Id";
+                cbxLecturer.DisplayMember = "FullName";
+            }
+            catch
+            {
+            }
+            
         }
 
         private void LoadSubject()
         {
-            var classId = (cbxClass.SelectedItem as Class).Id;
+            string classId = (cbxClass.SelectedItem as Class).Id;
+
+            var subjects = SubjectDAL.GetSubjects(classId);
+            cbxSubject.DataSource = subjects;
+            cbxSubject.ValueMember = "Id";
+            cbxSubject.DisplayMember = "Name";
         }
 
         private void cbxFaculty_SelectedIndexChanged(object sender, EventArgs e)
@@ -252,7 +266,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
 
         private void cbxSubject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var id = (cbxSubject.SelectedItem as Lecturer).LecturerId;
+            var id = (cbxSubject.SelectedItem as Subject).Id;
             LoadLecturer(id);
         }
 
@@ -263,12 +277,58 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
 
         private void cbxYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadSubject();
         }
 
         private void cbxPhase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadSubject();
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            if (cbxRoom.Text == "")
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông Báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int year = int.Parse(cbxYear.Text);
+            int phase = (cbxPhase.SelectedItem as dynamic).Value;
+            DateTime beginDate = dtpStartDate.Value;
+            DateTime endDate = dtpEndDate.Value;
+            string classId = (cbxClass.SelectedItem as Class).Id;
+            string lecturerId = (cbxLecturer.SelectedItem as User).Id;
+            string roomId = (cbxRoom.SelectedItem as Room).Id;
+            int shiftId = (cbxShift.SelectedItem as Shift).Id;
+            string subjectId = (cbxSubject.SelectedItem as Subject).Id;
+            int count = SubjectClassDAL.CountSubjectClass(subjectId, year, phase) + 1;
+            string id = (year - 2000).ToString() + (phase == 0 ? "D" : phase == 1 ? "G" : "C") + "1" + subjectId + "0" + count.ToString();
+
+            SubjectClass newSubClass = new SubjectClass()
+            {
+                Id = id,
+                Year = year,
+                Semester = phase,
+                BeginDate = beginDate,
+                EndDate = endDate,
+                Class_Id = classId,
+                LecturerId = lecturerId,
+                Room_Id = roomId,
+                Shift_Id = shiftId,
+                Subject_Id = subjectId,
+            };
+
+            if (SubjectClassDAL.AddSubjectClass(newSubClass))
+                MessageBox.Show("Thêm lớp học phần thành công", "Thông Báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Thêm không thành công\n.Vui lòng thử lại sau", "Thông Báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void CreateSubjectClass_SizeChanged(object sender, EventArgs e)
+        {
+            ConfigUI();
         }
     }
 }

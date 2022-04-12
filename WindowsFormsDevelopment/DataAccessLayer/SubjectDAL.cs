@@ -100,5 +100,56 @@ namespace WindowsFormsDevelopment.DataAccessLayer
 
             return result;
         }
+
+        public static List<Subject> GetSubjects(string classId)
+        {
+            List<Subject> subjects = new List<Subject>();
+
+            try
+            {
+                using (var db = new UehDbContext())
+                {
+                    subjects = (from cla in db.Classes
+                                where cla.Id == classId
+                                join majPro in db.MajorPrograms
+                                on cla.MajorProgram_Id equals majPro.Id
+                                join subPro in db.SubjectPrograms
+                                on majPro.Id equals subPro.MajorProgramId
+                                join sub in db.Subjects
+                                on subPro.SubjectId equals sub.Id
+                                select sub).ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return subjects;
+        }
+
+        public static bool AddSubjectClass(SubjectClass subClass)
+        {
+            bool isSuccess = false;
+
+            try
+            {
+                using (var db = new UehDbContext())
+                {
+                    db.SubjectClasses.Add(subClass);
+                    db.SaveChanges();
+
+                    isSuccess = true;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return isSuccess;
+        }
     }
 }

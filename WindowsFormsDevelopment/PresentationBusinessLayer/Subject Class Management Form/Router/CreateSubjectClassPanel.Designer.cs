@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Management_Form.Router
 {
-    partial class CreateSubjectClass
+    partial class CreateSubjectClassPanel
     {
         /// <summary> 
         /// Required designer variable.
@@ -32,6 +32,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             this.lblShoolLevel = new System.Windows.Forms.Label();
             this.cbxSchoolLevel = new System.Windows.Forms.ComboBox();
             this.pnlFooter = new System.Windows.Forms.Panel();
+            this.btnCreate = new WindowsFormsDevelopment.CustomControls.RoundedButton();
             this.cbxFaculty = new System.Windows.Forms.ComboBox();
             this.lblFaculty = new System.Windows.Forms.Label();
             this.cbxMajor = new System.Windows.Forms.ComboBox();
@@ -62,12 +63,11 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             this.lblShift = new System.Windows.Forms.Label();
             this.cbxShift = new System.Windows.Forms.ComboBox();
             this.lblSubClass = new System.Windows.Forms.Label();
-            this.btnCreate = new WindowsFormsDevelopment.CustomControls.RoundedButton();
-            this.pnlFooter.SuspendLayout();
-            this.pnlClassInformation.SuspendLayout();
-            this.pnlSubjectInformation.SuspendLayout();
-            this.pnlSubClass.SuspendLayout();
-            this.SuspendLayout();
+            //this.pnlFooter.SuspendLayout();
+            //this.pnlClassInformation.SuspendLayout();
+            //this.pnlSubjectInformation.SuspendLayout();
+            //this.pnlSubClass.SuspendLayout();
+            //this.SuspendLayout();
             // 
             // lblShoolLevel
             // 
@@ -100,6 +100,31 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             this.pnlFooter.Name = "pnlFooter";
             this.pnlFooter.Size = new System.Drawing.Size(944, 71);
             this.pnlFooter.TabIndex = 21;
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.btnCreate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.btnCreate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.btnCreate.BorderRadius = 10;
+            this.btnCreate.BorderSize = 0;
+            this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCreate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
+            this.btnCreate.FlatAppearance.BorderSize = 0;
+            this.btnCreate.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
+            this.btnCreate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(132)))));
+            this.btnCreate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(72)))), ((int)(((byte)(81)))));
+            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.ForeColor = System.Drawing.Color.White;
+            this.btnCreate.Location = new System.Drawing.Point(102, 13);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(250, 40);
+            this.btnCreate.TabIndex = 20;
+            this.btnCreate.Text = "Tạo lớp học phần";
+            this.btnCreate.TextColor = System.Drawing.Color.White;
+            this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // cbxFaculty
             // 
@@ -234,9 +259,11 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             // 
             // cbxSubject
             // 
+            this.cbxSubject.DropDownHeight = 250;
             this.cbxSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSubject.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSubject.FormattingEnabled = true;
+            this.cbxSubject.IntegralHeight = false;
             this.cbxSubject.Location = new System.Drawing.Point(590, 26);
             this.cbxSubject.Name = "cbxSubject";
             this.cbxSubject.Size = new System.Drawing.Size(185, 28);
@@ -357,9 +384,11 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             // 
             // cbxRoom
             // 
+            this.cbxRoom.DropDownHeight = 250;
             this.cbxRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRoom.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxRoom.FormattingEnabled = true;
+            this.cbxRoom.IntegralHeight = false;
             this.cbxRoom.Location = new System.Drawing.Point(106, 127);
             this.cbxRoom.Name = "cbxRoom";
             this.cbxRoom.Size = new System.Drawing.Size(185, 28);
@@ -441,35 +470,11 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             this.lblSubClass.TabIndex = 40;
             this.lblSubClass.Text = "Thông Tin Lớp Học Phần:";
             // 
-            // btnCreate
-            // 
-            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-            this.btnCreate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-            this.btnCreate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-            this.btnCreate.BorderRadius = 10;
-            this.btnCreate.BorderSize = 0;
-            this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCreate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(105)))));
-            this.btnCreate.FlatAppearance.BorderSize = 0;
-            this.btnCreate.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(111)))), ((int)(((byte)(51)))));
-            this.btnCreate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(132)))));
-            this.btnCreate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(72)))), ((int)(((byte)(81)))));
-            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(102, 13);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(250, 40);
-            this.btnCreate.TabIndex = 20;
-            this.btnCreate.Text = "Tạo lớp học phần";
-            this.btnCreate.TextColor = System.Drawing.Color.White;
-            this.btnCreate.UseVisualStyleBackColor = false;
-            // 
             // CreateSubjectClass
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            //this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            // this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Controls.Add(this.lblSubClass);
             this.Controls.Add(this.lblSubjectInformation);
             this.Controls.Add(this.pnlSubClass);
@@ -477,19 +482,19 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             this.Controls.Add(this.lblClassInformation);
             this.Controls.Add(this.pnlClassInformation);
             this.Controls.Add(this.pnlFooter);
-            this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Name = "CreateSubjectClass";
-            this.Size = new System.Drawing.Size(944, 636);
-            this.pnlFooter.ResumeLayout(false);
-            this.pnlClassInformation.ResumeLayout(false);
-            this.pnlClassInformation.PerformLayout();
-            this.pnlSubjectInformation.ResumeLayout(false);
-            this.pnlSubjectInformation.PerformLayout();
-            this.pnlSubClass.ResumeLayout(false);
-            this.pnlSubClass.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            //this.ForeColor = System.Drawing.SystemColors.ControlText;
+            //this.Name = "CreateSubjectClass";
+            //this.Size = new System.Drawing.Size(944, 636);
+            //// this.SizeChanged += new System.EventHandler(this.CreateSubjectClass_SizeChanged);
+            //this.pnlFooter.ResumeLayout(false);
+            //this.pnlClassInformation.ResumeLayout(false);
+            //this.pnlClassInformation.PerformLayout();
+            //this.pnlSubjectInformation.ResumeLayout(false);
+            //this.pnlSubjectInformation.PerformLayout();
+            //this.pnlSubClass.ResumeLayout(false);
+            //this.pnlSubClass.PerformLayout();
+            //this.ResumeLayout(false);
+            //this.PerformLayout();
         }
 
         #endregion

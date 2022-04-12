@@ -172,11 +172,17 @@
     <Compile Include="PresentationBusinessLayer\Subject Class Management Form\fSubjectClassManagement.Designer.cs">
       <DependentUpon>fSubjectClassManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="PresentationBusinessLayer\Subject Class Management Form\Router\CreateSubjectClass.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="PresentationBusinessLayer\Subject Class Management Form\Router\CreateSubjectClassPanel.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PresentationBusinessLayer\Subject Class Management Form\Router\CreateSubjectClass.Designer.cs">
-      <DependentUpon>CreateSubjectClass.cs</DependentUpon>
+    <Compile Include="PresentationBusinessLayer\Subject Class Management Form\Router\CreateSubjectClassPanel.Designer.cs">
+      <DependentUpon>CreateSubjectClassPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationBusinessLayer\Subject Class Management Form\Router\ManageSubjectClassPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PresentationBusinessLayer\Subject Class Management Form\Router\ManageSubjectClassPanel.Designer.cs">
+      <DependentUpon>ManageSubjectClassPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -192,8 +198,8 @@
     <EmbeddedResource Include="PresentationBusinessLayer\Subject Class Management Form\fSubjectClassManagement.resx">
       <DependentUpon>fSubjectClassManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PresentationBusinessLayer\Subject Class Management Form\Router\CreateSubjectClass.resx">
-      <DependentUpon>CreateSubjectClass.cs</DependentUpon>
+    <EmbeddedResource Include="PresentationBusinessLayer\Subject Class Management Form\Router\CreateSubjectClassPanel.resx">
+      <DependentUpon>CreateSubjectClassPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -252,9 +258,7 @@
   <ItemGroup>
     <None Include="Resources\left-arrow_dark-hover.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PresentationBusinessLayer\Form1\Router\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\payment-information-green.png" />
   </ItemGroup>

@@ -25,6 +25,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
             InitializeComponent();
 
             ConfigUI();
+
         }
 
         private void ConfigUI()
@@ -79,18 +80,19 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
         private void btnCreate_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
-            
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
 
-            pnlContent = new CreateSubjectClass(pnlBody);
+            pnlContent = new CreateSubjectClassPanel(pnlBody);
             pnlBody.Controls.Add(pnlContent);
         }
 
         private void btnSubjectClassManagement_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
-
             ChangeFocusColorButton((Button)sender, flpSideBarBody);
+
+            pnlContent = new ManageSubjectClassPanel(pnlBody, btnSubjectClassManagement);
+            pnlBody.Controls.Add(pnlContent);
         }
 
         private void fSubjectClassManagement_Load(object sender, EventArgs e)

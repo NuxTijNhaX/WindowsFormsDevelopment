@@ -72,7 +72,14 @@ namespace WindowsFormsDevelopment.CustomControls
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
             pbxAvatar.Location = new Point((pnlHeader_Avatar.Width - pbxAvatar.Width) / 2, (pnlHeader_Avatar.Height - pbxAvatar.Height) / 2);
-            pbxAvatar.Load($"https://student.ueh.edu.vn/HinhSV/{studentInfor.Id}.jpg");     // TODO: handle 404
+            try
+            {
+                pbxAvatar.Load($"https://student.ueh.edu.vn/HinhSV/{studentInfor.Id}.jpg");     // TODO: handle 404
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Vui lòng kết nối internet để hiện Avatar", "Không có kết nối mạng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             pnlHeader_Avatar.Controls.AddRange(new Control[]
             {

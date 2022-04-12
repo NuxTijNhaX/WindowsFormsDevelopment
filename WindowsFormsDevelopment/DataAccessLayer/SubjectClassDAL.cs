@@ -110,5 +110,98 @@ namespace WindowsFormsDevelopment.DataAccessLayer
 
             return result;
         }
+    
+        public static int CountSubjectClass(string subjectId, int year, int phase)
+        {
+            return GetSubjectClasses(subjectId, year, phase).Count;
+        }
+
+        public static bool AddSubjectClass(SubjectClass subjectClass)
+        {
+            bool isSuccess = false;
+
+            try
+            {
+                using (var db = new UehDbContext())
+                {
+                    db.SubjectClasses.Add(subjectClass);
+                    db.SaveChanges();
+
+                    isSuccess = true;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return isSuccess;
+        }
+
+        public static List<object> GetSubjectClasses(string classId, string subjectId)
+        {
+            List<object> result = new List<object>();
+
+            try
+            {
+                using (var db = new UehDbContext())
+                {
+                    var allSubClasses = (from subClass in db.SubjectClasses
+                                         where subClass.Class_Id == classId
+                                         && subClass.Subject_Id == subjectId
+                                         select subClass.Id).ToList<string>();
+
+                    foreach (var item in allSubClasses)
+                    {
+                        result.Add(GetSubjectClass(item));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return result;
+        }
+
+        public static bool DeleteSubjectClass(string subClassId)
+        {
+            bool result = false;
+
+            using (var db = new UehDbContext())
+            {
+                var subClass = (from subcla in db.SubjectClasses
+                                where subcla.Id == subClassId
+                                select subcla).FirstOrDefault();
+
+                db.SubjectClasses.Remove(subClass);
+                db.SaveChanges();
+
+                result = true;
+            }
+
+            return result;
+        }
+
+        public static bool IsHavingStudentAttended(string subClassId)
+        {
+            bool result = false;
+
+            using (var db = new UehDbContext())
+            {
+                var countAttender = (from subcla in db.SubjectClasses
+                                     where subcla.Id == subClassId
+                                     join gra in db.GradeSubjectClasses
+                                     on subcla.Id equals gra.SubjectClassId
+                                     select gra).ToList().Count();
+
+                if (countAttender > 0) return true;
+            }
+
+            return result;
+        }
     }
 }

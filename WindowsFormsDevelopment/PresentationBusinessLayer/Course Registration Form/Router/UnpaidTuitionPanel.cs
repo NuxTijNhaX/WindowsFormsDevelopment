@@ -90,24 +90,32 @@ namespace WindowsFormsDevelopment.Form_Course_Registration.Router
 
                 if (rbnMomo.Checked)
                 {
-                    paymentMethodId = PaymentMethodDAL.GetPaymentMethodId(rbnMomo.Text);
-
-                    string response = new MoMo(tuitionTotal.ToString(), 
-                        orderDescription, invoiceId.ToString()).GetResponseFromMoMo();
-
-                    JObject jsonResponse = JObject.Parse(response);
-
-                    DialogResult result = MessageBox.Show("Bạn có chắc muốn mở trình duyệt để thanh toán?", "Thông Báo", 
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    
-                    if (result == DialogResult.Yes)
+                    try
                     {
-                        System.Diagnostics.Process.Start(jsonResponse.GetValue("payUrl").ToString());
+                        paymentMethodId = PaymentMethodDAL.GetPaymentMethodId(rbnMomo.Text);
 
-                        ReRender();
-                        SaveInvoice(invoiceId, orderDescription, 
-                            paymentMethodId, fCourseRegistration.studentId);
+                        string response = new MoMo(tuitionTotal.ToString(),
+                            orderDescription, invoiceId.ToString()).GetResponseFromMoMo();
+
+                        JObject jsonResponse = JObject.Parse(response);
+
+                        DialogResult result = MessageBox.Show("Bạn có chắc muốn mở trình duyệt để thanh toán?", "Thông Báo",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            System.Diagnostics.Process.Start(jsonResponse.GetValue("payUrl").ToString());
+
+                            ReRender();
+                            SaveInvoice(invoiceId, orderDescription,
+                                paymentMethodId, fCourseRegistration.studentId);
+                        }
                     }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Vui lòng kết nối internet để thanh toán", "Lỗi kết nối mạng", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 }
                 if (rbnOcb.Checked)
                 {

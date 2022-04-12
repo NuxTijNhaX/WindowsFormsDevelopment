@@ -28,23 +28,23 @@ namespace WindowsFormsDevelopment.DataAccessLayer
 
         private LecturerDAL() { }
 
-        public static List<Lecturer> GetLecturers(string subjectId)
+        public static List<User> GetLecturers(string subjectId)
         {
-            List<Lecturer> lecturers = new List<Lecturer>();
+            List<User> lecturers = new List<User>();
 
             try
             {
                 using (var db = new UehDbContext())
                 {
                     string subLecturer = (from sub in db.Subjects
-                                           where sub.Id == subjectId
-                                           select sub.SubjectLecturer).FirstOrDefault();
+                                          where sub.Id == subjectId
+                                          select sub.SubjectLecturer).FirstOrDefault();
 
                     string[] lecturerList = subLecturer.Split(',');
 
                     foreach (var lecturer in lecturerList)
                     {
-                        lecturers.Add(GetLecturer(lecturer));
+                        lecturers.Add(GetLecturer(lecturer.Trim()));
                     }
                 }
             }
@@ -56,9 +56,9 @@ namespace WindowsFormsDevelopment.DataAccessLayer
             return lecturers;
         }
 
-        public static Lecturer GetLecturer(string lecturerId)
+        public static User GetLecturer(string lecturerId)
         {
-            Lecturer lecturer;
+            User lecturer;
 
             try
             {
@@ -66,7 +66,9 @@ namespace WindowsFormsDevelopment.DataAccessLayer
                 {
                     lecturer = (from lec in db.Lecturers
                                 where lec.LecturerId == lecturerId
-                                select lec).FirstOrDefault();
+                                join use in db.Users
+                                on lec.LecturerId equals use.Id
+                                select use).FirstOrDefault();
                 }
             }
             catch (Exception)
