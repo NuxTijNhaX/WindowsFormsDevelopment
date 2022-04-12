@@ -203,7 +203,7 @@ namespace WindowsFormsDevelopment.PresentationBusinessLayer.Subject_Class_Manage
 
             btnEdit.Text = "Chỉnh sửa học phần";
             btnEdit.Width = this.Width / 5;
-            btnEdit.Location = new Point(pnlCancel.Width - btnCancel.Width - 55, (pnlCancel.Height - btnCancel.Height) / 2);
+            btnEdit.Location = new Point(55, (pnlCancel.Height - btnEdit.Height) / 2);
             btnEdit.BackColor = fCourseRegistration.green;
             btnEdit.FlatAppearance.BorderColor = fCourseRegistration.green;
             btnEdit.FlatAppearance.CheckedBackColor = fCourseRegistration.green;
